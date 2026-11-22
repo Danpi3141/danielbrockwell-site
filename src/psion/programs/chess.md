@@ -12,8 +12,8 @@ models:
   xp:   { state: no }
   la:   { state: no }
   lz:   { state: works, free: 21087 }
-  lz64: { state: works, free: 17024 }
-memory_note: "Free memory as the Organiser's FREE reports it on a fresh machine, measured in the emulator. Chess starts with 17,024 bytes and picks the biggest table that fits: 256 entries from 17,920, the full 512 from 19,712. On the LZ64 the save file lives in the extra memory banks, so it always saves. On the 32K LZ the save file needs about 1,445 bytes of its own: below 19,295, and from 19,712 to 21,086, the game plays but shows CANNOT SAVE: NO ROOM. From 21,087 everything works."
+  lz64: { state: works, free: 21087 }
+memory_note: "Free memory as the Organiser's FREE reports it on a fresh machine, measured in the emulator. Chess starts with 17,024 bytes and picks the biggest table that fits: 256 entries from 17,920, the full 512 from 19,712. Its save file needs about 1,445 bytes more: below 19,295, and from 19,712 to 21,086, the game plays but shows CANNOT SAVE: NO ROOM. From 21,087 everything works."
 tested_on: "the Jape emulator (LZ64), with speed checks on a real Organiser that matched the emulator."
 files:
   - { file: chess-1.0.opk, kind: build, version: "1.0", date: 2026-11-21 }
