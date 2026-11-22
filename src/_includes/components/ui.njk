@@ -56,7 +56,8 @@
   {{ modelStrip(p.data.models, models) }}
   <p class="card-actions">
     <a class="button button-secondary" href="{{ p.url }}">Details<span class="sr"> about {{ p.data.title }}</span></a>
-    {%- set builds = p.data.files | filesOfKind("build") %}
+    {%- set builds = p.data.files | filesOfKind("psion") %}
+    {%- if not builds.length %}{% set builds = p.data.files | filesOfKind("build") %}{% endif %}
     {%- if builds.length %}
     {%- set f = builds | last %}
     <a class="button" href="{{ p.data.downloadDir }}{{ f.file }}" download>Download<span class="sr"> {{ p.data.title }} {{ f.version }}</span></a>
@@ -77,7 +78,7 @@
 </article>
 {%- endmacro %}
 
-{#- One downloadable file: name, version, bytes, date, checksum, button -#}
+{#- The main download: name, version, bytes, date, checksum, button -#}
 {% macro fileRow(f, dir, label, buttonText) -%}
 {%- set rel = dir + f.file -%}
 <div class="dl-file">
@@ -89,24 +90,44 @@
     <dt>Date</dt><dd><time datetime="{{ f.date | dateIso }}">{{ f.date | dateLong }}</time></dd>
     <dt>SHA-256</dt><dd><code class="hash">{{ rel | sha256 }}</code></dd>
   </dl>
-  {% if f.note %}<p class="small">{{ f.note }}</p>{% endif %}
-  <p><a class="button{% if f.kind == 'source' %} button-secondary{% endif %}" href="{{ rel }}" download>{{ buttonText }}</a></p>
+  <p><a class="button" href="{{ rel }}" download>{{ buttonText }}</a></p>
 </div>
 {%- endmacro %}
 
-{#- The download box: the newest version's build and source + build, then older versions -#}
+{#- Another download, one compact row: what it is, file, bytes, checksum, button -#}
+{% macro fileAlt(f, dir, label) -%}
+{%- set rel = dir + f.file -%}
+<li class="dl-alt">
+  <div>
+    <p class="dl-alt-name">{{ label }}</p>
+    <p class="small"><code>{{ f.file }}</code> · <span class="mono">{{ rel | fileSize | bytes }} bytes</span></p>
+    <p class="small">SHA-256 <code class="hash">{{ rel | sha256 }}</code></p>
+  </div>
+  <a class="chip" href="{{ rel }}" download>Download<span class="sr"> {{ label }}</span></a>
+</li>
+{%- endmacro %}
+
+{#- The download box: the newest version's Organiser files (or, without them, the build), then the
+    other files of that version, then older versions -#}
 {% macro downloadBox(d) -%}
 <section class="download-box" aria-labelledby="dl-h">
   <h2 id="dl-h">Download</h2>
   {%- if d.files and d.files.length %}
   {%- set newest = d.files | newestVersion %}
-  {%- for f in d.files | filesOfKind("build") %}{% if f.version == newest %}
-  {{ fileRow(f, d.downloadDir, d.buildLabel or "Build: pack image", "Download the build") }}
-  {%- endif %}{% endfor %}
-  {%- for f in d.files | filesOfKind("source") %}{% if f.version == newest %}
-  {{ fileRow(f, d.downloadDir, "Source + build (zip)", "Download source + build") }}
-  {%- endif %}{% endfor %}
+  {%- set cur = d.files | onlyVersion(newest) %}
+  {%- set main = (cur | filesOfKind("psion") | first) or (cur | filesOfKind("build") | first) %}
+  {{ fileRow(main, d.downloadDir, "Organiser files (zip)" if main.kind == "psion" else (d.buildLabel or "Build: pack image"), "Download") }}
   {% if d.needs %}<p class="dl-needs">{{ d.needs }}</p>{% endif %}
+  {%- set alts = [] %}
+  {%- for f in cur %}{% if f.file != main.file %}{% set alts = (alts | concat(f)) %}{% endif %}{% endfor %}
+  {%- if alts.length %}
+  <h3 class="dl-also">Also</h3>
+  <ul class="dl-alts">
+    {%- for f in alts %}
+    {{ fileAlt(f, d.downloadDir, "Pack image (.opk), for emulators and pack writers" if f.kind == "build" else ("Source + build (zip)" if f.kind == "source" else "Organiser files (zip)")) }}
+    {%- endfor %}
+  </ul>
+  {%- endif %}
   {% if d.licence %}<p class="small">Licence: {{ d.licence }}.</p>{% endif %}
   {%- set older = d.files | notVersion(newest) %}
   {%- if older.length %}

@@ -12,7 +12,7 @@ const CATEGORIES = ['game', 'utility'];
 const SECTIONS = ['android', 'personal'];
 const MODEL_IDS = ['cm', 'xp', 'la', 'lz', 'lz64'];
 const MODEL_STATES = ['works', 'no', 'untested'];
-const FILE_KINDS = ['build', 'source'];
+const FILE_KINDS = ['psion', 'build', 'source'];
 
 const isLive = () => process.env.ELEVENTY_RUN_MODE === 'build';
 
@@ -35,7 +35,8 @@ function fileFacts(rel) {
 
 function pngSize(rel) {
   const buf = fs.readFileSync(path.join(SRC, rel));
-  if (buf.toString('latin1', 1, 4) !== 'PNG') throw new Error(`${rel} is not a PNG`);
+  if (buf.toString('latin1', 0, 3) === 'GIF') return { width: buf.readUInt16LE(6), height: buf.readUInt16LE(8) };
+  if (buf.toString('latin1', 1, 4) !== 'PNG') throw new Error(`${rel} is not a PNG or GIF`);
   return { width: buf.readUInt32BE(16), height: buf.readUInt32BE(20) };
 }
 
@@ -134,6 +135,8 @@ export default function (eleventyConfig) {
     const ok = list.filter((m) => models?.[m.id]?.state === 'works').map((m) => m.name);
     return ok.length === list.length ? 'All five models' : ok.join(', ');
   });
+  eleventyConfig.addFilter('onlyVersion', (files, v) => (files || []).filter((f) => String(f.version) === String(v)));
+  eleventyConfig.addFilter('concat', (arr, x) => (arr || []).concat([x]));
   eleventyConfig.addFilter('notVersion', (files, v) => (files || []).filter((f) => String(f.version) !== String(v)));
   eleventyConfig.addFilter('neighbours', (items, url) => {
     const i = (items || []).findIndex((x) => x.url === url);

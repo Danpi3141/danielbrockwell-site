@@ -7,6 +7,8 @@ updated: 2026-11-20
 pack: 16K
 needs: "11,807 bytes: a 16K Datapak or larger. In an emulator, load the pack image into slot B of an LZ or LZ64. On a real Organiser, load the psion/ folder from the source + build zip with RPBOOT (about 11.7K, or about 5K without the source text)."
 licence: MIT
+animations:
+  - { src: /assets/img/psion/lander/play-lz64.gif, alt: "Lunar Lander: the lander crosses the terrain, brakes over the pad with the throttle and side bursts, lands, plants its flag, and the LEVEL 2 card shows score 320", screen: "Four-line (LZ and LZ64)" }
 models:
   cm:   { state: no }
   xp:   { state: no }
@@ -16,6 +18,7 @@ models:
 memory_note: "Free memory as the Organiser's FREE reports it on a fresh machine, measured in the emulator: enough to play a game and save it."
 tested_on: "the Jape emulator (LZ64), with the game's rules checked against a Python simulation."
 files:
+  - { file: lander-1.0-psion.zip, kind: psion, version: "1.0", date: 2026-11-20 }
   - { file: lander-1.0.opk, kind: build, version: "1.0", date: 2026-11-20 }
   - { file: lander-1.0-source.zip, kind: source, version: "1.0", date: 2026-11-20 }
 source: false
@@ -34,10 +37,11 @@ Each level has less fuel, a narrower pad and more starting drift. You have three
 
 ## Install
 
-1. Download the pack image, `lander-1.0.opk`.
-2. In the Jape emulator: **Select OPK file**, choose the file, **Create**, then **Slot B**.
-3. On the Organiser: **Prog**, **Run**, press <kbd>MODE</kbd> until the prompt shows `B:`, type `LANDER` and press <kbd>EXE</kbd>.
-4. For a real Organiser, see [Getting started](/psion/getting-started/) for loading with RPBOOT.
+1. Download the **Organiser files** zip and unzip it.
+2. Serve the folder with Psi2Win and run `RPBOOT` on the Organiser: it copies the program onto a pack. [Getting started](/psion/getting-started/) has the steps.
+3. **Prog**, **Run**, type `B:LANDER` (or the pack you chose) and press <kbd>EXE</kbd>.
+
+In the Jape emulator, use the pack image instead: **Select OPK file**, choose it, **Create**, then **Slot B**, and run `B:LANDER`.
 
 ## Manual
 

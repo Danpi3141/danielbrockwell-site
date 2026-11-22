@@ -33,10 +33,11 @@ OUT = os.path.join(SITE, 'src', 'downloads', 'psion')
 
 RELEASES = {
     'chess': {
+        'run': 'CHESS',
         'title': 'Chess',
         'folder': 'Chess',
-        'version': '1.0',
-        'date': (2026, 11, 21),
+        'version': '1.1',
+        'date': (2026, 11, 22),        # 1.0 (21 Nov) stays downloadable: release files are never replaced
         'opk': 'build/game/CHESS.opk',
         # build outputs that do go in (the rest of build/ is listings and test output)
         'build_files': ['build/game/CHESS.opk', 'build/game/CHESS.opl', 'build/game/CHG1.opl',
@@ -44,6 +45,8 @@ RELEASES = {
         'models': 'LZ and LZ64',
     },
     'connect4': {
+        'run': 'C4',
+        'psion_skip': {'psion/C4g2.odb'},     # a game exported while testing
         'title': 'Connect 4',
         'folder': 'Connect4',
         'version': '1.0',
@@ -54,6 +57,7 @@ RELEASES = {
         'models': 'CM, XP, LA, LZ and LZ64',
     },
     'reversi': {
+        'run': 'REV',
         'title': 'Reversi',
         'folder': 'Reversi',
         'version': '0.9',
@@ -65,6 +69,7 @@ RELEASES = {
     },
     # OPL and machine-code games whose pack image is committed in their repo: nothing to add from build/
     'lander': {
+        'run': 'LANDER',
         'title': 'Lunar Lander',
         'folder': 'Lander',
         'version': '1.0',
@@ -75,6 +80,7 @@ RELEASES = {
         'models': 'LZ and LZ64',
     },
     'rampart': {
+        'run': 'RAMPART',
         'title': 'Rampart',
         'folder': 'Rampart',
         'version': '1.0',
@@ -85,6 +91,7 @@ RELEASES = {
         'models': 'LZ and LZ64',
     },
     'phaselock': {
+        'run': 'PHASE',
         'title': 'Phaselock',
         'folder': 'Phaselock',
         'version': '0.9',
@@ -95,6 +102,7 @@ RELEASES = {
         'models': 'LZ and LZ64',
     },
     'spins': {
+        'run': 'SANTA',
         'title': 'Psion Spins',
         'folder': 'Spins',
         'version': '0.9',
@@ -204,6 +212,45 @@ def release_txt(rel, opk_name, opk_bytes, files, commits):
     return chr(10).join(lines)
 
 
+def psion_readme(rel, names):
+    run = rel['run']
+    lines = [
+        '%s %s for the Psion Organiser II (%s)' % (rel['title'], rel['version'], rel['models']),
+        'MIT licence: see LICENSE.',
+        '',
+        "These are the program's files, ready for an Organiser: translated procedures (.OB3)",
+        'and the loader that copies them onto a pack over a Comms Link.',
+        '',
+        'Loading them',
+        '  1. Unzip this folder on the PC.',
+        '  2. In Psi2Win, set Folder to this folder and click Start!.',
+        '  3. If RPBOOT is not on the Organiser yet: COMMS > RECEIVE > PROCEDURE, type RPBOOT,',
+        '     EXE. Then PROG > EDIT RPBOOT, MODE > TRAN.',
+        '  4. PROG > RUN RPBOOT. Choose the pack to copy the program to (B: or C: is best) and',
+        '     wait until it says NOW RUN B:%s (or whichever pack you chose).' % run,
+        '  5. PROG > RUN %s on that pack.' % run,
+        '  RPBOOT uses RPLOAD on an LZ or LZ64 and RPLOADCM on a CM, XP or LA. Delete A:RPLOAD',
+        '  afterwards to free its memory.',
+        '',
+        'Files',
+    ]
+    lines += ['  ' + n for n in names]
+    lines += ['', 'More: https://danielbrockwell.uk/psion/getting-started/', '']
+    return chr(10).join(lines)
+
+
+def zip_bytes_of(top, stamp, entries):
+    """A zip of (name, bytes) entries under top/, reproducibly: given order, one fixed date."""
+    buf = io.BytesIO()
+    with zipfile.ZipFile(buf, 'w') as zf:
+        for name, data in entries:
+            info = zipfile.ZipInfo(top + name, date_time=stamp)
+            info.compress_type = zipfile.ZIP_DEFLATED
+            info.external_attr = 0o644 << 16
+            zf.writestr(info, data, compresslevel=9)
+    return buf.getvalue()
+
+
 def make(slug, rel, list_only=False):
     root = os.path.join(PROGRAMS, rel['folder'])
     v = rel['version']
@@ -238,9 +285,21 @@ def make(slug, rel, list_only=False):
             add(p, d)
     zip_bytes = buf.getvalue()
 
+    # the psion/ folder as committed: what an Organiser needs, loaded with RPBOOT
+    prog, _ = committed(root)
+    skip = rel.get('psion_skip', set())
+    pfiles = sorted((k[len('psion/'):], v) for k, v in prog.items()
+                    if k.startswith('psion/') and k.count('/') == 1 and k not in skip)
+    if not pfiles:
+        sys.exit('STOP: %s has no committed psion/ folder' % rel['folder'])
+    psion_name = '%s-%s-psion.zip' % (slug, v)
+    psion_bytes = zip_bytes_of('%s-%s-psion/' % (slug, v), stamp, [
+        ('README.txt', psion_readme(rel, [n for n, _ in pfiles]).encode('utf-8')),
+        ('LICENSE', MIT.encode('utf-8'))] + pfiles)
+
     outdir = os.path.join(OUT, slug)
     os.makedirs(outdir, exist_ok=True)
-    for name, data in ((opk_name, opk_bytes), (zip_name, zip_bytes)):
+    for name, data in ((psion_name, psion_bytes), (opk_name, opk_bytes), (zip_name, zip_bytes)):
         path = os.path.join(outdir, name)
         if os.path.exists(path):
             with open(path, 'rb') as fh:

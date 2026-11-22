@@ -7,6 +7,9 @@ updated: 2026-11-21
 pack: 16K
 needs: "16,346 bytes: one 16K Datapak serves every model. In an emulator, load the pack image into slot B. On a real Organiser, write it to a 16K or 32K Datapak, or load the psion/ folder from the source + build zip with RPBOOT."
 licence: MIT
+animations:
+  - { src: /assets/img/psion/reversi/play-lz64.gif, alt: "Reversi on the four-line screen: three opening moves, the panel showing the discs each move turns, and the Psion's search display before each reply", screen: "Four-line (LZ and LZ64)" }
+  - { src: /assets/img/psion/reversi/play-cm.gif, alt: "The same three Reversi moves on the two-line screen, with the scores and the Psion's search display", screen: "Two-line (CM, XP and LA)", lines: 2 }
 models:
   cm:   { state: works, free: 5783 }
   xp:   { state: works, free: 5783 }
@@ -16,6 +19,7 @@ models:
 memory_note: "Free memory as the Organiser's FREE reports it on a fresh machine, measured in the emulator: enough to play a game and save it."
 tested_on: "the Jape emulator: CM, XP, LA, LZ and LZ64, and random keys on all 29 Organiser ROMs it has. Real hardware checks are still to do."
 files:
+  - { file: reversi-0.9-psion.zip, kind: psion, version: "0.9", date: 2026-11-21 }
   - { file: reversi-0.9.opk, kind: build, version: "0.9", date: 2026-11-21 }
   - { file: reversi-0.9-source.zip, kind: source, version: "0.9", date: 2026-11-21 }
 source: false
@@ -37,10 +41,11 @@ There is a coach that rates your move against a deeper search ("Coach c4 +3"), t
 
 ## Install
 
-1. Download the pack image, `reversi-0.9.opk`.
-2. In the Jape emulator: **Select OPK file**, choose the file, **Create**, then **Slot B**.
-3. On the Organiser: **Prog**, **Run**, type `B:REV` and press <kbd>EXE</kbd>.
-4. For a real Organiser, see [Getting started](/psion/getting-started/).
+1. Download the **Organiser files** zip and unzip it.
+2. Serve the folder with Psi2Win and run `RPBOOT` on the Organiser: it copies the program onto a pack. [Getting started](/psion/getting-started/) has the steps.
+3. **Prog**, **Run**, type `B:REV` (or the pack you chose) and press <kbd>EXE</kbd>.
+
+In the Jape emulator, use the pack image instead: **Select OPK file**, choose it, **Create**, then **Slot B**, and run `B:REV`.
 
 ## Manual
 

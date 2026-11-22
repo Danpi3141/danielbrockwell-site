@@ -10,6 +10,7 @@ description: "Games and utilities for the Psion Organiser II: pack images to dow
   <div class="prose">
     <p>Games and utilities for the Psion Organiser II, written in OPL and 6303 machine code. Each one comes as a pack image you can run in an emulator or load onto a real Organiser; released programs also come with their source and build as a zip.</p>
     <p>New to this? Start with <a href="/psion/getting-started/">Getting started</a>.</p>
+    <p class="hat-tip">A hat tip to Jaap Scherphuis, whose <a href="https://www.jaapsch.net/psion/">Psion Organiser II page</a> inspired these programs: its manuals and technical references made them possible, and his Jape emulator is where every one of them was built and tested.</p>
   </div>
   <nav aria-label="On this page"><ul class="jump">
     <li><a href="#games">Games</a></li>
@@ -46,7 +47,7 @@ description: "Games and utilities for the Psion Organiser II: pack images to dow
       </div>
       <div class="dl-links">
         {%- for f in p.data.files %}{% if f.version == newest %}
-        <a class="chip" href="{{ p.data.downloadDir }}{{ f.file }}" title="{{ f.file }}" download>{{ "Source + build" if f.kind == "source" else "Build" }}<span class="chip-size">{{ (p.data.downloadDir + f.file) | fileSize | humanSize }}</span><span class="sr">: {{ p.data.title }}, {{ f.file }}</span></a>
+        <a class="chip" href="{{ p.data.downloadDir }}{{ f.file }}" title="{{ f.file }}" download>{{ "Source" if f.kind == "source" else (".opk" if f.kind == "build" else "Organiser files") }}<span class="chip-size">{{ (p.data.downloadDir + f.file) | fileSize | humanSize }}</span><span class="sr">: {{ p.data.title }}, {{ f.file }}</span></a>
         {%- endif %}{% endfor %}
       </div>
     </li>

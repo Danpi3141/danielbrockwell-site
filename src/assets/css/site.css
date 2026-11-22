@@ -178,6 +178,13 @@ hr, .rule { border: 0; border-top: 1px dotted var(--muted); margin: 32px 0; }
 .hash { font-size: 13px; word-break: break-all; user-select: all; }
 .dl-needs { font-size: 15px; }
 .older { font-size: 15px; padding-left: 20px; }
+.dl-also { font-size: 16px; margin: 16px 0 0; color: var(--muted); }
+.dl-alts { list-style: none; padding: 0; margin: 0 0 12px; }
+.dl-alt { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 10px 0; border-top: 1px dotted var(--muted); }
+.dl-alt > div { min-width: 0; }
+.dl-alt p { margin: 0; }
+.dl-alt-name { font-weight: 600; font-size: 15px; }
+.dl-alt .hash { font-size: 11px; }
 
 /* tables */
 table { border-collapse: collapse; width: 100%; font-size: 15px; }

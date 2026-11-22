@@ -7,6 +7,9 @@ updated: 2026-11-21
 pack: 32K
 needs: "One 32K Datapak serves every model. In an emulator, load the pack image into slot B. On a real Organiser, write the image to a 32K Datapak, or load the psion/ folder from the source + build zip with RPBOOT."
 licence: MIT
+animations:
+  - { src: /assets/img/psion/connect4/play-lz64.gif, alt: "Connect 4 on the four-line screen: the player picks columns and drops discs, the Psion thinks with a depth and progress bar, replies, and ends with Psion wins in 9 moves", screen: "Four-line (LZ and LZ64)" }
+  - { src: /assets/img/psion/connect4/play-cm.gif, alt: "The same Connect 4 game on the two-line screen, with the thinking bar, the replies and Psion wins in 9 moves", screen: "Two-line (CM, XP and LA)", lines: 2 }
 models:
   cm:   { state: works, free: 4877 }
   xp:   { state: works, free: 4877 }
@@ -16,6 +19,7 @@ models:
 memory_note: "Free memory as the Organiser's FREE reports it on a fresh machine, measured in the emulator: enough to play a game and save it."
 tested_on: "the Jape emulator: CM (ROMs 2.4, 2.6, 3.3), XP (2.4, 2.6, 3.1), LA, LZ and LZ64, and random-key runs on all 29 Organiser ROMs it has. Real hardware checks are still to do."
 files:
+  - { file: connect4-1.0-psion.zip, kind: psion, version: "1.0", date: 2026-11-21 }
   - { file: connect4-1.0.opk, kind: build, version: "1.0", date: 2026-11-21 }
   - { file: connect4-1.0-source.zip, kind: source, version: "1.0", date: 2026-11-21 }
 source: false
@@ -37,10 +41,11 @@ There is a coach that names a bad drop before you make it, take back, hints, a m
 
 ## Install
 
-1. Download the pack image, `connect4-1.0.opk`.
-2. In the Jape emulator: **Select OPK file**, choose the file, **Create**, then **Slot B**.
-3. On the Organiser: **Prog**, **Run**, then type `B:C4` and press <kbd>EXE</kbd>.
-4. For a real Organiser, see [Getting started](/psion/getting-started/) for writing a Datapak or loading with RPBOOT.
+1. Download the **Organiser files** zip and unzip it.
+2. Serve the folder with Psi2Win and run `RPBOOT` on the Organiser: it copies the program onto a pack. [Getting started](/psion/getting-started/) has the steps.
+3. **Prog**, **Run**, type `B:C4` (or the pack you chose) and press <kbd>EXE</kbd>.
+
+In the Jape emulator, use the pack image instead: **Select OPK file**, choose it, **Create**, then **Slot B**, and run `B:C4`.
 
 ## Manual
 

@@ -7,15 +7,18 @@ updated: 2026-11-20
 pack: 32K
 needs: "30,531 bytes: a 32K Datapak. In an emulator, load the pack image into slot B of an LZ or LZ64. On a real Organiser, load the psion/ folder from the source + build zip with RPBOOT (about 32K, or about 14K without the source text)."
 licence: MIT
+animations:
+  - { src: /assets/img/psion/rampart/play-lz64.gif, alt: "Rampart: in the build phase two archer towers are added, SPACE starts the wave, and grunts march along both lanes while the towers shoot them", screen: "Four-line (LZ and LZ64)" }
 models:
   cm:   { state: no }
   xp:   { state: no }
   la:   { state: no }
-  lz:   { state: works, free: 4359 }
-  lz64: { state: works, free: 4359 }
+  lz:   { state: works, free: 5622 }
+  lz64: { state: works, free: 5622 }
 memory_note: "Free memory as the Organiser's FREE reports it on a fresh machine, measured in the emulator: enough to play a game and save it."
 tested_on: "the Jape emulator (LZ64), with the balance checked against a Python simulation."
 files:
+  - { file: rampart-1.0-psion.zip, kind: psion, version: "1.0", date: 2026-11-20 }
   - { file: rampart-1.0.opk, kind: build, version: "1.0", date: 2026-11-20 }
   - { file: rampart-1.0-source.zip, kind: source, version: "1.0", date: 2026-11-20 }
 source: false
@@ -35,10 +38,11 @@ Four towers (Archer, Cannon, Frost and Mage), six kinds of monster including a t
 
 ## Install
 
-1. Download the pack image, `rampart-1.0.opk`.
-2. In the Jape emulator: **Select OPK file**, choose the file, **Create**, then **Slot B**.
-3. On the Organiser: **Prog**, **Run**, press <kbd>MODE</kbd> until the prompt shows `B:`, type `RAMPART` and press <kbd>EXE</kbd>.
-4. For a real Organiser, see [Getting started](/psion/getting-started/) for loading with RPBOOT.
+1. Download the **Organiser files** zip and unzip it.
+2. Serve the folder with Psi2Win and run `RPBOOT` on the Organiser: it copies the program onto a pack. [Getting started](/psion/getting-started/) has the steps.
+3. **Prog**, **Run**, type `B:RAMPART` (or the pack you chose) and press <kbd>EXE</kbd>.
+
+In the Jape emulator, use the pack image instead: **Select OPK file**, choose it, **Create**, then **Slot B**, and run `B:RAMPART`.
 
 ## Manual
 

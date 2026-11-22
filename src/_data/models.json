@@ -1,7 +1,7 @@
 [
-  { "id": "cm",   "name": "CM",   "ram": "8K",  "screen": "2 lines of 16 characters" },
-  { "id": "xp",   "name": "XP",   "ram": "16K", "screen": "2 lines of 16 characters" },
-  { "id": "la",   "name": "LA",   "ram": "32K", "screen": "2 lines of 16 characters" },
-  { "id": "lz",   "name": "LZ",   "ram": "32K", "screen": "4 lines of 20 characters" },
-  { "id": "lz64", "name": "LZ64", "ram": "64K", "screen": "4 lines of 20 characters" }
+  { "id": "cm",   "name": "CM",   "label": "CM",     "peek": 0,  "rom": "32K", "ram": "8K",  "display": "2×16", "screen": "2 lines of 16 characters" },
+  { "id": "xp",   "name": "XP",   "label": "XP",     "peek": 1,  "rom": "32K", "ram": "16K", "display": "2×16", "screen": "2 lines of 16 characters" },
+  { "id": "la",   "name": "LA",   "label": "XP (LA)", "peek": 2,  "rom": "32K", "ram": "32K", "display": "2×16", "screen": "2 lines of 16 characters" },
+  { "id": "lz",   "name": "LZ",   "label": "LZ",     "peek": 14, "rom": "64K", "ram": "32K", "display": "4×20", "screen": "4 lines of 20 characters" },
+  { "id": "lz64", "name": "LZ64", "label": "LZ64",   "peek": 13, "rom": "64K", "ram": "64K", "display": "4×20", "screen": "4 lines of 20 characters" }
 ]

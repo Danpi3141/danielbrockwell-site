@@ -7,6 +7,9 @@ updated: 2026-11-21
 pack: 32K
 needs: "27,424 bytes: one 32K Datapak serves every model. In an emulator, load the pack image into slot B. On a real Organiser, load the psion/ folder from the source + build zip with RPBOOT."
 licence: MIT
+animations:
+  - { src: /assets/img/psion/spins/play-lz64.gif, alt: "Psion Spins on the four-line screen: one spin of the five reels, Santa walks across saying HO HO HO!, then the winning lines add up to 84 credits", screen: "Four-line (LZ and LZ64)" }
+  - { src: /assets/img/psion/spins/play-cm.gif, alt: "Psion Spins on the two-line screen: two spins of the reels, with Santa walking across during the second", screen: "Two-line (CM, XP and LA)", lines: 2 }
 models:
   cm:   { state: works, free: 5361 }
   xp:   { state: works, free: 5361 }
@@ -16,6 +19,7 @@ models:
 memory_note: "Free memory as the Organiser's FREE reports it on a fresh machine, measured in the emulator: enough to play a game and save it."
 tested_on: "the Jape emulator: CM, XP, LA, LZ and LZ64, and a spin with Santa on all 29 Organiser ROMs it has. Sound and the real LCD are still to check on hardware."
 files:
+  - { file: spins-0.9-psion.zip, kind: psion, version: "0.9", date: 2026-11-21 }
   - { file: spins-0.9.opk, kind: build, version: "0.9", date: 2026-11-21 }
   - { file: spins-0.9-source.zip, kind: source, version: "0.9", date: 2026-11-21 }
 source: false
@@ -37,10 +41,11 @@ Santa walks across the reels in several styles, the carols play in two parts (me
 
 ## Install
 
-1. Download the pack image, `spins-0.9.opk`.
-2. In the Jape emulator: **Select OPK file**, choose the file, **Create**, then **Slot B**.
-3. On the Organiser: **Prog**, **Run**, type `B:SANTA` and press <kbd>EXE</kbd>.
-4. For a real Organiser, see [Getting started](/psion/getting-started/) for loading with RPBOOT.
+1. Download the **Organiser files** zip and unzip it.
+2. Serve the folder with Psi2Win and run `RPBOOT` on the Organiser: it copies the program onto a pack. [Getting started](/psion/getting-started/) has the steps.
+3. **Prog**, **Run**, type `B:SANTA` (or the pack you chose) and press <kbd>EXE</kbd>.
+
+In the Jape emulator, use the pack image instead: **Select OPK file**, choose it, **Create**, then **Slot B**, and run `B:SANTA`.
 
 If there is too little memory, SANTA says how many more bytes it needs.
 
