@@ -10,5 +10,5 @@
 /styleguide/*
   X-Robots-Tag: noindex
 
-https://:subdomain.workers.dev/*
+https://danielbrockwell-site.danielbrockwell-site.workers.dev/*
   X-Robots-Tag: noindex
