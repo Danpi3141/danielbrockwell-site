@@ -1,0 +1,60 @@
+---
+title: Phaselock
+category: game
+status: working-build
+summary: "A side-scrolling machine-code shooter: stars, enemies and ship move one pixel at a time at 20 frames a second."
+updated: 2026-11-20
+pack: 32K
+needs: "30,085 bytes: a 32K Datapak. In an emulator, load the pack image into slot B of an LZ64. On a real LZ64, load the psion/ folder from the source + build zip with RPBOOT: A: needs about 14K free for the files, plus about 8K while the game runs."
+licence: MIT
+models:
+  cm:   { state: no, note: Needs the four-line screen }
+  xp:   { state: no, note: Needs the four-line screen }
+  la:   { state: no, note: Needs the four-line screen }
+  lz:   { state: untested, note: Four-line screen; written for the LZ and LZ64 }
+  lz64: { state: works, note: Four-line screen }
+tested_on: "the Jape emulator (LZ64). The pass on a real LZ64 (LCD smear, sound, battery) is still to do."
+files:
+  - { file: phaselock-0.9.opk, kind: build, version: "0.9", date: 2026-11-20 }
+  - { file: phaselock-0.9-source.zip, kind: source, version: "0.9", date: 2026-11-20 }
+source: false
+screenshots:
+  - { src: /assets/img/psion/phaselock/lz64-title.png, alt: "Four-line screen: PHASELOCK pixel shooter title, with the ship and two enemies, and Play, Scores, Quit", screen: Title }
+  - { src: /assets/img/psion/phaselock/lz64-wave.png, alt: "Four-line screen in wave 1: the ship on the left firing, drone enemies across the lanes and scattered stars", screen: "Wave 1" }
+  - { src: /assets/img/psion/phaselock/lz64-card.png, alt: "Four-line screen: the status card for WAVE 1: DRONES, with score 0, three lives and EXE=GO", screen: Status card }
+changelog:
+  - { date: 2026-11-20, version: "0.9", change: "Working build: milestones 1 to 6, tested in the emulator; made harder after the first play-through." }
+---
+
+## About
+
+A side-scrolling shooter that moves the stars, the enemies and the ship one pixel at a time at 20 frames a second. One machine-code routine runs a whole wave; OPL does the title, the wave data, the status cards and the high scores.
+
+Three lives, eight waves and a boss, about ten minutes. The ship fires by itself. Two rules make it hard:
+
+- **Nothing gets away.** An enemy you let past comes back in on the right, now weaving towards your lane and shooting. A wave ends only when everything in it is destroyed. Mines are the exception: they cannot be shot and just leave.
+- **Shots fill the lane.** An enemy shot hits anywhere over the five rows of its `+`, so the only way to dodge is to leave that lane.
+
+## Install
+
+1. Download the pack image, `phaselock-0.9.opk`.
+2. In the Jape emulator: choose **LZ64 (64k)**, **Select OPK file**, choose the file, **Create**, then **Slot B**.
+3. On the Organiser: **Prog**, **Run**, press <kbd>MODE</kbd> until the prompt shows `B:`, type `PHASE` and press <kbd>EXE</kbd>. Loading takes about 2.5 seconds.
+4. For a real Organiser, see [Getting started](/psion/getting-started/) for loading with RPBOOT.
+
+## Manual
+
+| Key | Action |
+|---|---|
+| <kbd>UP</kbd> / <kbd>DOWN</kbd> | Move, 2 pixels a tick while held |
+| <kbd>EXE</kbd> | Bomb: clears every enemy and enemy shot, once a wave. Let go of the arrow first: the keyboard reports one key at a time |
+| <kbd>MODE</kbd> | Pause and show the status card |
+| <kbd>ON/CLEAR</kbd> | Quit to the title |
+
+If no key is pressed for 30 seconds the game pauses itself.
+
+## Technical notes
+
+- The machine-code core is assembled at three origins and compared to find its fix-ups, so the loader can place it anywhere.
+- A reference model of the core in Python checks the strip builders, the collision tests and one frame of logic.
+- Left for the hardware pass: whether one-pixel steps at 20 frames a second smear on the real LCD, the LCD busy flag, sound and battery. If a frame ever misses its tick, the status card shows `LATE` and the count.
