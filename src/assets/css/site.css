@@ -130,7 +130,18 @@ hr, .rule { border: 0; border-top: 1px dotted var(--muted); margin: 32px 0; }
 .psion-list:has(#scr-2:checked) .shot-all, .psion-list:has(#scr-4:checked) .shot-all { display: none; }
 .psion-list:has(#scr-2:checked) .shot-2, .psion-list:has(#scr-4:checked) .shot-4 { display: block; }
 .psion-list:has(#scr-2:checked) .card[data-two="no"], .psion-list:has(#scr-4:checked) .card[data-four="no"] { order: 1; }
-.psion-list:has(#scr-2:checked) tr[data-two="no"], .psion-list:has(#scr-4:checked) tr[data-four="no"] { display: none; }
+.psion-list:has(#scr-2:checked) .dl-item[data-two="no"], .psion-list:has(#scr-4:checked) .dl-item[data-four="no"] { display: none; }
+/* All downloads: one row a program, two download chips */
+.dl-list { list-style: none; padding: 0; margin: 0 0 32px; border-top: 1px solid var(--border); }
+.dl-item { display: grid; gap: 8px 24px; padding: 12px 0; border-bottom: 1px solid var(--border); align-items: center; }
+@media (min-width: 600px) { .dl-item { grid-template-columns: minmax(0, 1fr) auto; } }
+.dl-what p { margin: 0; }
+.dl-name { font-weight: 600; }
+.dl-name a { color: var(--ink); }
+.dl-links { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 12px; border: 1px solid var(--accent); border-radius: 999px; color: var(--accent); text-decoration: none; font-size: 15px; font-weight: 600; white-space: nowrap; }
+.chip:hover { background: var(--accent); color: var(--on-accent); }
+.chip-size { font-family: var(--mono); font-size: 13px; font-weight: 400; opacity: 0.85; }
 .count { font-family: var(--mono); font-size: 15px; color: var(--muted); }
 .frame { border-radius: var(--radius); border: 1px solid var(--border); }
 

@@ -126,6 +126,14 @@ export default function (eleventyConfig) {
   });
   // the first screenshot of a two-line or four-line screen (unmarked screenshots are four-line)
   eleventyConfig.addFilter('shotFor', (shots, lines) => (shots || []).find((s) => (s.lines || 4) === lines));
+  // 61274 -> "60 KB", 5067464 -> "4.8 MB" (exact byte counts stay on the program pages)
+  eleventyConfig.addFilter('humanSize', (n) => (n < 1024 * 1024 ? `${Math.round(n / 1024)} KB` : `${(n / 1048576).toFixed(1)} MB`));
+  eleventyConfig.addFilter('dateShort', (d) => { const x = toDate(d); return `${x.getUTCDate()} ${MONTHS[x.getUTCMonth()].slice(0, 3)} ${x.getUTCFullYear()}`; });
+  // the models that run it: "All five models", or "LZ, LZ64"
+  eleventyConfig.addFilter('modelsText', (models, list) => {
+    const ok = list.filter((m) => models?.[m.id]?.state === 'works').map((m) => m.name);
+    return ok.length === list.length ? 'All five models' : ok.join(', ');
+  });
   eleventyConfig.addFilter('notVersion', (files, v) => (files || []).filter((f) => String(f.version) !== String(v)));
   eleventyConfig.addFilter('neighbours', (items, url) => {
     const i = (items || []).findIndex((x) => x.url === url);

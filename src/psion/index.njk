@@ -35,23 +35,21 @@ description: "Games and utilities for the Psion Organiser II: pack images to dow
 
   <hr class="rule">
   <h2 id="all-downloads">All downloads</h2>
-  <div class="table-scroll">
-  <table>
-    <thead><tr><th scope="col">Program</th><th scope="col">Version</th><th scope="col">Models</th><th scope="col">Pack size</th><th scope="col">File</th><th scope="col">Updated</th></tr></thead>
-    <tbody>
-      {%- for p in collections.programs | withFiles %}
-      {%- for f in p.data.files %}
-      <tr data-two="{{ p.data.models | screenSupport(2) }}" data-four="{{ p.data.models | screenSupport(4) }}">
-        <td><a href="{{ p.url }}">{{ p.data.title }}</a></td>
-        <td>{{ f.version }}</td>
-        <td>{% for m in models_list %}{% if p.data.models[m.id].state == "works" %}{{ m.name }} {% endif %}{% endfor %}</td>
-        <td>{{ p.data.pack }}</td>
-        <td><a href="{{ p.data.downloadDir }}{{ f.file }}" download><code>{{ f.file }}</code></a><br><span class="small">{{ "Source + build" if f.kind == "source" else "Build" }}, {{ (p.data.downloadDir + f.file) | fileSize | bytes }} bytes</span></td>
-        <td><time datetime="{{ f.date | dateIso }}">{{ f.date | dateLong }}</time></td>
-      </tr>
-      {%- endfor %}
-      {%- endfor %}
-    </tbody>
-  </table>
-  </div>
+  <p class="small">Each program's page has the exact byte counts and SHA-256 checksums.</p>
+  <ul class="dl-list">
+    {%- for p in collections.programs | withFiles %}
+    {%- set newest = p.data.files | newestVersion %}
+    <li class="dl-item" data-two="{{ p.data.models | screenSupport(2) }}" data-four="{{ p.data.models | screenSupport(4) }}">
+      <div class="dl-what">
+        <p class="dl-name"><a href="{{ p.url }}">{{ p.data.title }}</a> <span class="mono small">{{ newest }}</span></p>
+        <p class="small">{{ p.data.models | modelsText(models_list) }}{% if p.data.pack %} · {{ p.data.pack }} pack{% endif %} · {% for f in p.data.files %}{% if loop.first %}<time datetime="{{ f.date | dateIso }}">{{ f.date | dateShort }}</time>{% endif %}{% endfor %}</p>
+      </div>
+      <div class="dl-links">
+        {%- for f in p.data.files %}{% if f.version == newest %}
+        <a class="chip" href="{{ p.data.downloadDir }}{{ f.file }}" title="{{ f.file }}" download>{{ "Source + build" if f.kind == "source" else "Build" }}<span class="chip-size">{{ (p.data.downloadDir + f.file) | fileSize | humanSize }}</span><span class="sr">: {{ p.data.title }}, {{ f.file }}</span></a>
+        {%- endif %}{% endfor %}
+      </div>
+    </li>
+    {%- endfor %}
+  </ul>
 </div>
