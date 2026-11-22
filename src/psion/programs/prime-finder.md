@@ -4,7 +4,7 @@ category: utility
 status: in-development
 summary: "Proth, Riesel and Mersenne tests and sieved searches for large primes, in machine code on the LZ and LZ64."
 updated: 2026-11-22
-pack: 128K
+pack: 64K
 animations:
   - { src: /assets/img/psion/prime-finder/play-lz64.gif, alt: "Prime finder: a Proth test of 3 x 2^189 + 1 is typed in, the squarings count up to 188, and it reports 3*2^189+1 IS PRIME! in 6 seconds", screen: "Four-line (LZ and LZ64)" }
 models:
@@ -35,5 +35,5 @@ Milestones 0 to 6 of the plan are done and tested in the emulator: the PC refere
 
 ## Technical notes
 
-- The pack image is about 74K, so it needs a 128K pack.
+- Loaded with RPBOOT, its files need a 64K pack or larger in B: or C:.
 - On the LZ64 a result file goes in the extra memory banks first; on the LZ it shares the main memory, which the figures above allow for.
