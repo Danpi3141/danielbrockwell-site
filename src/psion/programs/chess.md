@@ -8,11 +8,12 @@ pack: 64K
 needs: "The pack image is a 256K Flashpak image with about 60K used. In an emulator, load it into slot B of an LZ or LZ64. On a real Organiser, load the psion/ folder from the source + build zip with RPBOOT onto a Rampak or Flashpak of 64K or more in B: or C:."
 licence: MIT
 models:
-  cm:   { state: no, note: Needs the four-line screen and more RAM }
-  xp:   { state: no, note: Needs the four-line screen and more RAM }
-  la:   { state: no, note: Needs the four-line screen }
-  lz:   { state: works, note: "Smaller transposition table (needs 16,923 bytes free)" }
-  lz64: { state: works, note: "Full 512-entry table (needs 19,611 bytes free)" }
+  cm:   { state: no }
+  xp:   { state: no }
+  la:   { state: no }
+  lz:   { state: works, free: 21087 }
+  lz64: { state: works, free: 17024 }
+memory_note: "Free memory as the Organiser's FREE reports it on a fresh machine, measured in the emulator. Chess starts with 17,024 bytes and picks the biggest table that fits: 256 entries from 17,920, the full 512 from 19,712. On the LZ64 the save file lives in the extra memory banks, so it always saves. On the 32K LZ the save file needs about 1,445 bytes of its own: below 19,295, and from 19,712 to 21,086, the game plays but shows CANNOT SAVE: NO ROOM. From 21,087 everything works."
 tested_on: "the Jape emulator (LZ64), with speed checks on a real Organiser that matched the emulator."
 files:
   - { file: chess-1.0.opk, kind: build, version: "1.0", date: 2026-11-21 }
@@ -63,6 +64,6 @@ While it thinks, any key makes it move now. The menu has new game, level, take b
 ## Technical notes
 
 - The engine searches about 70 to 120 positions a second on the Organiser.
-- The game uses a RAM array of 19,030 bytes with a 512-entry transposition table on the LZ64.
+- The game uses a RAM array of 19,030 bytes with its full 512-entry transposition table; measured, it needs 19,712 bytes free for that table and 17,024 to start at all.
 - The program takes about 60K of its 256K pack budget.
 - Bishop and knight mates succeed in about 80% of random starts.

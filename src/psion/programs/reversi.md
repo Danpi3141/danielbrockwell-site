@@ -8,11 +8,12 @@ pack: 16K
 needs: "16,346 bytes: one 16K Datapak serves every model. In an emulator, load the pack image into slot B. On a real Organiser, write it to a 16K or 32K Datapak, or load the psion/ folder from the source + build zip with RPBOOT."
 licence: MIT
 models:
-  cm:   { state: works, note: "Two-line screen: the whole board in eight custom characters" }
-  xp:   { state: works, note: Two-line screen }
-  la:   { state: works, note: Two-line screen }
-  lz:   { state: works, note: "Four-line screen: two discs a character, columns A to H underneath" }
-  lz64: { state: works, note: Four-line screen }
+  cm:   { state: works, free: 5783 }
+  xp:   { state: works, free: 5783 }
+  la:   { state: works, free: 5783 }
+  lz:   { state: works, free: 5781 }
+  lz64: { state: works, free: 5781 }
+memory_note: "Free memory as the Organiser's FREE reports it on a fresh machine, measured in the emulator: enough to play a game and save it."
 tested_on: "the Jape emulator: CM, XP, LA, LZ and LZ64, and random keys on all 29 Organiser ROMs it has. Real hardware checks are still to do."
 files:
   - { file: reversi-0.9.opk, kind: build, version: "0.9", date: 2026-11-21 }
@@ -64,5 +65,5 @@ While the Organiser thinks, a bar fills for each tenth of the level's search, wi
 
 ## Technical notes
 
-- The game needs about 5,544 bytes of free RAM, so it runs on a blank 8K CM.
+- The game needs 5,783 bytes free on a two-line model and 5,781 on a four-line one, so it runs on a blank 8K CM.
 - Every pack, screen and RAM figure is checked by the build, and the tests run the game on every Organiser ROM the emulator has.

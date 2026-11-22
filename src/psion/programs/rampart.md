@@ -8,11 +8,12 @@ pack: 32K
 needs: "30,531 bytes: a 32K Datapak. In an emulator, load the pack image into slot B of an LZ or LZ64. On a real Organiser, load the psion/ folder from the source + build zip with RPBOOT (about 32K, or about 14K without the source text)."
 licence: MIT
 models:
-  cm:   { state: no, note: Needs the four-line screen }
-  xp:   { state: no, note: Needs the four-line screen }
-  la:   { state: no, note: Needs the four-line screen }
-  lz:   { state: works, note: Four-line screen }
-  lz64: { state: works, note: Four-line screen }
+  cm:   { state: no }
+  xp:   { state: no }
+  la:   { state: no }
+  lz:   { state: works, free: 4359 }
+  lz64: { state: works, free: 4359 }
+memory_note: "Free memory as the Organiser's FREE reports it on a fresh machine, measured in the emulator: enough to play a game and save it."
 tested_on: "the Jape emulator (LZ64), with the balance checked against a Python simulation."
 files:
   - { file: rampart-1.0.opk, kind: build, version: "1.0", date: 2026-11-20 }

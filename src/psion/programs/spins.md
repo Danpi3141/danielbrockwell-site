@@ -8,11 +8,12 @@ pack: 32K
 needs: "27,424 bytes: one 32K Datapak serves every model. In an emulator, load the pack image into slot B. On a real Organiser, load the psion/ folder from the source + build zip with RPBOOT."
 licence: MIT
 models:
-  cm:   { state: works, note: "Two-line screen: 5 reels by 2 rows" }
-  xp:   { state: works, note: "Two-line screen: 5 reels by 2 rows" }
-  la:   { state: works, note: "Two-line screen: 5 reels by 2 rows" }
-  lz:   { state: works, note: "Four-line screen: 5 reels by 4 rows" }
-  lz64: { state: works, note: "Four-line screen: 5 reels by 4 rows" }
+  cm:   { state: works, free: 5361 }
+  xp:   { state: works, free: 5361 }
+  la:   { state: works, free: 5361 }
+  lz:   { state: works, free: 5359 }
+  lz64: { state: works, free: 5359 }
+memory_note: "Free memory as the Organiser's FREE reports it on a fresh machine, measured in the emulator: enough to play a game and save it."
 tested_on: "the Jape emulator: CM, XP, LA, LZ and LZ64, and a spin with Santa on all 29 Organiser ROMs it has. Sound and the real LCD are still to check on hardware."
 files:
   - { file: spins-0.9.opk, kind: build, version: "0.9", date: 2026-11-21 }

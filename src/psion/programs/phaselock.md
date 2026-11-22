@@ -5,14 +5,15 @@ status: working-build
 summary: "A side-scrolling machine-code shooter: stars, enemies and ship move one pixel at a time at 20 frames a second."
 updated: 2026-11-20
 pack: 32K
-needs: "30,085 bytes: a 32K Datapak. In an emulator, load the pack image into slot B of an LZ or LZ64. On a real Organiser, load the psion/ folder from the source + build zip with RPBOOT: A: needs about 14K free for the files, plus about 8K while the game runs."
+needs: "30,085 bytes: a 32K Datapak. In an emulator, load the pack image into slot B of an LZ or LZ64. On a real Organiser, load the psion/ folder from the source + build zip with RPBOOT: A: needs about 14K free for the files, plus 8,142 bytes free to run it."
 licence: MIT
 models:
-  cm:   { state: no, note: Needs the four-line screen }
-  xp:   { state: no, note: Needs the four-line screen }
-  la:   { state: no, note: Needs the four-line screen }
-  lz:   { state: works, note: Four-line screen }
-  lz64: { state: works, note: Four-line screen }
+  cm:   { state: no }
+  xp:   { state: no }
+  la:   { state: no }
+  lz:   { state: works, free: 8142 }
+  lz64: { state: works, free: 8142 }
+memory_note: "Free memory as the Organiser's FREE reports it on a fresh machine, measured in the emulator: enough to play a game and save it."
 tested_on: "the Jape emulator (LZ and LZ64). The pass on real hardware (LCD smear, sound, battery) is still to do."
 files:
   - { file: phaselock-0.9.opk, kind: build, version: "0.9", date: 2026-11-20 }

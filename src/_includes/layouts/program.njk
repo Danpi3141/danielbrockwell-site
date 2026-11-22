@@ -34,15 +34,22 @@ layout: layouts/base.njk
 
       <section aria-labelledby="compat-h">
         <h2 id="compat-h">Compatibility</h2>
+        {%- set hasFree = false %}
+        {%- for m in models_list %}{% if models[m.id].free %}{% set hasFree = true %}{% endif %}{% endfor %}
         <table class="compat">
-          <thead><tr><th scope="col">Model</th><th scope="col">Runs it?</th><th scope="col">Note</th></tr></thead>
+          <thead><tr><th scope="col">Model</th><th scope="col">Runs it?</th>{% if hasFree %}<th scope="col">Free memory needed</th>{% endif %}</tr></thead>
           <tbody>
             {%- for m in models_list %}
             {%- set e = models[m.id] %}
-            <tr class="state-{{ e.state }}"><th scope="row">{{ m.name }}</th><td>{{ "Works" if e.state == "works" else ("Not supported" if e.state == "no" else "Untested") }}</td><td>{{ e.note }}</td></tr>
+            <tr class="state-{{ e.state }}">
+              <th scope="row">{{ m.name }}</th>
+              <td>{% if e.state == "works" %}<span class="mark mark-yes" aria-hidden="true">✓</span><span class="sr">Works</span>{% elif e.state == "no" %}<span class="mark mark-no" aria-hidden="true">✗</span><span class="sr">Not supported</span>{% else %}<span class="mark mark-maybe" aria-hidden="true">?</span><span class="sr">Untested</span>{% endif %}</td>
+              {%- if hasFree %}<td class="mono">{% if e.state != "no" and e.free %}{{ e.free | bytes }} bytes{% else %}<span aria-hidden="true">–</span><span class="sr">Not applicable</span>{% endif %}</td>{% endif %}
+            </tr>
             {%- endfor %}
           </tbody>
         </table>
+        {% if memory_note %}<p class="small">{{ memory_note }}</p>{% endif %}
         {% if tested_on %}<p class="small">Tested on {{ tested_on }}</p>{% endif %}
       </section>
     </div>

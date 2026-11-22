@@ -8,11 +8,12 @@ pack: 32K
 needs: "One 32K Datapak serves every model. In an emulator, load the pack image into slot B. On a real Organiser, write the image to a 32K Datapak, or load the psion/ folder from the source + build zip with RPBOOT."
 licence: MIT
 models:
-  cm:   { state: works, note: Two-line screen }
-  xp:   { state: works, note: Two-line screen }
-  la:   { state: works, note: Two-line screen }
-  lz:   { state: works, note: Four-line screen }
-  lz64: { state: works, note: Four-line screen }
+  cm:   { state: works, free: 4877 }
+  xp:   { state: works, free: 4877 }
+  la:   { state: works, free: 4877 }
+  lz:   { state: works, free: 4875 }
+  lz64: { state: works, free: 4875 }
+memory_note: "Free memory as the Organiser's FREE reports it on a fresh machine, measured in the emulator: enough to play a game and save it."
 tested_on: "the Jape emulator: CM (ROMs 2.4, 2.6, 3.3), XP (2.4, 2.6, 3.1), LA, LZ and LZ64, and random-key runs on all 29 Organiser ROMs it has. Real hardware checks are still to do."
 files:
   - { file: connect4-1.0.opk, kind: build, version: "1.0", date: 2026-11-21 }
@@ -63,6 +64,6 @@ In menus, <kbd>UP</kbd> and <kbd>DOWN</kbd> move, a letter jumps to the next ite
 
 ## Technical notes
 
-- The game needs about 4,660 bytes of free RAM; a blank CM has room to spare and keeps 33 exported games.
+- The game needs 4,877 bytes free on a two-line model and 4,875 on a four-line one; a blank CM has room to spare and keeps 33 exported games.
 - The program takes about 28K of the 32K Datapak.
 - The engine searches about 280 positions a second, and level 8 solves most endings with 16 to 18 empty cells.

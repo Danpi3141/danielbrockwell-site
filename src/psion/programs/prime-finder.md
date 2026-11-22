@@ -5,11 +5,11 @@ status: planned
 summary: "Searching for large primes on the LZ64 with Proth and Lucas tests in machine code."
 updated: 2026-11-21
 models:
-  cm:   { state: no, note: Needs the LZ64's memory }
-  xp:   { state: no, note: Needs the LZ64's memory }
-  la:   { state: no, note: Needs the LZ64's memory }
-  lz:   { state: no, note: Needs the LZ64's memory }
-  lz64: { state: untested, note: Four-line screen }
+  cm:   { state: no }
+  xp:   { state: no }
+  la:   { state: no }
+  lz:   { state: no }
+  lz64: { state: untested }
 ---
 
 ## About
