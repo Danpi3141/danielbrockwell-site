@@ -44,6 +44,13 @@ layout: layouts/base.njk
     <div class="entry-side">
       {{ ui.downloadBox({ files: files, downloadDir: downloadDir, needs: needs, licence: licence }) }}
 
+      {%- if pack %}
+      <section aria-labelledby="pack-h" class="pack-section">
+        <h2 id="pack-h">Pack size</h2>
+        {{ ui.packMeter(pack) }}
+      </section>
+      {%- endif %}
+
       <section aria-labelledby="compat-h">
         <h2 id="compat-h">Compatibility</h2>
         {%- set hasFree = false %}

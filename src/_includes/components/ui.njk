@@ -143,3 +143,17 @@
   {%- endif %}
 </section>
 {%- endmacro %}
+
+{#- Pack size as an LCD capacity meter: six segments, 8K to 256K, lit from the size needed up -#}
+{% macro packMeter(pack) -%}
+{%- set need = pack | replace("K", "") | int -%}
+{%- set sizes = [8, 16, 32, 64, 128, 256] -%}
+{%- set fits = [] -%}{%- for k in sizes %}{% if k >= need %}{% set fits = (fits | concat(k ~ "K")) %}{% endif %}{% endfor -%}
+<div class="pack-meter" role="img" aria-label="Needs a {{ pack }} pack or larger. Fits: {{ fits | join(', ') }}">
+  <div class="pm-screen" aria-hidden="true">
+    <p class="pm-title">PACK {{ pack }}{% if need < 256 %} OR MORE{% endif %}</p>
+    <div class="pm-row">{% for k in sizes %}<span class="pm-seg{% if k >= need %} pm-on{% endif %}"></span>{% endfor %}</div>
+    <div class="pm-row pm-labels">{% for k in sizes %}<span>{{ k }}K</span>{% endfor %}</div>
+  </div>
+</div>
+{%- endmacro %}
