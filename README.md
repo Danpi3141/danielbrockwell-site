@@ -36,9 +36,9 @@ Four-line and two-line LCD screenshots come from the emulator at 4 pixels a dot 
 
 ## Deploying
 
-Live at https://danielbrockwell-site.danielbrockwell-site.workers.dev until the domain is attached. The repo lives on a local Forgejo that Cloudflare can't reach, so deploys run from this machine with `npm run deploy`; Cloudflare's Git builds can take over once the GitHub copy exists.
+Live at https://danielbrockwell.uk. `wrangler.jsonc` attaches the bare domain and www as custom domains and turns workers.dev and preview URLs off, so the site has one address; a Redirect Rule on the zone (in the Cloudflare dashboard, not in this repo) sends www to the bare domain. Deploys run from this machine with `npm run deploy`.
 
-`wrangler.jsonc` serves `_site/` with Cloudflare's own 404 page handling and trailing-slash folders. Cloudflare's build command is `npx @11ty/eleventy`, its deploy command `npx wrangler deploy`. `src/_headers` sets the security headers, sends downloads as attachments, and marks the workers.dev address and the style guide as not indexed.
+`wrangler.jsonc` serves `_site/` with Cloudflare's own 404 page handling and trailing-slash folders. Cloudflare's build command is `npx @11ty/eleventy`, its deploy command `npx wrangler deploy`. `src/_headers` sets the security headers, sends downloads as attachments, and marks the style guide as not indexed.
 
 ## Still to do
 
