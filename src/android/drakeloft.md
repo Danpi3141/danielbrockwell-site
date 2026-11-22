@@ -2,7 +2,7 @@
 title: Drakeloft
 section: android
 status: in-development
-summary: "A dragon-keeping strategy game for Android, written from my own spec, with my own art and code."
+summary: "A dragon-keeping game for Android: hatch, breed and battle 112 dragons on floating isles, offline, with no adverts."
 updated: 2026-11-18
 offers_download: true
 buildLabel: "Build: APK"
@@ -14,11 +14,17 @@ links:
 
 ## What it is
 
-<p class="draft">To write: two paragraphs on what the game is and how it plays.</p>
+Drakeloft is a dragon-keeping game for Android, played offline and held sideways. You hatch dragons on floating isles, feed them, breed new kinds, and work towards collecting all 112 in the Almanac. Teams of three go into turn-based fights.
+
+There is no shop, no adverts, no account and no network: every gem is earned by playing.
 
 ## What I built
 
-<p class="draft">To write: the systems and the tech used.</p>
+- **Kotlin and Jetpack Compose**, about 135 source files, with 151 files of JVM tests.
+- **The game's systems:** the isles and their buildings, feeding and levelling, breeding, the Almanac, turn-based battles, daily goals, sound and weather.
+- **A map that runs at the screen's full refresh rate**, 120 frames a second on a 120 Hz phone, with a battery saver that holds it to 30 and rests it when idle.
+- **Runs on Android 7.0 and later**, with an older path for each Android 8 feature, tested both ways.
+- **Separate debug, QA and release builds** that install side by side with their own saves, and a release check that every build for the phone must pass.
 
 ## How it was made
 

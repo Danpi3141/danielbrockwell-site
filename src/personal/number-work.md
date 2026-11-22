@@ -12,8 +12,6 @@ links:
 
 I search for large prime numbers of special forms, such as Proth primes, using the same tests the big distributed searches use.
 
-<p class="draft">To write: the page's final title, and what it covers besides prime finding.</p>
-
 ## What I built
 
 - A prime finder for the Psion Organiser LZ64: Proth and Lucas-style tests with Karatsuba multiplication and sieving in 6303 machine code, driven from OPL.
