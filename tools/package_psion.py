@@ -29,6 +29,7 @@ SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PSIONII = os.path.join(os.path.expanduser('~'), 'PsionII')
 PROGRAMS = os.path.join(PSIONII, 'Programs')
 TOOLS = os.path.join(PSIONII, 'Tools')
+ALLOW_DIRTY = False             # --allow-dirty: package HEAD past uncommitted changes (they're left out)
 OUT = os.path.join(SITE, 'src', 'downloads', 'psion')
 
 RELEASES = {
@@ -60,8 +61,8 @@ RELEASES = {
         'run': 'REV',
         'title': 'Reversi',
         'folder': 'Reversi',
-        'version': '0.9',
-        'date': (2026, 11, 21),
+        'version': '1.0',
+        'date': (2026, 11, 22),        # 0.9 (21 Nov) stays downloadable
         'opk': 'build/game/REV.opk',
         'build_files': ['build/game/REV.opk', 'build/game/REV.opl', 'build/game/REVG.opl',
                         'build/game/budget.txt'],
@@ -147,8 +148,12 @@ def git(path, *args):
 
 def committed(path):
     """Every file committed at HEAD in the repo at path, as {name: bytes}, and the commit id."""
-    if git(path, 'status', '--porcelain').strip():
-        sys.exit('STOP: %s has uncommitted changes; commit them first so the zip matches a commit.' % path)
+    dirty = git(path, 'status', '--porcelain').decode().strip()
+    if dirty:
+        if not ALLOW_DIRTY:
+            sys.exit('STOP: %s has uncommitted changes; commit them first so the zip matches a commit '
+                     '(or --allow-dirty: the zip is built from HEAD either way).' % path)
+        print('note: %s has uncommitted changes, left out (the zip is HEAD): %s' % (path, ' '.join(dirty.split())))
     commit = git(path, 'rev-parse', 'HEAD').decode().strip()
     files = {}
     with tarfile.open(fileobj=io.BytesIO(git(path, 'archive', '--format=tar', 'HEAD'))) as tf:
@@ -318,7 +323,10 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[0])
     ap.add_argument('slugs', nargs='*', help='programs to package (default: all)')
     ap.add_argument('--list', action='store_true', help='list each zip\'s contents and write nothing')
+    ap.add_argument('--allow-dirty', action='store_true', help='package HEAD even if the repo has uncommitted changes')
     a = ap.parse_args()
+    global ALLOW_DIRTY
+    ALLOW_DIRTY = a.allow_dirty
     for slug in a.slugs or sorted(RELEASES):
         if slug not in RELEASES:
             sys.exit('unknown program %r (have: %s)' % (slug, ', '.join(sorted(RELEASES))))
