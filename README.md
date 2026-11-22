@@ -11,6 +11,7 @@ Daniel Brockwell's website: Psion Organiser II programs with downloads, Android 
 | `npm run build` | Builds the site into `_site/` |
 | `npm run check` | After a build: checks every internal link, the 50 KB page budget, no stray email addresses or phone numbers, then validates the HTML |
 | `npm run package` | Makes the Psion release files (below) |
+| `npm run deploy` | Builds, runs the checks, and deploys to Cloudflare if they pass (needs `npx wrangler login` once) |
 
 ## Adding a Psion program
 
@@ -34,6 +35,8 @@ When a program's repo is public, set `source:` to its address and the Source blo
 Four-line and two-line LCD screenshots come from the emulator at 4 pixels a dot and are shown at half size. `node tools/make_share.mjs` makes `src/assets/img/share.png`, the 1200 by 630 image shown when a page is shared.
 
 ## Deploying
+
+Live at https://danielbrockwell-site.danielbrockwell-site.workers.dev until the domain is attached. The repo lives on a local Forgejo that Cloudflare can't reach, so deploys run from this machine with `npm run deploy`; Cloudflare's Git builds can take over once the GitHub copy exists.
 
 `wrangler.jsonc` serves `_site/` with Cloudflare's own 404 page handling and trailing-slash folders. Cloudflare's build command is `npx @11ty/eleventy`, its deploy command `npx wrangler deploy`. `src/_headers` sets the security headers, sends downloads as attachments, and marks the workers.dev address and the style guide as not indexed.
 

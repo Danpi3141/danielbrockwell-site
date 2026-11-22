@@ -8,7 +8,8 @@
     "dev": "eleventy --serve",
     "build": "eleventy",
     "check": "node scripts/check.mjs && html-validate \"_site/**/*.html\"",
-    "package": "python -I tools/package_psion.py"
+    "package": "python -I tools/package_psion.py",
+    "deploy": "eleventy && npm run check && wrangler deploy"
   },
   "engines": {
     "node": ">=20"
