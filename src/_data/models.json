@@ -1,0 +1,7 @@
+[
+  { "id": "cm",   "name": "CM",   "ram": "8K",  "screen": "2 lines of 16 characters" },
+  { "id": "xp",   "name": "XP",   "ram": "16K", "screen": "2 lines of 16 characters" },
+  { "id": "la",   "name": "LA",   "ram": "32K", "screen": "2 lines of 16 characters" },
+  { "id": "lz",   "name": "LZ",   "ram": "32K", "screen": "4 lines of 20 characters" },
+  { "id": "lz64", "name": "LZ64", "ram": "64K", "screen": "4 lines of 20 characters" }
+]

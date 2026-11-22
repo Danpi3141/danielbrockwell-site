@@ -1,0 +1,42 @@
+---
+layout: layouts/base.njk
+title: Style guide
+permalink: /styleguide/
+noindex: true
+eleventyExcludeFromCollections: true
+---
+{% import "components/ui.njk" as ui %}
+<div class="wrap">
+  <h1>Style guide</h1>
+  <p class="prose">Every component on one page. Not indexed.</p>
+
+  <h2>Type</h2>
+  <h3>Heading three</h3>
+  <p class="prose">Body text in the device's own font, 17 px. <a href="/">A link</a>. <code>a-file-name.opk</code> and <kbd>EXE</kbd>. <span class="mono">31,204 bytes</span>.</p>
+  <p class="small">Small, muted text for captions and metadata.</p>
+  <hr class="rule">
+
+  <h2>Buttons</h2>
+  <p class="buttons"><a class="button" href="/styleguide/">Primary</a> <a class="button button-secondary" href="/styleguide/">Secondary</a></p>
+
+  <h2>Status badges</h2>
+  <p class="card-meta">{% for s in ["released", "working-build", "in-development", "planned", "exploring"] %}{{ ui.badge(s) }} {% endfor %}</p>
+
+  <h2>Model strip</h2>
+  {{ ui.modelStrip({ cm: { state: "no" }, xp: { state: "untested" }, la: { state: "works" }, lz: { state: "works" }, lz64: { state: "works" } }, models_list) }}
+
+  <h2>LCD panel</h2>
+  {{ ui.lcdText(["Line one", "Line two", "Line three", "LINE FOUR 1234567890"], "An LCD panel with four lines of sample text") }}
+  <p></p>
+  {{ ui.lcdShot({ src: "/assets/img/psion/connect4/cm-coach.png", alt: "Two-line screen: Connect 4 with the coach's verdict" }) }}
+
+  <h2>Callout</h2>
+  <div class="callout"><p>A note or a warning.</p></div>
+
+  <h2>Cards</h2>
+  <div class="grid">
+    {%- for p in collections.programs | batch(3) | first %}
+    {{ ui.programCard(p, models_list) }}
+    {%- endfor %}
+  </div>
+</div>

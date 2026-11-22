@@ -1,0 +1,54 @@
+---
+layout: layouts/base.njk
+title: Home
+description: "I build games and tools for Android and for the Psion Organiser II, a pocket computer from the 1980s."
+---
+{% import "components/ui.njk" as ui %}
+<div class="wrap">
+  <section class="hero">
+    <div>
+      <h1>{{ site.name }}</h1>
+      <p class="lede">I build games and tools for Android and for the Psion Organiser II, a pocket computer from the 1980s.</p>
+      <p class="buttons">
+        <a class="button" href="/psion/">Psion programs</a>
+        <a class="button button-secondary" href="/cv/">My work and CV</a>
+      </p>
+    </div>
+    <div>
+      {{ ui.lcdShot({ src: "/assets/img/psion/connect4/lz64-four.png", alt: "A Psion Organiser LZ64 screen showing a game of Connect 4: the board with a winning four, and 'Hollow wins in 16 moves'" }) }}
+    </div>
+  </section>
+
+  <h2 class="sr">Sections</h2>
+  <div class="grid">
+    {%- set psionCount = collections.programs | length %}
+    {%- set androidCount = collections.projects | countIn("section", "android") %}
+    {%- set personalCount = collections.projects | countIn("section", "personal") %}
+    {%- for s in [
+      ["Psion", "/psion/", "Games and utilities for the Organiser II, with downloads and source.", psionCount, "program"],
+      ["Android", "/android/", "Apps and games for Android phones.", androidCount, "project"],
+      ["Personal", "/personal/", "Side projects, starting with my number work.", personalCount, "project"]
+    ] %}
+    <article class="card">
+      <h3 class="card-title"><a href="{{ s[1] }}">{{ s[0] }}</a></h3>
+      <p class="card-summary">{{ s[2] }}</p>
+      <p class="count">{{ s[3] }} {{ s[4] }}{% if s[3] != 1 %}s{% endif %}</p>
+    </article>
+    {%- endfor %}
+  </div>
+
+  <hr class="rule">
+  <h2>Latest</h2>
+  <ul class="latest">
+    {%- for e in collections.latest %}
+    <li><a href="{{ e.url }}">{{ e.data.title }}</a> {{ ui.badge(e.data.status) }} <span class="small">updated <time datetime="{{ e.data.updated | dateIso }}">{{ e.data.updated | dateLong }}</time></span><br>{{ e.data.summary }}</li>
+    {%- endfor %}
+  </ul>
+
+  <hr class="rule">
+  <section class="prose" aria-labelledby="about-h">
+    <h2 id="about-h">About me</h2>
+    <p>I write software for old and new machines alike, from 6303 machine code on a 1980s pocket computer to apps for Android. I like small, exact programs that do a lot with very little.</p>
+    <p><a href="/about/">About</a> · <a href="/cv/">CV</a> · <a href="/contact/">Contact</a></p>
+  </section>
+</div>

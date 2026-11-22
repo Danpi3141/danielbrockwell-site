@@ -1,0 +1,42 @@
+---
+layout: layouts/base.njk
+---
+{% import "components/ui.njk" as ui %}
+{%- set sectionName = "Android" if section == "android" else "Personal" %}
+<div class="wrap">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="/{{ section }}/">{{ sectionName }}</a></li>
+      <li><a href="{{ page.url }}" aria-current="page">{{ title }}</a></li>
+    </ol>
+  </nav>
+  <header class="entry-head">
+    <h1>{{ title }}</h1>
+    <p class="entry-badges">{{ ui.badge(status) }}</p>
+    <p class="lede">{{ summary }}</p>
+  </header>
+
+  {%- if screenshots and screenshots.length %}
+  <section class="shots" aria-label="Screenshots">
+    {%- for s in screenshots | batch(3) | first %}
+    {%- set sz = s.src | pngSize %}
+    <img class="frame" src="{{ s.src }}" alt="{{ s.alt }}" width="{{ sz.width }}" height="{{ sz.height }}"{% if not loop.first %} loading="lazy"{% endif %}>
+    {%- endfor %}
+  </section>
+  {%- endif %}
+
+  <div class="prose">
+    {{ content | safe }}
+
+    {%- if offers_download %}
+    {{ ui.downloadBox({ files: files, downloadDir: downloadDir, needs: needs, licence: licence, buildLabel: buildLabel }) }}
+    {%- endif %}
+
+    {%- if links and links.length %}
+    <h2>Links</h2>
+    <ul>
+      {%- for l in links %}<li><a href="{{ l.url }}">{{ l.label }}</a></li>{% endfor %}
+    </ul>
+    {%- endif %}
+  </div>
+</div>

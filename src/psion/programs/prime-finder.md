@@ -1,0 +1,17 @@
+---
+title: Prime finder
+category: utility
+status: planned
+summary: "Searching for large primes on the LZ64 with Proth and Lucas tests in machine code."
+updated: 2026-11-21
+models:
+  cm:   { state: no, note: Needs the LZ64's memory }
+  xp:   { state: no, note: Needs the LZ64's memory }
+  la:   { state: no, note: Needs the LZ64's memory }
+  lz:   { state: no, note: Needs the LZ64's memory }
+  lz64: { state: untested, note: Four-line screen }
+---
+
+## About
+
+A prime finder for the LZ64: Proth and Lucas-style tests with Karatsuba multiplication and sieving in 6303 machine code, driven from OPL. It is part of my [number work](/personal/number-work/).

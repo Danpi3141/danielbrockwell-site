@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if page.url == "/" %}{{ site.name }}{% else %}{{ title }} – {{ site.name }}{% endif %}</title>
+<meta name="description" content="{{ description or summary or site.description }}">
+{% if page.url %}<link rel="canonical" href="{{ site.url }}{{ page.url }}">{% endif %}
+{% if noindex %}<meta name="robots" content="noindex">{% endif %}
+<meta property="og:title" content="{{ title or site.name }}">
+<meta property="og:description" content="{{ description or summary or site.description }}">
+<meta property="og:type" content="website">
+{% if page.url %}<meta property="og:url" content="{{ site.url }}{{ page.url }}">{% endif %}
+<meta property="og:image" content="{{ site.url }}/assets/img/share.png">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="wordmark" href="/">Daniel Brockwell<span class="cursor" aria-hidden="true"></span></a>
+    <nav aria-label="Main">
+      <ul class="nav">
+        {%- for item in [["Psion", "/psion/", "psion"], ["Android", "/android/", "android"], ["Personal", "/personal/", "personal"], ["About", "/about/", "about"], ["CV", "/cv/", "cv"]] %}
+        <li><a href="{{ item[1] }}"{% if section == item[2] %} aria-current="{{ 'page' if page.url == item[1] else 'true' }}"{% endif %}>{{ item[0] }}</a></li>
+        {%- endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main">
+{{ content | safe }}
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <ul class="footer-links">
+      <li><a href="/contact/">Contact</a></li>
+      {% if site.github %}<li><a href="{{ site.github }}">GitHub</a></li>{% endif %}
+      <li><a href="/cv/">CV</a></li>
+    </ul>
+    <p>No cookies, no tracking.</p>
+    <p class="small">Psion and Organiser are trademarks of their respective owners. This site is not affiliated with them.</p>
+    <p class="small">Built <time datetime="{{ buildDate | dateIso }}">{{ buildDate | dateLong }}</time>.</p>
+  </div>
+</footer>
+</body>
+</html>

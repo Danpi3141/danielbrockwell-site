@@ -1,0 +1,108 @@
+{#- Shared components, as Nunjucks macros. Import with {% import "components/ui.njk" as ui %}. -#}
+
+{% macro badge(status) -%}
+<span class="badge badge-{{ status }}">{{ status | statusLabel }}</span>
+{%- endmacro %}
+
+{#- models: the entry's models object; list: models.json -#}
+{% macro modelStrip(models, list) -%}
+<span class="sr">Models:</span><ul class="models">
+  {%- for m in list %}
+  {%- set st = models[m.id].state if models and models[m.id] else "untested" %}
+  <li class="key key-{{ st }}">{{ m.name }}<span class="sr">: {{ "works" if st == "works" else ("not supported" if st == "no" else "untested") }}</span></li>
+  {%- endfor %}
+</ul>
+{%- endmacro %}
+
+{#- An LCD panel holding up to four lines of text -#}
+{% macro lcdText(lines, label) -%}
+<div class="lcd"{% if label %} role="img" aria-label="{{ label }}"{% endif %}><pre class="lcd-text"{% if label %} aria-hidden="true"{% endif %}>{% for l in lines %}{{ l }}{% if not loop.last %}
+{% endif %}{% endfor %}</pre></div>
+{%- endmacro %}
+
+{#- An LCD panel holding a real screenshot, drawn at half its file size (2 screen pixels a dot) -#}
+{% macro lcdShot(shot, lazy) -%}
+{%- set sz = shot.src | pngSize -%}
+<div class="lcd lcd-shot"><img src="{{ shot.src }}" alt="{{ shot.alt }}" width="{{ sz.width / 2 }}" height="{{ sz.height / 2 }}"{% if lazy %} loading="lazy"{% endif %}></div>
+{%- endmacro %}
+
+{% macro programCard(p, models) -%}
+<article class="card">
+  {%- if p.data.screenshots and p.data.screenshots.length %}
+  {{ lcdShot(p.data.screenshots[0], true) }}
+  {%- else %}
+  {%- set t = (p.data.lcd_name or p.data.title) | upper | truncate(20, true, "") %}
+  {{ lcdText(["", t | center(20), "", ""], "") }}
+  {%- endif %}
+  <h3 class="card-title"><a href="{{ p.url }}">{{ p.data.title }}</a></h3>
+  <p class="card-summary">{{ p.data.summary }}</p>
+  <div class="card-meta">{{ badge(p.data.status) }}{% if p.data.pack %}<span class="mono small">{{ p.data.pack }} pack</span>{% endif %}</div>
+  {{ modelStrip(p.data.models, models) }}
+  <p class="card-actions">
+    <a class="button button-secondary" href="{{ p.url }}">Details<span class="sr"> about {{ p.data.title }}</span></a>
+    {%- set builds = p.data.files | filesOfKind("build") %}
+    {%- if builds.length %}
+    {%- set f = builds | last %}
+    <a class="button" href="{{ p.data.downloadDir }}{{ f.file }}" download>Download<span class="sr"> {{ p.data.title }} {{ f.version }}</span></a>
+    {%- endif %}
+  </p>
+</article>
+{%- endmacro %}
+
+{% macro projectCard(p) -%}
+<article class="card">
+  {%- if p.data.screenshots and p.data.screenshots.length %}
+  {%- set sz = p.data.screenshots[0].src | pngSize %}
+  <img class="frame" src="{{ p.data.screenshots[0].src }}" alt="{{ p.data.screenshots[0].alt }}" width="{{ sz.width }}" height="{{ sz.height }}" loading="lazy">
+  {%- endif %}
+  <h3 class="card-title"><a href="{{ p.url }}">{{ p.data.title }}</a></h3>
+  <p class="card-summary">{{ p.data.summary }}</p>
+  <div class="card-meta">{{ badge(p.data.status) }}</div>
+</article>
+{%- endmacro %}
+
+{#- One downloadable file: name, version, bytes, date, checksum, button -#}
+{% macro fileRow(f, dir, label, buttonText) -%}
+{%- set rel = dir + f.file -%}
+<div class="dl-file">
+  <h3 class="dl-label">{{ label }}</h3>
+  <dl class="dl-facts">
+    <dt>File</dt><dd><code>{{ f.file }}</code></dd>
+    <dt>Version</dt><dd>{{ f.version }}</dd>
+    <dt>Size</dt><dd class="mono">{{ rel | fileSize | bytes }} bytes</dd>
+    <dt>Date</dt><dd><time datetime="{{ f.date | dateIso }}">{{ f.date | dateLong }}</time></dd>
+    <dt>SHA-256</dt><dd><code class="hash">{{ rel | sha256 }}</code></dd>
+  </dl>
+  {% if f.note %}<p class="small">{{ f.note }}</p>{% endif %}
+  <p><a class="button{% if f.kind == 'source' %} button-secondary{% endif %}" href="{{ rel }}" download>{{ buttonText }}</a></p>
+</div>
+{%- endmacro %}
+
+{#- The download box: the newest version's build and source + build, then older versions -#}
+{% macro downloadBox(d) -%}
+<section class="download-box" aria-labelledby="dl-h">
+  <h2 id="dl-h">Download</h2>
+  {%- if d.files and d.files.length %}
+  {%- set newest = d.files | newestVersion %}
+  {%- for f in d.files | filesOfKind("build") %}{% if f.version == newest %}
+  {{ fileRow(f, d.downloadDir, d.buildLabel or "Build: pack image", "Download the build") }}
+  {%- endif %}{% endfor %}
+  {%- for f in d.files | filesOfKind("source") %}{% if f.version == newest %}
+  {{ fileRow(f, d.downloadDir, "Source + build (zip)", "Download source + build") }}
+  {%- endif %}{% endfor %}
+  {% if d.needs %}<p class="dl-needs">{{ d.needs }}</p>{% endif %}
+  {% if d.licence %}<p class="small">Licence: {{ d.licence }}.</p>{% endif %}
+  {%- set older = d.files | notVersion(newest) %}
+  {%- if older.length %}
+  <h3>Older versions</h3>
+  <ul class="older">
+    {%- for f in older | reverse %}
+    <li><a href="{{ d.downloadDir }}{{ f.file }}" download><code>{{ f.file }}</code></a>, {{ (d.downloadDir + f.file) | fileSize | bytes }} bytes, {{ f.date | dateLong }}</li>
+    {%- endfor %}
+  </ul>
+  {%- endif %}
+  {%- else %}
+  <p>Not released yet.</p>
+  {%- endif %}
+</section>
+{%- endmacro %}

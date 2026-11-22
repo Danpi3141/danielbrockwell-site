@@ -1,0 +1,84 @@
+---
+layout: layouts/base.njk
+---
+{% import "components/ui.njk" as ui %}
+{%- set group = "Games" if category == "game" else "Utilities" %}
+<div class="wrap">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="/psion/">Psion</a></li>
+      <li><a href="/psion/#{{ group | lower }}">{{ group }}</a></li>
+      <li><a href="{{ page.url }}" aria-current="page">{{ title }}</a></li>
+    </ol>
+  </nav>
+  <header class="entry-head">
+    <h1>{{ title }}</h1>
+    <p class="entry-badges">{{ ui.badge(status) }}{% for f in files | filesOfKind("build") %}{% if loop.last %}<span class="mono small">Version {{ f.version }}</span>{% endif %}{% endfor %}</p>
+    <p class="lede">{{ summary }}</p>
+  </header>
+
+  {%- if screenshots and screenshots.length %}
+  <section class="shots" aria-label="Screenshots">
+    {%- for s in screenshots %}
+    <figure>
+      {{ ui.lcdShot(s, not loop.first) }}
+      <figcaption>{{ s.screen }}</figcaption>
+    </figure>
+    {%- endfor %}
+  </section>
+  {%- endif %}
+
+  <div class="entry-grid">
+    <div class="entry-side">
+      {{ ui.downloadBox({ files: files, downloadDir: downloadDir, needs: needs, licence: licence }) }}
+
+      <section aria-labelledby="compat-h">
+        <h2 id="compat-h">Compatibility</h2>
+        <table class="compat">
+          <thead><tr><th scope="col">Model</th><th scope="col">Runs it?</th><th scope="col">Note</th></tr></thead>
+          <tbody>
+            {%- for m in models_list %}
+            {%- set e = models[m.id] %}
+            <tr class="state-{{ e.state }}"><th scope="row">{{ m.name }}</th><td>{{ "Works" if e.state == "works" else ("Not supported" if e.state == "no" else "Untested") }}</td><td>{{ e.note }}</td></tr>
+            {%- endfor %}
+          </tbody>
+        </table>
+        {% if tested_on %}<p class="small">Tested on {{ tested_on }}</p>{% endif %}
+      </section>
+    </div>
+
+    <div class="prose entry-body">
+      {{ content | safe }}
+
+      {%- if changelog and changelog.length %}
+      <h2>Changelog</h2>
+      <table>
+        <thead><tr><th scope="col">Date</th><th scope="col">Version</th><th scope="col">Change</th></tr></thead>
+        <tbody>
+          {%- for c in changelog %}
+          <tr><td><time datetime="{{ c.date | dateIso }}">{{ c.date | dateLong }}</time></td><td>{{ c.version }}</td><td>{{ c.change }}</td></tr>
+          {%- endfor %}
+        </tbody>
+      </table>
+      {%- endif %}
+
+      <h2>Source</h2>
+      {%- set srcZip = files | filesOfKind("source") %}
+      {%- if source %}
+      <p><a href="{{ source }}">{{ source }}</a>{% if licence %} ({{ licence }} licence){% endif %}</p>
+      {%- elif srcZip.length %}
+      <p>The source is in the <a href="{{ downloadDir }}{{ (srcZip | last).file }}" download>source + build zip</a>{% if licence %}, under the {{ licence }} licence{% endif %}. It holds the program as committed, the shared Psion tools it builds with, and the built pack, and it rebuilds the same pack byte for byte. A public repository will follow.</p>
+      {%- else %}
+      <p>Source not published.</p>
+      {%- endif %}
+    </div>
+  </div>
+
+  {%- set n = collections.programs | neighbours(page.url) %}
+  {%- if n.prev or n.next %}
+  <nav class="pager" aria-label="Other programs">
+    {% if n.prev %}<a href="{{ n.prev.url }}" rel="prev"><span class="small">Previous</span> {{ n.prev.data.title }}</a>{% else %}<span></span>{% endif %}
+    {% if n.next %}<a href="{{ n.next.url }}" rel="next"><span class="small">Next</span> {{ n.next.data.title }}</a>{% endif %}
+  </nav>
+  {%- endif %}
+</div>

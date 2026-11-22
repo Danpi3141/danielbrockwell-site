@@ -1,0 +1,20 @@
+{
+  "name": "danielbrockwell-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Daniel Brockwell's website: Psion Organiser II programs, Android and personal projects, CV.",
+  "type": "module",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy",
+    "check": "node scripts/check.mjs && html-validate \"_site/**/*.html\"",
+    "package": "python -I tools/package_psion.py"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "3.1.8",
+    "html-validate": "10.16.0"
+  }
+}

@@ -1,0 +1,14 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Content-Security-Policy: default-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+/downloads/*
+  Content-Disposition: attachment
+
+/styleguide/*
+  X-Robots-Tag: noindex
+
+https://:subdomain.workers.dev/*
+  X-Robots-Tag: noindex
