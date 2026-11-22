@@ -44,6 +44,5 @@ The repo is on Forgejo (`origin`) with a public backup on GitHub (Danpi3141/dani
 
 ## Still to do
 
-- Text marked as a draft (dashed boxes): why 1980s hardware on About, Drakeloft, and Number work.
 - The pixel font: Matrix Sans, self-hosted in `src/assets/fonts/`, once confirmed. Until then the wordmark and LCD text use the monospace fallback.
 - The CV PDF at `src/downloads/cv/daniel-brockwell-cv.pdf`: the Download as PDF button appears once the file is there.

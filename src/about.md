@@ -15,6 +15,6 @@ Why 1980s hardware? Because the limits make the problems interesting. A chess en
 
 - [Chess](/psion/chess/) for the LZ and LZ64, now released.
 - [Reversi](/psion/reversi/) on an 8 by 6 board.
-- [Prime finder](/psion/prime-finder/) for the LZ64, part of my [number work](/personal/number-work/), which includes the third-largest known twin primes and the world record for log(10).
+- [Prime finder](/psion/prime-finder/) for the LZ64, alongside my [prime searches](/personal/primes/), which found the third-largest known twin primes, and my [y-cruncher](/personal/y-cruncher/) world record for log(10).
 
 See my [CV](/cv/) or [get in touch](/contact/).

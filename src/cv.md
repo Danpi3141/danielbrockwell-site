@@ -58,7 +58,8 @@ Investment professional specialising in digital assets, managing both directiona
 - [Chess](/psion/chess/): a 6303 chess engine, about 1950 Elo at its top level, on an 8-bit pocket computer.
 - [Connect 4](/psion/connect4/): one pack for all five Organiser II models, with a solved opening book.
 - [Drakeloft](/android/drakeloft/): a strategy game for Android.
-- [Number work](/personal/number-work/): the third-largest known twin primes (144,654 digits each, January 2026) and the current world record for log(10), 2.5 trillion digits with y-cruncher.
+- [Primes](/personal/primes/): the third-largest known twin primes, 144,654 digits each (January 2026).
+- [y-cruncher](/personal/y-cruncher/): the current world record for log(10), 2.5 trillion digits (January 2026).
 
 ## Education
 

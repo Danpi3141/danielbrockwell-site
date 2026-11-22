@@ -14,4 +14,4 @@ models:
 
 ## About
 
-A prime finder for the LZ64: Proth and Lucas-style tests with Karatsuba multiplication and sieving in 6303 machine code, driven from OPL. It is part of my [number work](/personal/number-work/).
+A prime finder for the LZ64: Proth and Lucas-style tests with Karatsuba multiplication and sieving in 6303 machine code, driven from OPL. It sits beside my [record prime searches](/personal/primes/).
