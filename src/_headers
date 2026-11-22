@@ -4,8 +4,12 @@
   Content-Security-Policy: default-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'
   Permissions-Policy: camera=(), microphone=(), geolocation=()
 
-/downloads/*
-  Content-Disposition: attachment
+/downloads/psion/:slug/:file
+  Content-Type: application/octet-stream
+  Content-Disposition: attachment; filename=":file"
+
+/downloads/cv/:file
+  Content-Disposition: attachment; filename=":file"
 
 /styleguide/*
   X-Robots-Tag: noindex
