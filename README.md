@@ -38,11 +38,12 @@ Four-line and two-line LCD screenshots come from the emulator at 4 pixels a dot 
 
 Live at https://danielbrockwell.uk. `wrangler.jsonc` attaches the bare domain and www as custom domains and turns workers.dev and preview URLs off, so the site has one address; a Redirect Rule on the zone (in the Cloudflare dashboard, not in this repo) sends www to the bare domain. Deploys run from this machine with `npm run deploy`.
 
+The repo is on Forgejo (`origin`) with a public backup on GitHub (Danpi3141/danielbrockwell-site); `git push` sends to both.
+
 `wrangler.jsonc` serves `_site/` with Cloudflare's own 404 page handling and trailing-slash folders. Cloudflare's build command is `npx @11ty/eleventy`, its deploy command `npx wrangler deploy`. `src/_headers` sets the security headers, sends downloads as attachments, and marks the style guide as not indexed.
 
 ## Still to do
 
-- Text marked as a draft (dashed boxes) on About, CV, Drakeloft and Number work.
-- `site.json`: the GitHub link, once there is one (the footer and Contact page leave it out while empty).
+- Text marked as a draft (dashed boxes): why 1980s hardware on About, Drakeloft, and Number work.
 - The pixel font: Matrix Sans, self-hosted in `src/assets/fonts/`, once confirmed. Until then the wordmark and LCD text use the monospace fallback.
 - The CV PDF at `src/downloads/cv/daniel-brockwell-cv.pdf`: the Download as PDF button appears once the file is there.

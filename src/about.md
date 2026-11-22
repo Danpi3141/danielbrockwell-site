@@ -2,12 +2,14 @@
 layout: layouts/page.njk
 title: About
 section: about
-description: "Who Daniel Brockwell is, what he makes, and why 1980s hardware."
+description: "Daniel Brockwell: investment professional in digital assets, computer science graduate, and builder of games and tools for Android and the Psion Organiser II."
 ---
 
-<p class="draft">To write: three short paragraphs on who you are, what you make, and why 1980s hardware.</p>
+I'm Daniel Brockwell. I work in digital assets as an investment professional, researching DeFi protocols, managing allocations and building the internal tools that monitor markets and automate the work. I studied Computer Science at the University of Sheffield, with a year in industry.
 
-I build games and tools for Android and for the Psion Organiser II. On the Organiser that means OPL and 6303 machine code, a few kilobytes of RAM and a screen of two or four lines, where every byte and every millisecond has to be argued for.
+Outside work I build games and tools for Android and for the Psion Organiser II. On the Organiser that means OPL and 6303 machine code, a few kilobytes of RAM and a screen of two or four lines, where every byte and every millisecond has to be argued for.
+
+<p class="draft">To write: why 1980s hardware.</p>
 
 ## Currently
 
