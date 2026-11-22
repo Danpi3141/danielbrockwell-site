@@ -8,8 +8,8 @@ pack: 32K
 needs: "One 32K Datapak serves every model. In an emulator, load the pack image into slot B. On a real Organiser, write the image to a 32K Datapak, or load the psion/ folder from the source + build zip with RPBOOT."
 licence: MIT
 animations:
-  - { src: /assets/img/psion/connect4/play-lz64.gif, alt: "Connect 4 on the four-line screen: the player picks columns and drops discs, the Psion thinks with a depth and progress bar, replies, and ends with Psion wins in 9 moves", screen: "Four-line (LZ and LZ64)" }
-  - { src: /assets/img/psion/connect4/play-cm.gif, alt: "The same Connect 4 game on the two-line screen, with the thinking bar, the replies and Psion wins in 9 moves", screen: "Two-line (CM, XP and LA)", lines: 2 }
+  - { src: /assets/img/psion/connect4/play-lz64.gif, alt: "Connect 4 on the four-line screen: the end of a 35-move game on a nearly full board; the Psion thinks, drops its last disc, and its winning four blink under Psion wins in 35 moves", screen: "Four-line (LZ and LZ64)" }
+  - { src: /assets/img/psion/connect4/play-cm.gif, alt: "The same Connect 4 game on the two-line screen: the Psion's last move and its winning four blinking under Psion wins in 35 moves", screen: "Two-line (CM, XP and LA)", lines: 2 }
 models:
   cm:   { state: works, free: 4877 }
   xp:   { state: works, free: 4877 }
