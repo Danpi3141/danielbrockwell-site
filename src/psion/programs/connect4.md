@@ -20,7 +20,7 @@ files:
 source: false
 screenshots:
   - { src: /assets/img/psion/connect4/lz64-four.png, alt: "Four-line screen: the board on the left with Hollow's winning four, and 'Hollow wins in 16 moves' on the right", screen: "Four-line (LZ and LZ64)" }
-  - { src: /assets/img/psion/connect4/cm-four.png, alt: "Two-line screen: the whole board drawn in custom characters, with the result beside it", screen: "Two-line (CM, XP and LA)" }
+  - { src: /assets/img/psion/connect4/cm-four.png, alt: "Two-line screen: the whole board drawn in custom characters, with the result beside it", screen: "Two-line (CM, XP and LA)", lines: 2 }
   - { src: /assets/img/psion/connect4/lz64-review.png, alt: "Four-line screen in review: Hollow's move in column 4, move 10 of 10", screen: Review }
 changelog:
   - { date: 2026-11-21, version: "1.0", change: "First release." }

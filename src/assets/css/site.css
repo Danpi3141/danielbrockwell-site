@@ -117,6 +117,20 @@ hr, .rule { border: 0; border-top: 1px dotted var(--muted); margin: 32px 0; }
 .card-summary { margin: 0; }
 .card-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
 .card-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: auto 0 0; padding-top: 8px; }
+.shot { line-height: 0; }
+.shot-2, .shot-4 { display: none; }
+/* Screen filter on the Psion overview: radio buttons and :has(), so it works with no script */
+.screen-filter { border: 0; padding: 0; margin: 8px 0 24px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.screen-filter legend { float: left; margin-right: 8px; font-weight: 600; }
+.screen-filter label { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 14px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface); cursor: pointer; }
+.screen-filter input:checked + label { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.screen-filter input:checked + label .small { color: var(--on-accent); }
+.screen-filter input:focus-visible + label { outline: 2px solid var(--accent); outline-offset: 2px; }
+@supports not selector(:has(a)) { .screen-filter { display: none; } }
+.psion-list:has(#scr-2:checked) .shot-all, .psion-list:has(#scr-4:checked) .shot-all { display: none; }
+.psion-list:has(#scr-2:checked) .shot-2, .psion-list:has(#scr-4:checked) .shot-4 { display: block; }
+.psion-list:has(#scr-2:checked) .card[data-two="no"], .psion-list:has(#scr-4:checked) .card[data-four="no"] { order: 1; }
+.psion-list:has(#scr-2:checked) tr[data-two="no"], .psion-list:has(#scr-4:checked) tr[data-four="no"] { display: none; }
 .count { font-family: var(--mono); font-size: 15px; color: var(--muted); }
 .frame { border-radius: var(--radius); border: 1px solid var(--border); }
 

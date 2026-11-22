@@ -5,7 +5,7 @@ section: psion
 description: "Games and utilities for the Psion Organiser II: pack images to download, source, model compatibility and manuals."
 ---
 {% import "components/ui.njk" as ui %}
-<div class="wrap">
+<div class="wrap psion-list">
   <h1>{{ title }}</h1>
   <div class="prose">
     <p>Games and utilities for the Psion Organiser II, written in OPL and 6303 machine code. Each one comes as a pack image you can run in an emulator or load onto a real Organiser; released programs also come with their source and build as a zip.</p>
@@ -16,6 +16,13 @@ description: "Games and utilities for the Psion Organiser II: pack images to dow
     <li><a href="#utilities">Utilities</a></li>
     <li><a href="#all-downloads">All downloads</a></li>
   </ul></nav>
+
+  <fieldset class="screen-filter">
+    <legend>Show for</legend>
+    <input class="sr" type="radio" name="screen" id="scr-all" value="all" checked><label for="scr-all">Every model</label>
+    <input class="sr" type="radio" name="screen" id="scr-2" value="2"><label for="scr-2">Two-line <span class="small">CM, XP, LA</span></label>
+    <input class="sr" type="radio" name="screen" id="scr-4" value="4"><label for="scr-4">Four-line <span class="small">LZ, LZ64</span></label>
+  </fieldset>
 
   {%- for g in [["games", "Games", "game"], ["utilities", "Utilities", "utility"]] %}
   <h2 id="{{ g[0] }}">{{ g[1] }}</h2>
@@ -34,7 +41,7 @@ description: "Games and utilities for the Psion Organiser II: pack images to dow
     <tbody>
       {%- for p in collections.programs | withFiles %}
       {%- for f in p.data.files %}
-      <tr>
+      <tr data-two="{{ p.data.models | screenSupport(2) }}" data-four="{{ p.data.models | screenSupport(4) }}">
         <td><a href="{{ p.url }}">{{ p.data.title }}</a></td>
         <td>{{ f.version }}</td>
         <td>{% for m in models_list %}{% if p.data.models[m.id].state == "works" %}{{ m.name }} {% endif %}{% endfor %}</td>

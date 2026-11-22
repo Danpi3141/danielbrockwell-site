@@ -21,7 +21,7 @@ source: false
 screenshots:
   - { src: /assets/img/psion/spins/lz64-reels.png, alt: "Four-line screen: five reels of card symbols, bells and presents, 1000 credits, bet 20, EXE=SPIN", screen: "Four-line (LZ and LZ64)" }
   - { src: /assets/img/psion/spins/lz64-santa.png, alt: "Four-line screen: Santa walking across the reels, credits 980, bet 20", screen: "Santa's walk" }
-  - { src: /assets/img/psion/spins/cm-reels.png, alt: "Two-line screen: five reels by two rows, 1000 credits, bet 20", screen: "Two-line (CM, XP and LA)" }
+  - { src: /assets/img/psion/spins/cm-reels.png, alt: "Two-line screen: five reels by two rows, 1000 credits, bet 20", screen: "Two-line (CM, XP and LA)", lines: 2 }
 changelog:
   - { date: 2026-11-21, version: "0.9", change: "Working build: the whole core spec and its stretch goals, tested in the emulator on every model." }
 ---

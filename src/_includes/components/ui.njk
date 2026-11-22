@@ -27,13 +27,29 @@
 {%- endmacro %}
 
 {% macro programCard(p, models) -%}
-<article class="card">
-  {%- if p.data.screenshots and p.data.screenshots.length %}
-  {{ lcdShot(p.data.screenshots[0], true) }}
-  {%- else %}
-  {%- set t = (p.data.lcd_name or p.data.title) | upper | truncate(20, true, "") %}
-  {{ lcdText(["", t | center(20), "", ""], "") }}
-  {%- endif %}
+{#- Three screen panels; the Psion overview's screen filter shows one (CSS only, no script):
+    all: the first screenshot; two-line: a two-line screenshot, or the apology when no two-line
+    model runs it; four-line: likewise. Hidden panels' images are lazy, so they load only when shown. -#}
+{%- set two = p.data.models | screenSupport(2) %}
+{%- set four = p.data.models | screenSupport(4) %}
+{%- set first = p.data.screenshots[0] if (p.data.screenshots and p.data.screenshots.length) else none %}
+{%- set s2 = p.data.screenshots | shotFor(2) %}
+{%- set s4 = p.data.screenshots | shotFor(4) %}
+{%- set t = (p.data.lcd_name or p.data.title) | upper | truncate(20, true, "") %}
+<article class="card" data-two="{{ two }}" data-four="{{ four }}">
+  <div class="shot shot-all">{% if first %}{{ lcdShot(first, true) }}{% else %}{{ lcdText(["", t | center(20), "", ""], "") }}{% endif %}</div>
+  <div class="shot shot-2">
+    {%- if two == "no" %}{{ lcdShot({ src: "/assets/img/psion/sorry-lz-only.png", alt: "Organiser screen: Sorry! This game needs the 4-line screen of an LZ or LZ64 only" }, true) }}
+    {%- elif s2 %}{{ lcdShot(s2, true) }}
+    {%- elif first %}{{ lcdShot(first, true) }}
+    {%- else %}{{ lcdText(["", t | center(20), "", ""], "") }}{% endif -%}
+  </div>
+  <div class="shot shot-4">
+    {%- if four == "no" %}{{ lcdText(["       SORRY!", " THIS GAME IS FOR", " THE TWO-LINE CM,", " XP AND LA ONLY"], "Sorry! This game is for the two-line CM, XP and LA only") }}
+    {%- elif s4 %}{{ lcdShot(s4, true) }}
+    {%- elif first %}{{ lcdShot(first, true) }}
+    {%- else %}{{ lcdText(["", t | center(20), "", ""], "") }}{% endif -%}
+  </div>
   <h3 class="card-title"><a href="{{ p.url }}">{{ p.data.title }}</a></h3>
   <p class="card-summary">{{ p.data.summary }}</p>
   <div class="card-meta">{{ badge(p.data.status) }}{% if p.data.pack %}<span class="mono small">{{ p.data.pack }} pack</span>{% endif %}</div>

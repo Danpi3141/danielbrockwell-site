@@ -53,6 +53,16 @@ RELEASES = {
                         'build/game/budget.txt'],
         'models': 'CM, XP, LA, LZ and LZ64',
     },
+    'reversi': {
+        'title': 'Reversi',
+        'folder': 'Reversi',
+        'version': '0.9',
+        'date': (2026, 11, 21),
+        'opk': 'build/game/REV.opk',
+        'build_files': ['build/game/REV.opk', 'build/game/REV.opl', 'build/game/REVG.opl',
+                        'build/game/budget.txt'],
+        'models': 'CM, XP, LA, LZ and LZ64',
+    },
     # OPL and machine-code games whose pack image is committed in their repo: nothing to add from build/
     'lander': {
         'title': 'Lunar Lander',

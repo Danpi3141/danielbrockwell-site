@@ -118,6 +118,14 @@ export default function (eleventyConfig) {
     const v = (files || []).map((f) => String(f.version));
     return v.sort((a, b) => b.localeCompare(a, 'en', { numeric: true }))[0];
   });
+  // 'works' if any model with that screen runs it, 'no' if none can, otherwise 'untested'
+  eleventyConfig.addFilter('screenSupport', (models, lines) => {
+    const ids = lines === 2 ? ['cm', 'xp', 'la'] : ['lz', 'lz64'];
+    const st = ids.map((id) => models?.[id]?.state);
+    return st.includes('works') ? 'works' : st.every((s) => s === 'no') ? 'no' : 'untested';
+  });
+  // the first screenshot of a two-line or four-line screen (unmarked screenshots are four-line)
+  eleventyConfig.addFilter('shotFor', (shots, lines) => (shots || []).find((s) => (s.lines || 4) === lines));
   eleventyConfig.addFilter('notVersion', (files, v) => (files || []).filter((f) => String(f.version) !== String(v)));
   eleventyConfig.addFilter('neighbours', (items, url) => {
     const i = (items || []).findIndex((x) => x.url === url);

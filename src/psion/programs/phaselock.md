@@ -5,15 +5,15 @@ status: working-build
 summary: "A side-scrolling machine-code shooter: stars, enemies and ship move one pixel at a time at 20 frames a second."
 updated: 2026-11-20
 pack: 32K
-needs: "30,085 bytes: a 32K Datapak. In an emulator, load the pack image into slot B of an LZ64. On a real LZ64, load the psion/ folder from the source + build zip with RPBOOT: A: needs about 14K free for the files, plus about 8K while the game runs."
+needs: "30,085 bytes: a 32K Datapak. In an emulator, load the pack image into slot B of an LZ or LZ64. On a real Organiser, load the psion/ folder from the source + build zip with RPBOOT: A: needs about 14K free for the files, plus about 8K while the game runs."
 licence: MIT
 models:
   cm:   { state: no, note: Needs the four-line screen }
   xp:   { state: no, note: Needs the four-line screen }
   la:   { state: no, note: Needs the four-line screen }
-  lz:   { state: untested, note: Four-line screen; written for the LZ and LZ64 }
+  lz:   { state: works, note: Four-line screen }
   lz64: { state: works, note: Four-line screen }
-tested_on: "the Jape emulator (LZ64). The pass on a real LZ64 (LCD smear, sound, battery) is still to do."
+tested_on: "the Jape emulator (LZ and LZ64). The pass on real hardware (LCD smear, sound, battery) is still to do."
 files:
   - { file: phaselock-0.9.opk, kind: build, version: "0.9", date: 2026-11-20 }
   - { file: phaselock-0.9-source.zip, kind: source, version: "0.9", date: 2026-11-20 }
@@ -38,7 +38,7 @@ Three lives, eight waves and a boss, about ten minutes. The ship fires by itself
 ## Install
 
 1. Download the pack image, `phaselock-0.9.opk`.
-2. In the Jape emulator: choose **LZ64 (64k)**, **Select OPK file**, choose the file, **Create**, then **Slot B**.
+2. In the Jape emulator: choose **LZ** or **LZ64**, **Select OPK file**, choose the file, **Create**, then **Slot B**.
 3. On the Organiser: **Prog**, **Run**, press <kbd>MODE</kbd> until the prompt shows `B:`, type `PHASE` and press <kbd>EXE</kbd>. Loading takes about 2.5 seconds.
 4. For a real Organiser, see [Getting started](/psion/getting-started/) for loading with RPBOOT.
 

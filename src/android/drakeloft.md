@@ -6,8 +6,6 @@ summary: "A dragon-keeping game for Android: hatch, breed and battle 112 dragons
 updated: 2026-11-18
 offers_download: true
 buildLabel: "Build: APK"
-links:
-  - { label: "Drakeloft for the LZ64 (Psion port)", url: /psion/drakeloft/ }
 ---
 
 <div class="callout"><p>Drakeloft is an unofficial remake of Social Empires. It is not affiliated with that game or its owners, and uses only my own art and code.</p></div>
