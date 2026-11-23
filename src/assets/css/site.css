@@ -187,6 +187,9 @@ hr, .rule { border: 0; border-top: 1px dotted var(--muted); margin: 32px 0; }
 .shots { display: flex; flex-wrap: wrap; gap: 24px; margin: 24px 0 32px; }
 .shots figure { margin: 0; max-width: 100%; }
 .shots figcaption { font-size: 15px; color: var(--muted); margin-top: 4px; }
+.clips figure { margin: 0 0 32px; max-width: 100%; }
+.clips video { display: block; max-width: 100%; height: auto; background: #000; }
+.clips figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; max-width: 68ch; }
 .entry-grid { display: grid; gap: 32px; }
 @media (min-width: 900px) { .entry-grid { grid-template-columns: minmax(0, 1fr) 400px; } .entry-side { order: 2; } }
 .entry-body > h2:first-child { margin-top: 0; }

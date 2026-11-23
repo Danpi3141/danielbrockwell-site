@@ -7,6 +7,8 @@ summary: "A dragon-keeping game for Android: hatch, breed and battle 112 dragons
 updated: 2026-11-18
 offers_download: true
 buildLabel: "Build: APK"
+clips:
+  - { src: /assets/video/drakeloft.mp4, poster: /assets/img/android/drakeloft/play.png, alt: "The isle map panning across lofts, gardens and dragons, then a battle: Hearthkin beats a team of three with Wing Buffet and Furnace Breath, ending on the Victory card", caption: "Across the isles, then a Ladder battle won with three knockouts (25 seconds, no sound; the battle is sped up by a quarter). Recorded from a debug build with a test save, played by a script." }
 screenshots:
   - { src: /assets/img/android/drakeloft/isle.png, alt: "The isle: a stone loft with the dragon Cobble beside the hatchery, with gold, food and gems along the top", scale: 2 }
   - { src: /assets/img/android/drakeloft/hatched.png, alt: "A newly hatched dragon, Cobble, a common stone dragon, with buttons to place or sell it", scale: 2 }

@@ -37,7 +37,7 @@ const siteUrlRe = new RegExp(`${SITE_URL.replace(/[.]/g, '\\.')}(?:/[^\\s)<>"'\\
 for (const f of html) {
   const text = fs.readFileSync(f, 'utf8');
   const rel = path.relative(OUT, f);
-  for (const m of text.matchAll(/\s(?:href|src)="([^"]+)"/g)) {
+  for (const m of text.matchAll(/\s(?:href|src|poster)="([^"]+)"/g)) {
     const ref = m[1];
     if (/^(https?:|mailto:|data:|#)/.test(ref)) continue;
     links++;

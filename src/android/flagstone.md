@@ -6,6 +6,8 @@ version: "1.3"
 status: released
 summary: "Minesweeper with no-guess boards, a safe first tap, hints that prove the next move, and a daily puzzle."
 updated: 2026-10-11
+clips:
+  - { src: /assets/video/flagstone.mp4, poster: /assets/img/android/flagstone/play.png, alt: "A Beginner board being cleared: the first tap opens an area, flags are planted on the mines, and number taps open the squares around them until the Cleared card shows 10 seconds", caption: "A whole Beginner game, cleared by logic with no guesses (16 seconds, no sound). A script made the moves, opening and flagging only squares the numbers had settled." }
 screenshots:
   - { src: /assets/img/android/flagstone/home.png, alt: "The Flagstone home screen: a Continue card with the board so far, the daily puzzle for 23 November, and Beginner, Intermediate, Expert and Custom games", scale: 2 }
   - { src: /assets/img/android/flagstone/daily.png, alt: "A daily puzzle in progress: a 13 by 20 board with numbers, flags and 29 mines left", scale: 2 }

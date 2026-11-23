@@ -6,6 +6,8 @@ version: "1.5"
 status: released
 summary: "Calm nonogram puzzles for Android: 300 hand-drawn pictures, every one solvable by logic alone."
 updated: 2026-10-10
+clips:
+  - { src: /assets/video/hatchwork.mp4, poster: /assets/img/android/hatchwork/play.png, alt: "A 10 by 10 colour puzzle being filled in, red, then black, light green and green, until the picture is revealed as a slice of watermelon with three stars", caption: "Watermelon, a 10 by 10 colour puzzle, from blank to three stars (14 seconds, no sound). A script filled it in from the solution, one colour at a time." }
 screenshots:
   - { src: /assets/img/android/hatchwork/home.png, alt: "The Hatchwork home screen: the daily puzzle, the Ink and Colour albums, generated puzzles and the puzzle maker", scale: 2 }
   - { src: /assets/img/android/hatchwork/lesson.png, alt: "A 5 by 5 puzzle half solved, with two inked rows, crossed squares and a lesson: Row 4: overlap. Wherever the 3 sits, it covers these squares.", scale: 2 }

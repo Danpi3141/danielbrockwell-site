@@ -31,7 +31,10 @@ Each released program offers two files, listed under `files` with a `kind`:
 
 When a program's repo is public, set `source:` to its address and the Source block links to it instead.
 
-## Screenshots
+## Screenshots and clips
+
+An Android or personal project can list `clips`, each with `src` (MP4, no sound track), `poster` (PNG at the same size, shown at half size), `alt` and `caption`. `src/assets/js/clips.js` plays a clip, muted and looping, while it is on screen, unless the device asks for reduced motion; without scripts it waits for Play. The MP4s live in `src/assets/video/`, and `worker/index.js` answers their range requests, which Safari needs and static assets do not support; nothing else runs through it.
+
 
 Four-line and two-line LCD screenshots come from the emulator at 4 pixels a dot and are shown at half size. `node tools/make_share.mjs` makes `src/assets/img/share.png`, the 1200 by 630 image shown when a page is shared.
 

@@ -67,6 +67,10 @@ function check(item, kind) {
     if (!s.src || !s.alt) errs.push('a screenshot needs src and alt');
     else if (!fs.existsSync(path.join(SRC, s.src.replace(/^\//, '')))) errs.push(`screenshot ${s.src} does not exist`);
   }
+  for (const c of d.clips || []) {
+    if (!c.src || !c.poster || !c.alt || !c.caption) errs.push('a clip needs src, poster, alt and caption');
+    else for (const f of [c.src, c.poster]) if (!fs.existsSync(path.join(SRC, f.replace(/^\//, '')))) errs.push(`clip file ${f} does not exist`);
+  }
   if (errs.length) throw new Error(`Build check failed for ${where}:\n  ${errs.join('\n  ')}`);
 }
 

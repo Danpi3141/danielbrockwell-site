@@ -27,6 +27,20 @@ layout: layouts/base.njk
   </section>
   {%- endif %}
 
+  {%- if clips and clips.length %}
+  <section class="clips" aria-labelledby="clips-h">
+    <h2 id="clips-h">In play</h2>
+    {%- for c in clips %}
+    {%- set sz = c.poster | pngSize %}
+    <figure>
+      <video class="frame" data-clip controls muted loop playsinline preload="none" poster="{{ c.poster }}" width="{{ (sz.width / 2) | round }}" height="{{ (sz.height / 2) | round }}" aria-label="{{ c.alt }}"><source src="{{ c.src }}" type="video/mp4"><a href="{{ c.src }}">Watch the clip (MP4)</a></video>
+      <figcaption>{{ c.caption }}</figcaption>
+    </figure>
+    {%- endfor %}
+  </section>
+  <script type="module" src="/assets/js/clips.js"></script>
+  {%- endif %}
+
   <div class="prose">
     {{ content | safe }}
 
