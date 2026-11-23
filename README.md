@@ -1,6 +1,6 @@
 # danielbrockwell-site
 
-Daniel Brockwell's website: Psion Organiser II programs with downloads, Android and personal projects, About, CV and Contact. Static, built with Eleventy 3, hosted on Cloudflare Workers static assets. No cookies, analytics or third-party requests.
+Daniel Brockwell's website: Psion Organiser II programs with downloads, Android and personal projects, About, CV and Contact. Static, built with Eleventy 3, hosted on Cloudflare Workers static assets. No cookies; Cloudflare Web Analytics counts visits on the live build.
 
 ## Commands
 
@@ -9,13 +9,14 @@ Daniel Brockwell's website: Psion Organiser II programs with downloads, Android 
 | `npm install` | Installs Eleventy and html-validate (once) |
 | `npm run dev` | Local preview that reloads as you edit |
 | `npm run build` | Builds the site into `_site/` |
-| `npm run check` | After a build: checks every internal link, the 50 KB page budget, no stray email addresses or phone numbers, then validates the HTML |
+| `npm run check` | After a build: checks every internal link, the 50 KB page budget, no stray email addresses or phone numbers, that every page's JSON-LD parses and that the links in llms.txt, llms-full.txt, the feed and the sitemap resolve, then validates the HTML |
+| `npm run cv-pdf` | After a build: prints the CV page to `src/downloads/cv/daniel-brockwell-cv.pdf` with headless Chrome or Edge. After any CV change run `npm run build && npm run cv-pdf && npm run deploy` |
 | `npm run package` | Makes the Psion release files (below) |
 | `npm run deploy` | Builds, runs the checks, and deploys to Cloudflare if they pass (needs `npx wrangler login` once) |
 
 ## Adding a Psion program
 
-Add one Markdown file to `src/psion/programs/`. Its file name is the address: `chess.md` is `/psion/chess/`. The overview, the home page and the All downloads table update themselves. Required fields: `title`, `category` (game or utility), `status` (released, working-build, in-development, planned, exploring), `summary` (120 characters at most), `updated`, and `models` with a `state` (works, no, untested) and an optional `note` for each of cm, xp, la, lz and lz64. Optional: `pack`, `needs`, `licence`, `files`, `source`, `screenshots`, `tested_on`, `changelog`, `lcd_name` (a shorter name for the LCD panel on its card), `public: false` (left out of the site) and `draft: true` (left out of the live build only).
+Add one Markdown file to `src/psion/programs/`. Its file name is the address: `chess.md` is `/psion/chess/`. The overview, the home page and the All downloads table update themselves. Required fields: `title`, `category` (game or utility), `status` (released, ongoing, working-build, in-development, planned, exploring), `summary` (120 characters at most), `updated`, and `models` with a `state` (works, no, untested) and an optional `note` for each of cm, xp, la, lz and lz64. Optional: `pack`, `needs`, `licence`, `files`, `source`, `screenshots`, `tested_on`, `changelog`, `lcd_name` (a shorter name for the LCD panel on its card), `public: false` (left out of the site) and `draft: true` (left out of the live build only).
 
 The build stops if a required field is missing, a value is not in its list, or a listed file or screenshot does not exist.
 
@@ -34,6 +35,18 @@ When a program's repo is public, set `source:` to its address and the Source blo
 
 Four-line and two-line LCD screenshots come from the emulator at 4 pixels a dot and are shown at half size. `node tools/make_share.mjs` makes `src/assets/img/share.png`, the 1200 by 630 image shown when a page is shared.
 
+## For search engines, feed readers and LLM agents
+
+All of these are built from the same front matter as the pages (code in `lib/machine.js`), so they cannot disagree with them:
+
+- **JSON-LD** in every page head: the WebSite, the Person (in full on Home, About and CV, from `src/_data/person.json`), the page itself, a SoftwareApplication for each program and Android app (version, platform, download, size, licence), a CreativeWork with its sources for each personal project, and the breadcrumb trail.
+- **`/llms.txt`** (`src/llms.11ty.js`): who Daniel is and every page with a one-line note, in the llmstxt.org format.
+- **`/llms-full.txt`** (`src/llms-full.11ty.js`): the text of every page as one Markdown file, with each program's facts (models, memory, downloads with SHA-256, changelog) first.
+- **`/feed.xml`** (`src/feed.11ty.js`): RSS 2.0 of every program and project, newest `updated` first; an entry comes back when its `updated` changes.
+- **`/sitemap.xml`**: each page's last change is the newest of its `updated`, its source file's last commit (today if it has uncommitted changes), and for a section page the `updated` of every entry it lists.
+
+`src/_data/person.json` repeats facts from the CV (role, degree, records): change it when the CV changes. An Android app's `version` is front matter, and its page's Current version line reads it.
+
 ## Deploying
 
 Live at https://danielbrockwell.uk. `wrangler.jsonc` attaches the bare domain and www as custom domains and turns workers.dev and preview URLs off, so the site has one address; a Redirect Rule on the zone (in the Cloudflare dashboard, not in this repo) sends www to the bare domain. Deploys run from this machine with `npm run deploy`.
@@ -45,4 +58,3 @@ The repo is on Forgejo (`origin`) with a public backup on GitHub (Danpi3141/dani
 ## Still to do
 
 - The pixel font: Matrix Sans, self-hosted in `src/assets/fonts/`, once confirmed. Until then the wordmark and LCD text use the monospace fallback.
-- The CV PDF at `src/downloads/cv/daniel-brockwell-cv.pdf`: the Download as PDF button appears once the file is there.

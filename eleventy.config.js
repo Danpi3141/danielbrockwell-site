@@ -5,6 +5,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import { jsonLd, lastModified } from './lib/machine.js';
 
 const SRC = 'src';
 const STATUSES = ['released', 'ongoing', 'working-build', 'in-development', 'planned', 'exploring'];
@@ -145,6 +146,10 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter('countIn', (items, key, value) => (items || []).filter((i) => i.data[key] === value).length);
   eleventyConfig.addFilter('fileExists', (rel) => fs.existsSync(path.join(SRC, rel.replace(/^\//, ''))));
 
+  // machine-readable views (lib/machine.js): JSON-LD in every page head, last-modified dates
+  eleventyConfig.addShortcode('jsonLd', function () { return jsonLd(this.ctx); });
+  eleventyConfig.addFilter('lastMod', (inputPath, url, data, collections) => lastModified(inputPath, url, data, collections));
+
   eleventyConfig.addGlobalData('buildDate', () => new Date());
   eleventyConfig.addGlobalData('liveBuild', () => isLive());   // the analytics beacon only on the live build, not --serve
 
@@ -152,6 +157,6 @@ export default function (eleventyConfig) {
     dir: { input: SRC, output: '_site', includes: '_includes', data: '_data' },
     markdownTemplateEngine: 'njk',
     htmlTemplateEngine: 'njk',
-    templateFormats: ['njk', 'md'],
+    templateFormats: ['njk', 'md', '11ty.js'],
   };
 }

@@ -1,0 +1,29 @@
+{
+  "_note": "Facts about Daniel for machine readers: the JSON-LD Person (every page), llms.txt and llms-full.txt. Keep in step with the CV (src/cv.md). Only what the CV already publishes.",
+  "jobTitle": "Portfolio Manager",
+  "worksFor": "Nickel Digital Asset Management",
+  "role": "Portfolio manager in digital assets at Nickel Digital Asset Management since November 2022 (DeFi Analyst there from January 2022)",
+  "alumniOf": "University of Sheffield",
+  "degree": "BSc (Hons) Computer Science (with a Year in Industry), upper second-class honours (2:1), University of Sheffield, 2021",
+  "knowsAbout": [
+    "Digital asset investment",
+    "Decentralised finance (DeFi)",
+    "Ethereum",
+    "Market making",
+    "Backtesting",
+    "Python",
+    "SQL",
+    "Kotlin",
+    "Jetpack Compose",
+    "Android development",
+    "6303 assembly language",
+    "OPL",
+    "Psion Organiser II",
+    "Large prime searches",
+    "Record computations of mathematical constants"
+  ],
+  "records": [
+    { "text": "The third-largest known twin primes, 144,654 digits each (January 2026)", "page": "/personal/primes/", "source": "PrimePages twin primes top 20", "url": "https://t5k.org/top20/page.php?id=1" },
+    { "text": "The world record for computing log(10): 2.5 trillion digits (January 2026)", "page": "/personal/y-cruncher/", "source": "y-cruncher records table", "url": "https://www.numberworld.org/y-cruncher/" }
+  ]
+}

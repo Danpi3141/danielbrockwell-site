@@ -1,6 +1,7 @@
 ---
 title: Drakeloft
 section: android
+category: game
 status: in-development
 summary: "A dragon-keeping game for Android: hatch, breed and battle 112 dragons on floating isles, offline, with no adverts."
 updated: 2026-11-18

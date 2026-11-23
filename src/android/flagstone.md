@@ -1,6 +1,8 @@
 ---
 title: Flagstone
 section: android
+category: game
+version: "1.3"
 status: released
 summary: "Minesweeper with no-guess boards, a safe first tap, hints that prove the next move, and a daily puzzle."
 updated: 2026-10-11
@@ -29,4 +31,4 @@ From a written spec, in versions: 1.0, then a daily puzzle and undo in 1.1, conf
 
 ## Current version
 
-Version 1.3, October 2026.
+Version {{ version }}, October 2026.

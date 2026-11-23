@@ -1,6 +1,8 @@
 ---
 title: Hatchwork
 section: android
+category: game
+version: "1.5"
 status: released
 summary: "Calm nonogram puzzles for Android: 300 hand-drawn pictures, every one solvable by logic alone."
 updated: 2026-10-10
@@ -28,4 +30,4 @@ There are 300 hand-drawn pictures in 25 albums, from 5 by 5 up to 30 by 30, in b
 
 ## Current version
 
-Version 1.5, October 2026.
+Version {{ version }}, October 2026.

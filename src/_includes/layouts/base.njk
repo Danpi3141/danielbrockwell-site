@@ -7,7 +7,10 @@
 <meta name="description" content="{{ description or summary or site.description }}">
 {% if page.url %}<link rel="canonical" href="{{ site.url }}{{ page.url }}">{% endif %}
 {% if noindex %}<meta name="robots" content="noindex">{% endif %}
-<meta property="og:title" content="{{ title or site.name }}">
+<meta name="author" content="{{ site.name }}">
+<meta property="og:title" content="{% if page.url == "/" %}{{ site.name }}{% else %}{{ title }}{% endif %}">
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:locale" content="en_GB">
 <meta property="og:description" content="{{ description or summary or site.description }}">
 <meta property="og:type" content="website">
 {% if page.url %}<meta property="og:url" content="{{ site.url }}{{ page.url }}">{% endif %}
@@ -15,6 +18,8 @@
 <meta name="color-scheme" content="light dark">
 <link rel="stylesheet" href="/assets/css/site.css">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="{{ site.name }}: new and updated" href="/feed.xml">
+{% if not noindex %}{% jsonLd %}{% endif %}
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
