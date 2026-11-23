@@ -51,6 +51,7 @@ export function render({ collections, buildDate }) {
     pageLink('/about/'),
     pageLink('/cv/'),
     link('/downloads/cv/daniel-brockwell-cv.pdf', 'CV (PDF, two A4 pages)', 'the same CV as a PDF'),
+    pageLink('/work/ethereum-merge/', 'Case study: the Ethereum Merge trade (September 2022)'),
     pageLink('/contact/'),
     '',
     '## Psion Organiser II programs',
@@ -106,6 +107,7 @@ export function render({ collections, buildDate }) {
 
   pageText('/about/');
   pageText('/cv/');
+  pageText('/work/ethereum-merge/', 'Case study: the Ethereum Merge trade');
   pageText('/contact/');
 
   head('Psion Organiser II programs: overview', '/psion/', find('/psion/')?.data.description);

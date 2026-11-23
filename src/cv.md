@@ -34,7 +34,7 @@ Portfolio manager at Nickel Digital Asset Management, with nearly five years in 
 ### DeFi Analyst, Nickel Digital Asset Management
 <p class="small">January 2022 to November 2022</p>
 
-- Identified, developed and executed a profitable trade around the September 2022 Ethereum Merge, exploiting Aave's stale exchange rates on the proof-of-work fork.
+- Identified, developed and executed a [profitable trade around the September 2022 Ethereum Merge](/work/ethereum-merge/), exploiting Aave's stale exchange rates on the proof-of-work fork.
 - Built financial models linking protocol usage to token valuation.
 - Analysed lending, derivatives and infrastructure protocols, and assessed governance proposals for their effect on token holders.
 
