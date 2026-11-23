@@ -27,6 +27,6 @@ A daily puzzle gives everyone the same no-guess board each day, with a run of da
 
 From a written spec, in versions: 1.0, then a daily puzzle and undo in 1.1, confirm taps by default in 1.2, and fixes for sharpness, the daily board and undo in 1.3.
 
-## Status and what is next
+## Current version
 
-Version 1.3.
+Version 1.3, October 2026.
