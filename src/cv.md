@@ -63,13 +63,13 @@ Investment professional specialising in digital assets, managing both directiona
 
 ## Education
 
-### BSc Computer Science (with a Year in Industry), University of Sheffield
+### BSc (Hons) Computer Science (with a Year in Industry), University of Sheffield
 <p class="small">September 2017 to June 2021</p>
 
-Modules included Algorithms and Data Structures, Software Engineering, Databases, Machine Intelligence and Networks.
+Upper second-class honours (2:1). Modules included Algorithms and Data Structures, Software Engineering, Databases, Machine Intelligence and Networks.
 
 ### A levels
-Maths (A), Computer Science (B), Physics (C).
+Maths (A), Computer Science, Physics, Further Maths.
 
 ## Interests
 
