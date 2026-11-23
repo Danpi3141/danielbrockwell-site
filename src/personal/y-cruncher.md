@@ -1,7 +1,7 @@
 ---
 title: y-cruncher
 section: personal
-status: in-development
+status: ongoing
 summary: "Computing mathematical constants to record sizes, including the world record for log(10): 2.5 trillion digits."
 updated: 2026-11-22
 links:

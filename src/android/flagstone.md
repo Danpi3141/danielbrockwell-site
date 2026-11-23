@@ -4,6 +4,10 @@ section: android
 status: released
 summary: "Minesweeper with no-guess boards, a safe first tap, hints that prove the next move, and a daily puzzle."
 updated: 2026-10-11
+screenshots:
+  - { src: /assets/img/android/flagstone/home.png, alt: "The Flagstone home screen: a Continue card with the board so far, the daily puzzle for 23 November, and Beginner, Intermediate, Expert and Custom games", scale: 2 }
+  - { src: /assets/img/android/flagstone/daily.png, alt: "A daily puzzle in progress: a 13 by 20 board with numbers, flags and 29 mines left", scale: 2 }
+  - { src: /assets/img/android/flagstone/hint.png, alt: "A hint on a Beginner board: one square outlined as proof and one as a mine, with the text: This 1 still needs 1 mine and has just 1 hidden square left. So it is a mine.", scale: 2 }
 ---
 
 ## What it is

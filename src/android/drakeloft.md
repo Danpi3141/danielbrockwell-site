@@ -6,6 +6,10 @@ summary: "A dragon-keeping game for Android: hatch, breed and battle 112 dragons
 updated: 2026-11-18
 offers_download: true
 buildLabel: "Build: APK"
+screenshots:
+  - { src: /assets/img/android/drakeloft/isle.png, alt: "The isle: a stone loft with the dragon Cobble beside the hatchery, with gold, food and gems along the top", scale: 2 }
+  - { src: /assets/img/android/drakeloft/hatched.png, alt: "A newly hatched dragon, Cobble, a common stone dragon, with buttons to place or sell it", scale: 2 }
+  - { src: /assets/img/android/drakeloft/build.png, alt: "The Build menu open on Lofts: Stone loft for 100 gold, with Ember, Tide, Bloom and Storm lofts opening at higher levels", scale: 2 }
 ---
 
 <div class="callout"><p>Drakeloft is an unofficial remake of Social Empires. It is not affiliated with that game or its owners, and uses only my own art and code.</p></div>

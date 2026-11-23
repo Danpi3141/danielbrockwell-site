@@ -20,7 +20,8 @@ layout: layouts/base.njk
   <section class="shots" aria-label="Screenshots">
     {%- for s in screenshots | batch(3) | first %}
     {%- set sz = s.src | pngSize %}
-    <img class="frame" src="{{ s.src }}" alt="{{ s.alt }}" width="{{ sz.width }}" height="{{ sz.height }}"{% if not loop.first %} loading="lazy"{% endif %}>
+    {%- set k = s.scale or 1 %}
+    <img class="frame" src="{{ s.src }}" alt="{{ s.alt }}" width="{{ (sz.width / k) | round }}" height="{{ (sz.height / k) | round }}"{% if not loop.first %} loading="lazy"{% endif %}>
     {%- endfor %}
   </section>
   {%- endif %}

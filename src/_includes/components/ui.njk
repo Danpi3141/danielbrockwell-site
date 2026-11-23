@@ -71,7 +71,8 @@
 <article class="card">
   {%- if p.data.screenshots and p.data.screenshots.length %}
   {%- set sz = p.data.screenshots[0].src | pngSize %}
-  <img class="frame" src="{{ p.data.screenshots[0].src }}" alt="{{ p.data.screenshots[0].alt }}" width="{{ sz.width }}" height="{{ sz.height }}" loading="lazy">
+  {%- set k = p.data.screenshots[0].scale or 1 %}
+  <img class="frame card-shot" src="{{ p.data.screenshots[0].src }}" alt="{{ p.data.screenshots[0].alt }}" width="{{ (sz.width / k) | round }}" height="{{ (sz.height / k) | round }}" loading="lazy">
   {%- endif %}
   <h3 class="card-title"><a href="{{ p.url }}">{{ p.data.title }}</a></h3>
   <p class="card-summary">{{ p.data.summary }}</p>

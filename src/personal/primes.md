@@ -1,7 +1,7 @@
 ---
 title: Primes
 section: personal
-status: in-development
+status: ongoing
 summary: "Hunting large primes of special forms, including the third-largest known twin primes: 144,654 digits each."
 updated: 2026-11-22
 links:

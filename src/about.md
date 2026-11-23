@@ -9,7 +9,7 @@ I'm Daniel Brockwell. I'm a portfolio manager in digital assets at Nickel Digita
 
 Outside work I build games and tools for Android and for the Psion Organiser II. On the Organiser that means OPL and 6303 machine code, a few kilobytes of RAM and a screen of two or four lines, where every byte and every millisecond has to be argued for.
 
-Why 1980s hardware? Because the limits make the problems interesting. A chess engine or a Connect 4 solver is a solved idea on a PC, but fitting one into a pocket computer from 1986, and making it play well there, takes careful measurement and a lot of small, exact decisions. The same habits carry over to my day job: understand the system, measure it, then build the tool.
+Why 1980s hardware? Because the limits make the problems interesting. Chess engines and Connect 4 solvers are familiar territory on a modern computer, but fitting one into a pocket computer from 1986, and making it play well there, takes careful measurement and a lot of small, exact decisions. The same habits carry over to my day job: understand the system, measure it, then build the tool.
 
 ## Currently
 

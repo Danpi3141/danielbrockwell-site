@@ -4,6 +4,10 @@ section: android
 status: released
 summary: "Calm nonogram puzzles for Android: 300 hand-drawn pictures, every one solvable by logic alone."
 updated: 2026-10-10
+screenshots:
+  - { src: /assets/img/android/hatchwork/home.png, alt: "The Hatchwork home screen: the daily puzzle, the Ink and Colour albums, generated puzzles and the puzzle maker", scale: 2 }
+  - { src: /assets/img/android/hatchwork/lesson.png, alt: "A 5 by 5 puzzle half solved, with two inked rows, crossed squares and a lesson: Row 4: overlap. Wherever the 3 sits, it covers these squares.", scale: 2 }
+  - { src: /assets/img/android/hatchwork/solved.png, alt: "The solved puzzle revealed as a heart, with three stars for no hints and no mistakes", scale: 2 }
 ---
 
 ## What it is

@@ -96,7 +96,7 @@ hr, .rule { border: 0; border-top: 1px dotted var(--muted); margin: 32px 0; }
 /* badges and model strip */
 .badge { display: inline-block; font-size: 14px; font-weight: 600; padding: 2px 8px; border-radius: 999px; border: 1px solid transparent; line-height: 1.5; }
 .badge-released { background: var(--accent); color: var(--on-accent); }
-.badge-working-build { border-color: var(--accent); color: var(--accent); }
+.badge-working-build, .badge-ongoing { border-color: var(--accent); color: var(--accent); }
 .badge-in-development { border-color: var(--ink); color: var(--ink); }
 .badge-planned { border: 1px dashed var(--muted); color: var(--muted); }
 .badge-exploring { color: var(--muted); padding-left: 0; padding-right: 0; }
@@ -156,6 +156,8 @@ hr, .rule { border: 0; border-top: 1px dotted var(--muted); margin: 32px 0; }
 @media (max-width: 360px) { .pm-labels { font-size: 10px; } }
 .count { font-family: var(--mono); font-size: 15px; color: var(--muted); }
 .frame { border-radius: var(--radius); border: 1px solid var(--border); }
+/* a card shows the top of its first screenshot as a strip, so tall phone screens stay short */
+.card-shot { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: top; }
 
 /* home */
 .hero { display: grid; gap: 32px; align-items: center; padding: 32px 0 16px; }
