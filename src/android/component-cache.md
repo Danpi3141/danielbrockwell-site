@@ -6,9 +6,9 @@ status: in-use
 summary: "An inventory app for an electronics workshop that treats storage like a memory hierarchy: cache, RAM and shopping list."
 updated: 2026-10-29
 screenshots:
-  - { src: /assets/img/android/component-cache/home.png, alt: "The Component Cache home screen with sample data: drawers in use in the cache and the loft, three parts to buy for about £33, quick actions, and alerts to fetch sensors and capacitors from the loft", scale: 2 }
-  - { src: /assets/img/android/component-cache/cabinets-loft-a.png, alt: "A 64-drawer cabinet drawn as an 8 by 8 grid of numbered drawers, with the drawers in use highlighted", scale: 2 }
-  - { src: /assets/img/android/component-cache/project-bom.png, alt: "A project, a greenhouse monitor, with its bill of materials: each part with the quantity needed, owned, available, reserved and missing", scale: 2 }
+  - { src: /assets/img/android/component-cache/home.png, alt: "The Component Cache home screen: 40 of 44 cache drawers and 51 of 128 bulk drawers in use, three parts to buy for about £33, quick actions, and alerts to fetch parts from bulk stock", scale: 2 }
+  - { src: /assets/img/android/component-cache/cabinets.png, alt: "The 44-drawer cabinet drawn as it really is: four rows of eight single drawers, then three rows of four double drawers, nearly all stocked with parts such as an ESP32, a DHT22 sensor and a relay module", scale: 2 }
+  - { src: /assets/img/android/component-cache/project.png, alt: "A project, a greenhouse monitor, with its bill of materials: each part with the quantity needed, owned, available, reserved and missing", scale: 2 }
 ---
 
 ## What it is
@@ -23,7 +23,7 @@ Component Cache keeps track of electronic parts across three drawer cabinets, 17
 
 When the cache runs low on a part, the app suggests fetching it from bulk stock before suggesting a purchase. Projects have bills of materials. Reserving parts for a project lowers what's available without lowering what you own. Missing parts go to the shopping list in one tap.
 
-The screenshots show the app's built-in sample data, not my inventory. The source code is not published.
+The screenshots show example stock. The source code is not published.
 
 ## What I built
 
