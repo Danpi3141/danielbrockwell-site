@@ -121,6 +121,16 @@ RELEASES = {
         'build_files': [],
         'models': 'CM, XP, LA, LZ and LZ64',
     },
+    '2fa': {
+        'run': 'TFA',
+        'title': 'Psion 2FA',
+        'folder': 'TFA',
+        'version': '0.9',
+        'date': (2026, 11, 23),
+        'opk': 'build/game/TFA.opk',          # committed in the repo, with the launchers
+        'build_files': [],
+        'models': 'CM, XP, LA, LZ and LZ64',
+    },
 }
 
 MIT = """MIT License

@@ -2,10 +2,12 @@
 title: Psion 2FA
 lcd_name: Psion 2FA
 category: utility
-status: in-development
+status: working-build
 summary: "A two-factor authenticator: the six-digit sign-in codes (TOTP) that phone apps show, on any Organiser II."
-updated: 2026-11-21
+updated: 2026-11-23
 pack: 16K
+needs: "11,623 bytes: one 16K Datapak serves every model. In an emulator, load the pack image into slot B. On a real Organiser, load the Organiser files zip with RPBOOT."
+licence: MIT
 animations:
   - { src: /assets/img/psion/2fa/play-lz64.gif, alt: "Psion 2FA on the four-line screen: adding an account with the published test key, the Same as phone? check, then the code screen's bar running down until the code changes", screen: "Four-line (LZ and LZ64)" }
   - { src: /assets/img/psion/2fa/play-cm.gif, alt: "Psion 2FA on the two-line screen: the code screen counting down to the changeover, with the next code shown", screen: "Two-line (CM, XP and LA)", lines: 2 }
@@ -22,7 +24,13 @@ screenshots:
   - { src: /assets/img/psion/2fa/cm-codes.png, alt: "Two-line screen: GITHUB 598 204, and the next code 004 877 in 20 seconds", screen: "Two-line (CM, XP and LA)", lines: 2 }
   - { src: /assets/img/psion/2fa/lz64-key.png, alt: "Four-line screen: adding an account named GITHUB, its 16-character key typed in groups of four", screen: "Adding an account" }
   - { src: /assets/img/psion/2fa/lz64-check.png, alt: "Four-line screen: the current and next codes for GITHUB, and the question Same as phone? Y/N", screen: "Checking against a phone" }
-changelog: []
+files:
+  - { file: 2fa-0.9-psion.zip, kind: psion, version: "0.9", date: 2026-11-23 }
+  - { file: 2fa-0.9.opk, kind: build, version: "0.9", date: 2026-11-23 }
+  - { file: 2fa-0.9-source.zip, kind: source, version: "0.9", date: 2026-11-23 }
+source: false
+changelog:
+  - { date: 2026-11-23, version: "0.9", change: "Working build: the whole first version, tested in the emulator on every model and all 29 Organiser ROMs. Real hardware still to come." }
 ---
 
 ## About
@@ -31,11 +39,47 @@ An authenticator that shows time-based one-time passwords (TOTP): the six-digit 
 
 It runs on every Organiser II model from one 16K pack, in 6303 machine code, with SHA-1 and HMAC written for the 6303. Codes depend on the Organiser's clock, so adding an account ends with a check against your phone.
 
+## Install
+
+1. Download the **Organiser files** zip and unzip it.
+2. Serve the folder with Psi2Win and run `RPBOOT` on the Organiser: it copies the program onto a pack. [Getting started](/psion/getting-started/) has the steps.
+3. **Prog**, **Run**, type `B:TFA` (or the pack you chose) and press <kbd>EXE</kbd>.
+
+In the Jape emulator, use the pack image instead: **Select OPK file**, choose it, **Create**, then **Slot B**, and run `B:TFA`.
+
+If there is too little memory, TFA says how many more bytes it needs. On a two-line model, `B:CLOCK` opens straight on its clock screen, with the year 2000 fix built in.
+
+## Manual
+
+| Key on the code screen | Two-line screen | Four-line screen |
+|---|---|---|
+| <kbd>MODE</kbd>, <kbd>EXE</kbd> | The name menu | The name menu |
+| <kbd>UP</kbd> / <kbd>DOWN</kbd> | The previous or next account | The three accounts shown move by one |
+| <kbd>RIGHT</kbd> | | The next codes (any key goes back) |
+| <kbd>ON/CLEAR</kbd> | Leave (the account is remembered) | Leave |
+
+**The name menu** lists the accounts in the order they were added, then **Tools**: Add, Rename, Delete, Setup and Help. With many accounts it comes in pages: **More** goes to the next.
+
+**Adding an account:** a name of 1 to 8 characters, then the key the site gives you, in the program's own editor: A to Z and 2 to 7, 16 to 64 characters, shown in groups of four. Then it shows the first code and the seconds left. Compare it with your phone: <kbd>Y</kbd> saves the account, <kbd>N</kbd> goes back to the key.
+
+**Setup:** Device (whether the keys are kept on A:, B: or C:), PIN, and Zone (how far the Organiser's clock is from UTC: codes are made from UTC). Two-line models also have Summer and Clock.
+
+**PIN:** 4 to 8 digits, asked at the start and whenever the Organiser switches on inside the program. It switches off after two minutes idle. Help has a self-test.
+
+## Security
+
+An Organiser has no network or radio, so nothing can reach into it. Its weakness is that whoever holds it, or copies its pack, holds the keys.
+
+- **The PIN stops a casual look, not a theft.** It also scrambles the stored keys, but anyone with the pack who has seen one code, and when it was shown, can try every PIN on a PC in under a second. Eight digits are better than four; neither is strong.
+- **Deleted keys stay on a Datapak** until the whole pack is wiped under ultraviolet light. Keep the keys in A: or on a Rampak if deleting them matters.
+- **Keep each site's backup codes somewhere else**, and add each account to a phone as well. The Psion should never be the only way in.
+- **Don't use it for your most important account** until it has run beside a phone for a few weeks.
+
 ## Where it has got to
 
-The first version is complete and tested in the emulator on all five models and all 29 Organiser ROMs it has, including with the Y2000FIX clock patch. Every code it showed matched a PC calculation of the same standard. Still to do on real hardware: how far the clock drifts against a phone, the keyboard feel, pack read times, switching off and on, and signing in to a real site with a code typed from the Organiser.
+Version 0.9 is a working build: the whole first version, tested in the emulator on all five models and all 29 Organiser ROMs it has, including with the Y2000FIX clock patch. Every code it showed matched a PC calculation of the same standard. Still to do on real hardware: how far the clock drifts against a phone, the keyboard feel, pack read times, switching off and on, and signing in to a real site with a code typed from the Organiser.
 
 ## Technical notes
 
-- Account keys are kept in `A:TFAKEY`, settings in `A:TFASET`.
+- Account keys are kept in `TFAKEY` (on A:, B: or C:, as Setup's Device says), settings in `A:TFASET`.
 - It keeps 400 bytes free so that it can always start again; below that, saving a new account says OUT OF MEMORY.
