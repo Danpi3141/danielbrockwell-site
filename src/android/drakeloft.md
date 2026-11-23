@@ -13,7 +13,7 @@ screenshots:
   - { src: /assets/img/android/drakeloft/build.png, alt: "The Build menu open on Lofts: Stone loft for 100 gold, with Ember, Tide, Bloom and Storm lofts opening at higher levels", scale: 2 }
 ---
 
-<div class="callout"><p>Drakeloft is an unofficial remake of Social Empires. It is not affiliated with that game or its owners, and uses only my own art and code.</p></div>
+<div class="callout"><p>Drakeloft is an unofficial remake of Dragon City. It is not affiliated with that game or its owners, and uses only my own art and code.</p></div>
 
 ## What it is
 
