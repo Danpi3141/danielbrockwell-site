@@ -156,6 +156,7 @@ hr, .rule { border: 0; border-top: 1px dotted var(--muted); margin: 32px 0; }
 @media (max-width: 360px) { .pm-labels { font-size: 10px; } }
 .count { font-family: var(--mono); font-size: 15px; color: var(--muted); }
 .frame { border-radius: var(--radius); border: 1px solid var(--border); }
+.proof { color: var(--muted); margin: 4px 0 8px; }
 /* a card shows the top of its first screenshot as a strip, so tall phone screens stay short */
 .card-shot { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: top; }
 
@@ -218,10 +219,28 @@ thead th { border-bottom: 1px dotted var(--muted); color: var(--muted); font-wei
 .pager a { display: flex; flex-direction: column; min-height: 44px; text-decoration: none; }
 .pager a[rel="next"] { text-align: right; }
 
+.print-only { display: none; }
 @media print {
+  :root { --bg: #fff; --surface: #fff; --ink: #000; --muted: #444; --border: #ccc; --accent: #1F6F5C; }
   .site-header nav, .site-footer, .skip, .button { display: none; }
   body { background: #fff; color: #000; font-size: 11pt; }
   a { color: #000; }
   h1 { font-size: 22pt; margin-top: 0; } h2 { font-size: 14pt; margin-top: 12pt; }
   .prose { max-width: none; }
+  .print-only { display: block; }
+  main { padding-bottom: 0; }
+  /* The CV as a document (scripts/cv-pdf.mjs prints it to the PDF): its own heading, A4, compact */
+  body:has(.cv-print-head) { font-size: 9.5pt; line-height: 1.38; }
+  body:has(.cv-print-head) .site-header, body:has(.cv-print-head) article > h1 { display: none; }
+  body:has(.cv-print-head) .wrap { padding: 0; }
+  body:has(.cv-print-head) h2 { font-size: 12pt; margin: 10pt 0 3pt; padding-bottom: 1pt; border-bottom: 0.5pt solid #999; }
+  body:has(.cv-print-head) h3 { font-size: 10pt; margin: 7pt 0 1pt; }
+  body:has(.cv-print-head) p, body:has(.cv-print-head) ul { margin: 2pt 0; }
+  body:has(.cv-print-head) ul { padding-left: 14pt; }
+  body:has(.cv-print-head) li { margin: 1pt 0; break-inside: avoid; }
+  body:has(.cv-print-head) h2, body:has(.cv-print-head) h3 { break-after: avoid; }
+  body:has(.cv-print-head) .small { font-size: 9pt; color: #444; }
+  body:has(.cv-print-head) a { text-decoration: none; }
+  .cv-name { font-size: 18pt; font-weight: 700; margin: 0 0 1pt; }
+  @page { size: A4; margin: 13mm 15mm; }
 }

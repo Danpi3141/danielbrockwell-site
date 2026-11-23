@@ -5,6 +5,11 @@ section: cv
 description: "Daniel Brockwell's CV: portfolio manager in digital assets at Nickel Digital Asset Management, computer science graduate, and builder of the infrastructure behind the work."
 ---
 
+<div class="print-only cv-print-head">
+<p class="cv-name">{{ site.name }}</p>
+<p class="small">Portfolio Manager, digital assets · {{ site.email }} · danielbrockwell.uk · {{ site.region }}</p>
+</div>
+
 {% if "/downloads/cv/daniel-brockwell-cv.pdf" | fileExists %}<p><a class="button" href="/downloads/cv/daniel-brockwell-cv.pdf" download>Download as PDF</a></p>{% endif %}
 
 ## Profile
@@ -48,8 +53,8 @@ L2 Applications Support (year in industry): August 2019 to August 2020</p>
 
 ## Selected technical achievements
 
-- [Twin primes](/personal/primes/): found the third-largest known twin primes, 144,654 digits each (January 2026).
-- [y-cruncher](/personal/y-cruncher/): the current world record for log(10), 2.5 trillion digits (January 2026).
+- [Twin primes](/personal/primes/): found the third-largest known twin primes, 144,654 digits each (January 2026; [PrimePages top 20](https://t5k.org/top20/page.php?id=1)).
+- [y-cruncher](/personal/y-cruncher/): the current world record for log(10), 2.5 trillion digits (January 2026; [y-cruncher records](https://www.numberworld.org/y-cruncher/)).
 - [Chess](/psion/chess/): a chess engine in 6303 machine code for an 8-bit pocket computer, about 1950 Elo at its top level (estimated against Stockfish).
 - [Flagstone](/android/flagstone/) and [Hatchwork](/android/hatchwork/): released Android puzzle games in Kotlin, with solvers that prove every puzzle can be solved without guessing.
 

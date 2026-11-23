@@ -67,6 +67,11 @@
 </article>
 {%- endmacro %}
 
+{#- Where a record claim can be checked: "Source: <link>, <link>" -#}
+{% macro proof(list) -%}
+{%- if list and list.length %}<p class="proof small">Source: {% for l in list %}<a href="{{ l.url }}">{{ l.label }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</p>{% endif -%}
+{%- endmacro %}
+
 {% macro projectCard(p) -%}
 <article class="card">
   {%- if p.data.screenshots and p.data.screenshots.length %}
@@ -76,6 +81,7 @@
   {%- endif %}
   <h3 class="card-title"><a href="{{ p.url }}">{{ p.data.title }}</a></h3>
   <p class="card-summary">{{ p.data.summary }}</p>
+  {{ proof(p.data.proof) }}
   <div class="card-meta">{{ badge(p.data.status) }}</div>
 </article>
 {%- endmacro %}

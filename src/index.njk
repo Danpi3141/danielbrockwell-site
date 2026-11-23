@@ -27,11 +27,12 @@ description: "Daniel Brockwell: digital-asset portfolio manager, and builder of 
     {%- for s in [
       ["Psion", "/psion/", "Games and utilities for the Organiser II, with downloads and source.", psionCount, "program"],
       ["Android", "/android/", "Apps and games for Android phones.", androidCount, "project"],
-      ["Personal", "/personal/", "Record primes and constants: the third-largest known twin primes, and log(10) to 2.5 trillion digits.", personalCount, "project"]
+      ["Personal", "/personal/", "Record primes and constants: the third-largest known twin primes, and log(10) to 2.5 trillion digits.", personalCount, "project", [{label: "PrimePages", url: "https://t5k.org/top20/page.php?id=1"}, {label: "y-cruncher records", url: "https://www.numberworld.org/y-cruncher/"}]]
     ] %}
     <article class="card">
       <h3 class="card-title"><a href="{{ s[1] }}">{{ s[0] }}</a></h3>
       <p class="card-summary">{{ s[2] }}</p>
+      {{ ui.proof(s[5]) }}
       <p class="count">{{ s[3] }} {{ s[4] }}{% if s[3] != 1 %}s{% endif %}</p>
     </article>
     {%- endfor %}
@@ -41,7 +42,7 @@ description: "Daniel Brockwell: digital-asset portfolio manager, and builder of 
   <h2>Latest</h2>
   <ul class="latest">
     {%- for e in collections.latest %}
-    <li><a href="{{ e.url }}">{{ e.data.title }}</a> {{ ui.badge(e.data.status) }} <span class="small">updated <time datetime="{{ e.data.updated | dateIso }}">{{ e.data.updated | dateLong }}</time></span><br>{{ e.data.summary }}</li>
+    <li><a href="{{ e.url }}">{{ e.data.title }}</a> {{ ui.badge(e.data.status) }} <span class="small">updated <time datetime="{{ e.data.updated | dateIso }}">{{ e.data.updated | dateLong }}</time></span><br>{{ e.data.summary }}{% if e.data.proof %} <span class="small">(source: {% for l in e.data.proof %}<a href="{{ l.url }}">{{ l.label }}</a>{% if not loop.last %}, {% endif %}{% endfor %})</span>{% endif %}</li>
     {%- endfor %}
   </ul>
 

@@ -93,7 +93,7 @@ layout: layouts/base.njk
       {%- if source %}
       <p><a href="{{ source }}">{{ source }}</a>{% if licence %} ({{ licence }} licence){% endif %}</p>
       {%- elif srcZip.length %}
-      <p>The source is in the <a href="{{ downloadDir }}{{ (srcZip | first).file }}" download>source + build zip</a>{% if licence %}, under the {{ licence }} licence{% endif %}. It holds the program as committed, the shared Psion tools it builds with, and the built pack, and it rebuilds the same pack byte for byte. A public repository will follow.</p>
+      <p>The source is in the <a href="{{ downloadDir }}{{ (srcZip | first).file }}" download>source + build zip</a>{% if licence %}, under the {{ licence }} licence{% endif %}. It holds the program as committed, the shared Psion tools it builds with, and the built pack, and it rebuilds the same pack byte for byte.</p>
       {%- else %}
       <p>Source not published.</p>
       {%- endif %}

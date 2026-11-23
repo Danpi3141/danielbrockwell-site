@@ -14,6 +14,7 @@ layout: layouts/base.njk
     <h1>{{ title }}</h1>
     <p class="entry-badges">{{ ui.badge(status) }}</p>
     <p class="lede">{{ summary }}</p>
+    {{ ui.proof(proof) }}
   </header>
 
   {%- if screenshots and screenshots.length %}

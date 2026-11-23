@@ -11,10 +11,18 @@ Outside work I build games and tools for Android and for the Psion Organiser II.
 
 Why 1980s hardware? Because the limits make the problems interesting. Chess engines and Connect 4 solvers are familiar territory on a modern computer, but fitting one into a pocket computer from 1986, and making it play well there, takes careful measurement and a lot of small, exact decisions. The same habits carry over to my day job: understand the system, measure it, then build the tool.
 
-## Currently
+## Working on now
 
-- [Chess](/psion/chess/) for the LZ and LZ64, now released.
-- [Reversi](/psion/reversi/) on an 8 by 6 board.
-- [Prime finder](/psion/prime-finder/) for the LZ64, alongside my [prime searches](/personal/primes/), which found the third-largest known twin primes, and my [y-cruncher](/personal/y-cruncher/) world record for log(10).
+- [Drakeloft](/android/drakeloft/), a dragon-keeping game for Android.
+- [Prime finder](/psion/prime-finder/), a prime search for the LZ64.
+- My [prime searches](/personal/primes/) and [record computations](/personal/y-cruncher/) on the PC.
+
+## Done recently
+
+- [Chess](/psion/chess/) for the LZ and LZ64, released.
+- [Reversi](/psion/reversi/) on an 8 by 6 board, released.
+- [Flagstone](/android/flagstone/) and [Hatchwork](/android/hatchwork/) for Android, released.
+- The third-largest known twin primes, 144,654 digits each, January 2026 ([PrimePages top 20](https://t5k.org/top20/page.php?id=1)).
+- The world record for log(10), 2.5 trillion digits, January 2026 ([y-cruncher records](https://www.numberworld.org/y-cruncher/)).
 
 See my [CV](/cv/) or [get in touch](/contact/).

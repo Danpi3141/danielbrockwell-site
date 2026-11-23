@@ -9,6 +9,7 @@
     "build": "npm run clean && eleventy",
     "check": "node scripts/check.mjs && html-validate \"_site/**/*.html\"",
     "package": "python -I tools/package_psion.py",
+    "cv-pdf": "node scripts/cv-pdf.mjs",
     "deploy": "npm run build && npm run check && wrangler deploy",
     "clean": "node -e \"require('fs').rmSync('_site',{recursive:true,force:true})\""
   },

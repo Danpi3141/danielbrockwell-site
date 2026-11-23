@@ -4,6 +4,8 @@ section: personal
 status: ongoing
 summary: "Computing mathematical constants to record sizes, including the world record for log(10): 2.5 trillion digits."
 updated: 2026-11-22
+proof:
+  - { label: "y-cruncher records table", url: "https://www.numberworld.org/y-cruncher/" }
 links:
   - { label: "y-cruncher's records table", url: "https://www.numberworld.org/y-cruncher/" }
   - { label: "Primes: the third-largest known twin primes", url: /personal/primes/ }

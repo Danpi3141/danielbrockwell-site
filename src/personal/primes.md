@@ -4,6 +4,8 @@ section: personal
 status: ongoing
 summary: "Hunting large primes of special forms, including the third-largest known twin primes: 144,654 digits each."
 updated: 2026-11-22
+proof:
+  - { label: "PrimePages twin primes top 20", url: "https://t5k.org/top20/page.php?id=1" }
 links:
   - { label: "Twin primes: the top 20 (PrimePages)", url: "https://t5k.org/top20/page.php?id=1" }
   - { label: "152748736824915 · 2^480480 − 1 on PrimePages", url: "https://t5k.org/primes/page.php?id=141439" }
