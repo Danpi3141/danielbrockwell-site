@@ -4,3 +4,6 @@ _site/
 .cache/
 *.log
 .claude/
+
+# Local notes: never committed (the repo is public on GitHub)
+/private/

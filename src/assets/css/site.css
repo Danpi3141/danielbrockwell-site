@@ -166,6 +166,14 @@ hr, .rule { border: 0; border-top: 1px dotted var(--muted); margin: 32px 0; }
 .hero h1 { margin-top: 0; }
 .lede { font-size: 20px; max-width: 40ch; }
 .hero .lcd-shot img { width: 500px; }
+.kicker { font-family: var(--mono); font-size: 15px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent); margin: -4px 0 12px; }
+.facts { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: var(--radius); padding: 16px 20px; margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px 16px; font-size: 16px; }
+.facts dt { font-family: var(--mono); font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); padding-top: 3px; }
+.facts dd { margin: 0; }
+@media (max-width: 420px) { .facts { grid-template-columns: 1fr; gap: 0; } .facts dd { margin-bottom: 10px; } }
+@media (min-width: 900px) { .grid-2 { grid-template-columns: repeat(2, 1fr); } }
+.card-when { margin: 0; font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.card-when + .card-title { margin-top: 0; }
 .jump { display: flex; flex-wrap: wrap; gap: 0 24px; padding: 0; list-style: none; }
 .jump a { display: inline-flex; align-items: center; min-height: 44px; }
 

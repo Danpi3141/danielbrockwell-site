@@ -1,25 +1,69 @@
 ---
 layout: layouts/base.njk
 title: Home
-description: "Daniel Brockwell: digital-asset portfolio manager, and builder of games and tools for Android and for the Psion Organiser II, a pocket computer from the 1980s."
+description: "Daniel Brockwell: portfolio manager in digital assets at Nickel Digital Asset Management, who builds the tools behind the work. Outside work: record-setting computations, and software for Android and the Psion Organiser II."
 ---
 {% import "components/ui.njk" as ui %}
 <div class="wrap">
-  <section class="hero">
+  <section class="hero hero-work">
     <div>
       <h1>{{ site.name }}</h1>
-      <p class="lede">I'm a digital-asset portfolio manager. Outside work I build games and tools for Android and for the Psion Organiser II, a pocket computer from the 1980s.</p>
+      <p class="kicker">Portfolio manager, digital assets</p>
+      <p class="lede">I help run an eight-figure liquid digital-asset fund at Nickel Digital Asset Management, taking investment and trading ideas from research to execution, and I build the tools behind them. Outside work I run record-setting computations and write software for very small machines.</p>
       <p class="buttons">
-        <a class="button" href="/cv/">My work and CV</a>
-        <a class="button button-secondary" href="/psion/">Psion programs</a>
+        <a class="button" href="/cv/">CV</a>
+        {% if "/downloads/cv/daniel-brockwell-cv.pdf" | fileExists %}<a class="button button-secondary" href="/downloads/cv/daniel-brockwell-cv.pdf" download>CV as PDF</a>{% endif %}
+        <a class="button button-secondary" href="/contact/">Contact</a>
       </p>
     </div>
-    <div>
-      {{ ui.lcdShot({ src: "/assets/img/psion/connect4/lz64-four.png", alt: "A Psion Organiser LZ64 screen showing a game of Connect 4: the board with a winning four, and 'Hollow wins in 16 moves'" }) }}
-    </div>
+    <dl class="facts">
+      <dt>Role</dt><dd>Portfolio Manager, Nickel Digital Asset Management, since November 2022</dd>
+      <dt>Fund</dt><dd>Eight-figure, long-only, liquid digital assets</dd>
+      <dt>In crypto since</dt><dd>January 2022, as a DeFi Analyst</dd>
+      <dt>Regulation</dt><dd>FCA Certification Regime, client dealing (<a href="https://register.fca.org.uk/s/individual?id=003Sk00000kJM0oIAG">DXB01169</a>)</dd>
+      <dt>Education</dt><dd>BSc Computer Science, 2:1, University of Sheffield</dd>
+    </dl>
   </section>
 
-  <h2 class="sr">Sections</h2>
+  <h2>My work</h2>
+  <div class="grid grid-2">
+    <article class="card">
+      <p class="card-when mono">September 2022</p>
+      <h3 class="card-title">The Ethereum Merge</h3>
+      <p class="card-summary">Identified, developed and executed a profitable trade around the Merge, exploiting Aave's stale exchange rates on the proof-of-work fork.</p>
+    </article>
+    <article class="card">
+      <p class="card-when mono">April 2024</p>
+      <h3 class="card-title">An early warning on sUSD</h3>
+      <p class="card-summary">My on-chain alerts flagged falling liquidity in Synthetix's sETH wrapper, and with it the risk of an sUSD depeg. The fund exited its sUSD exposure.</p>
+    </article>
+    <article class="card">
+      <p class="card-when mono">Ongoing</p>
+      <h3 class="card-title">Market making</h3>
+      <p class="card-summary">I build and run market-making bots on venues including Hyperliquid: quoting both sides, managing inventory risk, mainly to earn exchange incentives.</p>
+    </article>
+    <article class="card">
+      <p class="card-when mono">Ongoing</p>
+      <h3 class="card-title">The fund's own on-chain data</h3>
+      <p class="card-summary">A full Ethereum node, custom alerts for stablecoin depegs, large protocol withdrawals and high lending rates, and Tenderly simulation of transactions before they are sent.</p>
+    </article>
+  </div>
+  <p><a href="/cv/">Full experience, skills and education in my CV</a></p>
+
+  <hr class="rule">
+  <h2>Records</h2>
+  <div class="grid grid-2">
+    {%- for r in person.records %}
+    <article class="card">
+      <h3 class="card-title"><a href="{{ r.page }}">{{ r.text }}</a></h3>
+      {{ ui.proof([{ label: r.source, url: r.url }]) }}
+    </article>
+    {%- endfor %}
+  </div>
+
+  <hr class="rule">
+  <h2>Outside work</h2>
+  <p class="prose">I like small, exact programs: a chess engine in 6303 machine code for a pocket computer from 1986, puzzle games for Android whose solvers prove every level can be solved without guessing, and long computations tuned until the hardware is the limit.</p>
   <div class="grid">
     {%- set psionCount = collections.programs | length %}
     {%- set androidCount = collections.projects | countIn("section", "android") %}
@@ -27,29 +71,21 @@ description: "Daniel Brockwell: digital-asset portfolio manager, and builder of 
     {%- for s in [
       ["Psion", "/psion/", "Games and utilities for the Organiser II, with downloads and source.", psionCount, "program"],
       ["Android", "/android/", "Apps and games for Android phones.", androidCount, "project"],
-      ["Personal", "/personal/", "Record primes and constants: the third-largest known twin primes, and log(10) to 2.5 trillion digits.", personalCount, "project", [{label: "PrimePages", url: "https://t5k.org/top20/page.php?id=1"}, {label: "y-cruncher records", url: "https://www.numberworld.org/y-cruncher/"}]]
+      ["Personal", "/personal/", "Record prime searches and computations of mathematical constants.", personalCount, "project"]
     ] %}
     <article class="card">
       <h3 class="card-title"><a href="{{ s[1] }}">{{ s[0] }}</a></h3>
       <p class="card-summary">{{ s[2] }}</p>
-      {{ ui.proof(s[5]) }}
       <p class="count">{{ s[3] }} {{ s[4] }}{% if s[3] != 1 %}s{% endif %}</p>
     </article>
     {%- endfor %}
   </div>
 
-  <hr class="rule">
-  <h2>Latest</h2>
+  <h3>Latest</h3>
   <ul class="latest">
     {%- for e in collections.latest %}
     <li><a href="{{ e.url }}">{{ e.data.title }}</a> {{ ui.badge(e.data.status) }} <span class="small">updated <time datetime="{{ e.data.updated | dateIso }}">{{ e.data.updated | dateLong }}</time></span><br>{{ e.data.summary }}{% if e.data.proof %} <span class="small">(source: {% for l in e.data.proof %}<a href="{{ l.url }}">{{ l.label }}</a>{% if not loop.last %}, {% endif %}{% endfor %})</span>{% endif %}</li>
     {%- endfor %}
   </ul>
-
-  <hr class="rule">
-  <section class="prose" aria-labelledby="about-h">
-    <h2 id="about-h">About me</h2>
-    <p>I write software for old and new machines alike, from 6303 machine code on a 1980s pocket computer to apps for Android. I like small, exact programs that do a lot with very little.</p>
-    <p><a href="/about/">About</a> · <a href="/cv/">CV</a> · <a href="/contact/">Contact</a></p>
-  </section>
+  <p><a href="/about/">More about me</a> · <a href="/feed.xml">RSS feed</a></p>
 </div>

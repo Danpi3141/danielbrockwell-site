@@ -63,7 +63,7 @@ L2 Applications Support (year in industry): August 2019 to August 2020</p>
 ### BSc (Hons) Computer Science (with a Year in Industry), University of Sheffield
 <p class="small">September 2017 to June 2021</p>
 
-Upper second-class honours (2:1).
+Upper second-class honours (2:1). Dissertation: an Android app that categorises spending automatically with machine learning, using Open Banking transaction data (merchant name, frequency, timing).
 
 ### A levels
 Maths (A), Computer Science, Physics, Further Maths.

@@ -28,7 +28,7 @@
     <a class="wordmark" href="/">Daniel Brockwell<span class="cursor" aria-hidden="true"></span></a>
     <nav aria-label="Main">
       <ul class="nav">
-        {%- for item in [["Psion", "/psion/", "psion"], ["Android", "/android/", "android"], ["Personal", "/personal/", "personal"], ["About", "/about/", "about"], ["CV", "/cv/", "cv"]] %}
+        {%- for item in [["CV", "/cv/", "cv"], ["About", "/about/", "about"], ["Psion", "/psion/", "psion"], ["Android", "/android/", "android"], ["Personal", "/personal/", "personal"]] %}
         <li><a href="{{ item[1] }}"{% if section == item[2] %} aria-current="{{ 'page' if page.url == item[1] else 'true' }}"{% endif %}>{{ item[0] }}</a></li>
         {%- endfor %}
       </ul>
