@@ -9,26 +9,26 @@ description: "Daniel Brockwell's CV: portfolio manager in digital assets at Nick
 
 ## Profile
 
-Portfolio manager at Nickel Digital Asset Management, with nearly five years in digital asset investment. Originates investment and trading ideas for an eight-figure long-only liquid fund, presents them for approval and implements them. Computer science graduate (2:1, Sheffield) who builds the infrastructure behind the work: a full Ethereum node, on-chain alerting, transaction simulation, backtests and market-making bots. Based in the {{ site.region }}.
+Portfolio manager at Nickel Digital Asset Management, with nearly five years in digital asset investment. Originates investment and trading ideas for an eight-figure long-only liquid fund, presents recommendations for approval and manages their execution. Computer science graduate (2:1, Sheffield) who builds the tools behind the work: a full Ethereum node, on-chain alerting, backtests and market-making bots. Based in the {{ site.region }}.
 
 ## Experience
 
 ### Portfolio Manager, Nickel Digital Asset Management
 <p class="small">November 2022 to present</p>
 
-- Originate investment and trading ideas for an eight-figure long-only liquid digital asset fund, present them for approval (most are approved) and implement them personally.
+- Originate investment and trading ideas for an eight-figure long-only liquid digital asset fund, present recommendations for approval and manage their execution.
 - Manage positions and yield strategies, including staking and liquidity provision, weighing liquidity, concentration risk and expected return.
 - Built and maintain a full Ethereum node, giving the fund its own source of on-chain data.
 - Built custom on-chain alerting for stablecoin depegs, large withdrawals from protocols and high lending rates.
-- Simulate transactions before sending them, to catch scams and malicious contracts.
-- Backtest other managers' strategies to assess their profitability.
+- Use Tenderly to simulate transactions before execution, identifying unexpected asset transfers and suspicious smart contract interactions.
+- Backtest other managers' trading strategies to evaluate historical performance, risk and execution assumptions.
 - Built and run market-making bots that earn trading-volume incentives, on venues including Hyperliquid.
 - Research DeFi protocols in depth (fee flows, token holder incentives, governance, competitive position) and assess their smart contract, liquidity and governance risk.
 
 ### DeFi Analyst, Nickel Digital Asset Management
 <p class="small">January 2022 to November 2022</p>
 
-- Ethereum Merge (September 2022): identified, built and executed a profitable trade on the Proof of Work fork, where Aave's exchange rates stayed frozen at pre-Merge prices although PoW ETH was the only asset there with any value.
+- Identified, developed and executed a profitable trade around the September 2022 Ethereum Merge, exploiting Aave's stale exchange rates on the proof-of-work fork.
 - Built financial models linking protocol usage to token valuation.
 - Analysed lending, derivatives and infrastructure protocols, and assessed governance proposals for their effect on token holders.
 
@@ -41,7 +41,7 @@ L2 Applications Support (year in industry): August 2019 to August 2020</p>
 ## Skills
 
 - **Investment and trading:** idea generation and implementation, portfolio construction, protocol and token valuation, market structure, risk assessment (smart contract, liquidity, governance), yield strategies (staking, liquidity provision), market making for volume incentives
-- **Data and infrastructure:** Python, SQL, running an Ethereum node, on-chain data and alerting, transaction simulation, backtesting
+- **Data and infrastructure:** Python, SQL, running an Ethereum node, on-chain data and alerting, transaction simulation (Tenderly), backtesting
 - **Software engineering:** Kotlin and Jetpack Compose (Android), JavaScript (Node), 6303 assembly and OPL, search algorithms and low-level optimisation
 - **Domain knowledge:** DeFi (DEXs, lending, derivatives), staking, governance, stablecoins, market infrastructure
 
