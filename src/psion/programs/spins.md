@@ -3,9 +3,9 @@ title: Psion Spins
 category: game
 status: working-build
 summary: "A five-reel Christmas slot machine for play-money credits, with Santa, carols in two parts, and an advent calendar."
-updated: 2026-11-21
+updated: 2026-11-22
 pack: 32K
-needs: "27,424 bytes: one 32K Datapak serves every model. In an emulator, load the pack image into slot B. On a real Organiser, load the psion/ folder from the source + build zip with RPBOOT."
+needs: "27,429 bytes: one 32K Datapak serves every model. In an emulator, load the pack image into slot B. On a real Organiser, load the Organiser files zip with RPBOOT."
 licence: MIT
 animations:
   - { src: /assets/img/psion/spins/play-lz64.gif, alt: "Psion Spins on the four-line screen: one spin of the five reels, Santa walks across saying HO HO HO!, then the winning lines add up to 84 credits", screen: "Four-line (LZ and LZ64)" }
@@ -19,6 +19,9 @@ models:
 memory_note: "Free memory as the Organiser's FREE reports it on a fresh machine, measured in the emulator: enough to play a game and save it."
 tested_on: "the Jape emulator: CM, XP, LA, LZ and LZ64, and a spin with Santa on all 29 Organiser ROMs it has. Sound and the real LCD are still to check on hardware."
 files:
+  - { file: spins-0.9.1-psion.zip, kind: psion, version: "0.9.1", date: 2026-11-22 }
+  - { file: spins-0.9.1.opk, kind: build, version: "0.9.1", date: 2026-11-22 }
+  - { file: spins-0.9.1-source.zip, kind: source, version: "0.9.1", date: 2026-11-22 }
   - { file: spins-0.9-psion.zip, kind: psion, version: "0.9", date: 2026-11-21 }
   - { file: spins-0.9.opk, kind: build, version: "0.9", date: 2026-11-21 }
   - { file: spins-0.9-source.zip, kind: source, version: "0.9", date: 2026-11-21 }
@@ -28,6 +31,7 @@ screenshots:
   - { src: /assets/img/psion/spins/lz64-santa.png, alt: "Four-line screen: Santa walking across the reels, credits 980, bet 20", screen: "Santa's walk" }
   - { src: /assets/img/psion/spins/cm-reels.png, alt: "Two-line screen: five reels by two rows, 1000 credits, bet 20", screen: "Two-line (CM, XP and LA)", lines: 2 }
 changelog:
+  - { date: 2026-11-22, version: "0.9.1", change: "The bottom-right symbol lands in one frame, like the others. Before, its top row stayed cut off for a fifth of a second or more after every spin." }
   - { date: 2026-11-21, version: "0.9", change: "Working build: the whole core spec and its stretch goals, tested in the emulator on every model." }
 ---
 

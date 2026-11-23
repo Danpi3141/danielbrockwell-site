@@ -56,10 +56,11 @@
   {{ modelStrip(p.data.models, models) }}
   <p class="card-actions">
     <a class="button button-secondary" href="{{ p.url }}">Details<span class="sr"> about {{ p.data.title }}</span></a>
-    {%- set builds = p.data.files | filesOfKind("psion") %}
-    {%- if not builds.length %}{% set builds = p.data.files | filesOfKind("build") %}{% endif %}
+    {%- set cur = (p.data.files | onlyVersion(p.data.files | newestVersion)) if p.data.files and p.data.files.length else [] %}
+    {%- set builds = cur | filesOfKind("psion") %}
+    {%- if not builds.length %}{% set builds = cur | filesOfKind("build") %}{% endif %}
     {%- if builds.length %}
-    {%- set f = builds | last %}
+    {%- set f = builds | first %}
     <a class="button" href="{{ p.data.downloadDir }}{{ f.file }}" download>Download<span class="sr"> {{ p.data.title }} {{ f.version }}</span></a>
     {%- endif %}
   </p>
