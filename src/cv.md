@@ -2,75 +2,60 @@
 layout: layouts/page.njk
 title: CV
 section: cv
-description: "Daniel Brockwell's CV: investment professional in digital assets with a computer science background. Skills, experience, projects and education."
+description: "Daniel Brockwell's CV: portfolio manager in digital assets at Nickel Digital Asset Management, computer science graduate, and builder of the infrastructure behind the work."
 ---
 
 {% if "/downloads/cv/daniel-brockwell-cv.pdf" | fileExists %}<p><a class="button" href="/downloads/cv/daniel-brockwell-cv.pdf" download>Download as PDF</a></p>{% endif %}
 
 ## Profile
 
-Investment professional specialising in digital assets, managing both directional and yield-generating strategies across DeFi markets, with a focus on sustainable sources of on-chain cash flow, governance and protocol risk. Computer science graduate who builds the tools behind the work: monitoring, automation and data analysis. Based in the {{ site.region }}.
+Portfolio manager at Nickel Digital Asset Management, with nearly five years in digital asset investment. Originates investment and trading ideas for a long-only liquid fund, presents them for approval and implements them. Computer science graduate (2:1, Sheffield) who builds the infrastructure behind the work: a full Ethereum node, on-chain alerting and simulation, backtests and market-making bots. Based in the {{ site.region }}.
 
 ## Experience
 
-### Junior Portfolio Manager
+### Portfolio Manager, Nickel Digital Asset Management
 <p class="small">November 2022 to present</p>
 
-- Manage allocations across liquid digital asset markets, focusing on protocols that generate sustainable on-chain revenue: DEXs, lending markets and middleware.
-- Research DeFi protocols in depth: fee flows, token holder incentives, governance structures and competitive position.
-- Evaluate and deploy capital across yield strategies, including staking, liquidity provision and market-neutral opportunities.
-- Built internal monitoring tools that track protocol metrics, treasury flows and market dislocations.
-- Write investment commentary linking protocol fundamentals to token performance.
-- Assess smart contract, liquidity and governance risks across DeFi positions.
-- Work with custody and infrastructure providers to keep portfolio operations secure.
-- Contribute to portfolio construction, balancing liquidity, concentration risk and expected return.
+- Originate investment and trading ideas for a long-only liquid digital asset fund, present them for approval (most are approved) and implement them personally.
+- Manage positions and yield strategies, including staking and liquidity provision, weighing liquidity, concentration risk and expected return.
+- Built and maintain a full Ethereum node, giving the fund its own source of on-chain data.
+- Built custom alerting on on-chain metrics, and simulations of those metrics.
+- Backtest trading strategies, and built market-making bots that trade to earn venue volume incentives.
+- Research DeFi protocols in depth (fee flows, token holder incentives, governance, competitive position) and assess their smart contract, liquidity and governance risk.
 
-### DeFi Analyst
+### DeFi Analyst, Nickel Digital Asset Management
 <p class="small">January 2022 to November 2022</p>
 
-- Analysed decentralised finance protocols across the lending, derivatives and infrastructure sectors.
+- Ethereum Merge (September 2022): identified an inefficiency on the Proof of Work fork, where Aave's exchange rates stayed frozen at pre-Merge prices although PoW ETH was the only asset there with any value.
 - Built financial models linking protocol usage to token valuation.
-- Identified opportunities in staking and liquidity provision markets.
-- Monitored governance proposals and assessed their likely effect on token holder value.
-- Wrote internal research notes supporting investment decisions.
+- Analysed lending, derivatives and infrastructure protocols, and assessed governance proposals for their effect on token holders.
 
-### IT Graduate, Existing Systems, Intellectual Property Office
-<p class="small">September 2021 to December 2021</p>
+### Intellectual Property Office (the UK Patent Office)
+<p class="small">IT Graduate, Existing Systems: September 2021 to December 2021<br>
+L2 Applications Support (year in industry): August 2019 to August 2020</p>
 
-- Supported the maintenance and improvement of internal systems.
-- Worked across the databases and applications behind core operational infrastructure.
-
-### L2 Applications Support (year in industry)
-<p class="small">August 2019 to August 2020</p>
-
-- Gave technical support for production systems.
-- Investigated issues across the software stack, including databases and internal tools.
-- Learned how reliability, monitoring and operational processes work in practice.
+- Maintained and supported the internal systems, databases and applications behind the Office's operations.
 
 ## Skills
 
-- **Investment and research:** fundamental analysis of crypto protocols, token valuation frameworks, market structure analysis, risk assessment (smart contract, liquidity, governance), portfolio construction, yield strategy evaluation
-- **Technical:** Python, SQL, data analysis, on-chain data analysis, monitoring tools and dashboards; for the projects on this site, 6303 assembly, OPL and JavaScript (Node)
-- **Domain knowledge:** DeFi protocols (DEXs, lending, derivatives), staking, governance systems, stablecoins, market infrastructure
+- **Investment and trading:** idea generation and implementation, portfolio construction, protocol and token valuation, market structure, risk assessment (smart contract, liquidity, governance), yield strategies (staking, liquidity provision), market making
+- **Data and infrastructure:** Python, SQL, running an Ethereum node, on-chain data and alerting, simulation, backtesting
+- **Software engineering:** Kotlin and Jetpack Compose (Android), JavaScript (Node), 6303 assembly and OPL, search algorithms and low-level optimisation
+- **Domain knowledge:** DeFi (DEXs, lending, derivatives), staking, governance, stablecoins, market infrastructure
 
-## Projects
+## Selected technical achievements
 
-- [Chess](/psion/chess/): a 6303 chess engine, about 1950 Elo at its top level, on an 8-bit pocket computer.
-- [Connect 4](/psion/connect4/): one pack for all five Organiser II models, with a solved opening book.
-- [Drakeloft](/android/drakeloft/): a strategy game for Android.
-- [Primes](/personal/primes/): the third-largest known twin primes, 144,654 digits each (January 2026).
+- [Twin primes](/personal/primes/): found the third-largest known twin primes, 144,654 digits each (January 2026).
 - [y-cruncher](/personal/y-cruncher/): the current world record for log(10), 2.5 trillion digits (January 2026).
+- [Chess](/psion/chess/): a chess engine in 6303 machine code for an 8-bit pocket computer, about 1950 Elo at its top level.
+- [Flagstone](/android/flagstone/) and [Hatchwork](/android/hatchwork/): released Android puzzle games in Kotlin, with solvers that prove every puzzle can be solved without guessing.
 
 ## Education
 
 ### BSc (Hons) Computer Science (with a Year in Industry), University of Sheffield
 <p class="small">September 2017 to June 2021</p>
 
-Upper second-class honours (2:1). Modules included Algorithms and Data Structures, Software Engineering, Databases, Machine Intelligence and Networks.
+Upper second-class honours (2:1).
 
 ### A levels
 Maths (A), Computer Science, Physics, Further Maths.
-
-## Interests
-
-Retro computing and the Psion Organiser II, chess, record prime searches and record computations of mathematical constants.

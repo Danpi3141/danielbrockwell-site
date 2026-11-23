@@ -2,10 +2,10 @@
 layout: layouts/page.njk
 title: About
 section: about
-description: "Daniel Brockwell: investment professional in digital assets, computer science graduate, and builder of games and tools for Android and the Psion Organiser II."
+description: "Daniel Brockwell: portfolio manager in digital assets, computer science graduate, and builder of games and tools for Android and the Psion Organiser II."
 ---
 
-I'm Daniel Brockwell. I work in digital assets as an investment professional, researching DeFi protocols, managing allocations and building the internal tools that monitor markets and automate the work. I studied Computer Science at the University of Sheffield, with a year in industry.
+I'm Daniel Brockwell. I'm a portfolio manager in digital assets at Nickel Digital Asset Management, where I find and implement investment and trading ideas and build the infrastructure behind them, from a full Ethereum node to on-chain alerting and market-making bots. I studied Computer Science at the University of Sheffield, with a year in industry.
 
 Outside work I build games and tools for Android and for the Psion Organiser II. On the Organiser that means OPL and 6303 machine code, a few kilobytes of RAM and a screen of two or four lines, where every byte and every millisecond has to be argued for.
 
