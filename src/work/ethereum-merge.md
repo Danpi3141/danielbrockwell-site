@@ -1,7 +1,7 @@
 ---
 layout: layouts/page.njk
 title: The Ethereum Merge trade
-description: "How a lending position on Aave, built before the Ethereum Merge in September 2022, paid out on the proof-of-work fork, where Chainlink's prices stood still."
+description: "How a lending position on Aave, built before the Ethereum Merge in September 2022, was used on the proof-of-work fork, where Chainlink's prices stood still."
 ---
 
 <p class="small">September 2022 · DeFi Analyst, Nickel Digital Asset Management</p>
@@ -15,7 +15,7 @@ On 15 September 2022 Ethereum moved from proof of work to proof of stake. Some m
 
 ## The position
 
-Before the Merge we deposited USDC on Aave and borrowed ETH against it. On Ethereum this was an ordinary loan, repaid in the usual way after the Merge. On the fork it was copied along with everything else, and there it looked very different. We held the fork's copy of the borrowed ether, which could be sold. The debt was owed in a coin we expected to end up close to worthless, on a chain few people would keep using, so there was no reason to repay it.
+Before the Merge we deposited USDC on Aave and borrowed ETH against it. On Ethereum this was an ordinary loan. On the fork it was copied along with everything else, and there it looked very different. We held the fork's copy of the borrowed ether, which could be sold. The debt was owed in a coin we expected to end up close to worthless, so there was no reason to repay it.
 
 The catch was the collateral. On the fork our USDC was still locked in Aave behind that loan.
 
@@ -23,10 +23,12 @@ The catch was the collateral. On the fork our USDC was still locked in Aave behi
 
 The frozen prices solved that. wBTC on the fork traded at a steep discount, since only the proof-of-stake version could be redeemed for bitcoin, yet Aave on the fork still valued it at the pre-Merge bitcoin price. We bought fork wBTC cheaply and deposited it as collateral in place of the USDC. At Aave's stale prices the loan was still well covered, so we could withdraw the USDC, convert it into the fork's ether, and sell that ether along with the ether we had borrowed.
 
-The trade was profitable.
+## No interface
 
-## Why it worked
+Aave didn't support the fork, so there was no interface to use. Every interaction had to be put together in hex and sent directly to the fork's mempool.
 
-The opportunity was in the plumbing rather than the headlines: which oracles a lending protocol trusts, which tokens can be redeemed on which chain, and what a copied loan is worth when nobody will ever enforce it. Seeing it meant working out how Aave, Chainlink and the token issuers would each behave on the fork. Acting on it meant executing on a brand-new chain.
+## What it took
+
+The opportunity was in the plumbing rather than the headlines: which oracles a lending protocol trusts, which tokens can be redeemed on which chain, and what a copied loan is worth when nobody will ever enforce it. Seeing it meant working out how Aave, Chainlink and the token issuers would each behave on the fork. Acting on it meant talking to the contracts directly, on a brand-new chain.
 
 [Back to the CV](/cv/) · [Home](/)

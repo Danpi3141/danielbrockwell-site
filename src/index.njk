@@ -26,11 +26,12 @@ description: "Daniel Brockwell: portfolio manager in digital assets at Nickel Di
   </section>
 
   <h2>My work</h2>
+  <p class="prose">A few examples. There is more that I can't publish, and my <a href="/cv/">CV</a> covers a wider range.</p>
   <div class="grid grid-2">
     <article class="card">
       <p class="card-when mono">September 2022</p>
       <h3 class="card-title"><a href="/work/ethereum-merge/">The Ethereum Merge</a></h3>
-      <p class="card-summary">Identified, developed and executed a profitable trade around the Merge, exploiting Aave's stale exchange rates on the proof-of-work fork.</p>
+      <p class="card-summary">Identified, developed and executed a trade around the Merge, exploiting Aave's stale exchange rates on the proof-of-work fork.</p>
       <p class="card-actions"><a href="/work/ethereum-merge/">How the trade worked</a></p>
     </article>
     <article class="card">
@@ -48,8 +49,17 @@ description: "Daniel Brockwell: portfolio manager in digital assets at Nickel Di
       <h3 class="card-title">The fund's own on-chain data</h3>
       <p class="card-summary">A full Ethereum node, custom alerts for stablecoin depegs, large protocol withdrawals and high lending rates, and Tenderly simulation of transactions before they are sent.</p>
     </article>
+    <article class="card">
+      <p class="card-when mono">Ongoing</p>
+      <h3 class="card-title">Protocol research and risk</h3>
+      <p class="card-summary">In-depth research on DeFi protocols: fee flows, token holder incentives, governance and competitive position, with their smart contract, liquidity and governance risk.</p>
+    </article>
+    <article class="card">
+      <p class="card-when mono">Ongoing</p>
+      <h3 class="card-title">Backtesting and yield</h3>
+      <p class="card-summary">Backtests of other managers' trading strategies, to judge performance, risk and execution assumptions, and yield strategies such as staking and liquidity provision.</p>
+    </article>
   </div>
-  <p><a href="/cv/">Full experience, skills and education in my CV</a></p>
 
   <hr class="rule">
   <h2>Records</h2>
@@ -64,7 +74,7 @@ description: "Daniel Brockwell: portfolio manager in digital assets at Nickel Di
 
   <hr class="rule">
   <h2>Outside work</h2>
-  <p class="prose">I like small, exact programs: a chess engine in 6303 machine code for a pocket computer from 1986, puzzle games for Android whose solvers prove every level can be solved without guessing, and long computations tuned until the hardware is the limit.</p>
+  <p class="prose">I like to get something out there, then improve it a step at a time. So far that has meant a chess engine in 6303 machine code for a pocket computer from the 1980s, puzzle games for Android whose solvers prove every puzzle can be solved without guessing, and record-length computations.</p>
   <div class="grid">
     {%- set psionCount = collections.programs | length %}
     {%- set androidCount = collections.projects | countIn("section", "android") %}
