@@ -9,7 +9,7 @@ Daniel Brockwell's website: Psion Organiser II programs with downloads, Android 
 | `npm install` | Installs Eleventy and html-validate (once) |
 | `npm run dev` | Local preview that reloads as you edit |
 | `npm run build` | Builds the site into `_site/` |
-| `npm run check` | After a build: checks every internal link, the 50 KB page budget, no stray email addresses or phone numbers, that every page's JSON-LD parses and that the links in llms.txt, llms-full.txt, the feed and the sitemap resolve, then validates the HTML |
+| `npm run check` | After a build: checks every internal link, the 50 KB page budget, no stray email addresses or phone numbers, that every page's JSON-LD parses and that the links in llms.txt, the feed and the sitemap resolve, then validates the HTML |
 | `npm run cv-pdf` | After a build: prints the CV page to `src/downloads/cv/daniel-brockwell-cv.pdf` with headless Chrome or Edge. After any CV change run `npm run build && npm run cv-pdf && npm run deploy` |
 | `npm run package` | Makes the Psion release files (below) |
 | `npm run deploy` | Builds, runs the checks, and deploys to Cloudflare if they pass (needs `npx wrangler login` once) |
@@ -40,8 +40,7 @@ Four-line and two-line LCD screenshots come from the emulator at 4 pixels a dot 
 All of these are built from the same front matter as the pages (code in `lib/machine.js`), so they cannot disagree with them:
 
 - **JSON-LD** in every page head: the WebSite, the Person (in full on Home, About and CV, from `src/_data/person.json`), the page itself, a SoftwareApplication for each program and Android app (version, platform, download, size, licence), a CreativeWork with its sources for each personal project, and the breadcrumb trail.
-- **`/llms.txt`** (`src/llms.11ty.js`): who Daniel is and every page with a one-line note, in the llmstxt.org format.
-- **`/llms-full.txt`** (`src/llms-full.11ty.js`): the text of every page as one Markdown file, with each program's facts (models, memory, downloads with SHA-256, changelog) first.
+- **`/llms.txt`** (`src/llms.11ty.js`): the whole site in one Markdown file. It opens in the llmstxt.org format (who Daniel is, every page with a one-line note), then gives the full text of every page, each program's facts (models, memory, downloads with SHA-256, changelog) first. `/llms-full.txt`, its old second file, redirects to it.
 - **`/feed.xml`** (`src/feed.11ty.js`): RSS 2.0 of every program and project, newest `updated` first; an entry comes back when its `updated` changes.
 - **`/sitemap.xml`**: each page's last change is the newest of its `updated`, its source file's last commit (today if it has uncommitted changes), and for a section page the `updated` of every entry it lists.
 

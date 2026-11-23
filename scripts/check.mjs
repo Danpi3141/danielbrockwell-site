@@ -2,7 +2,7 @@
 // every page is under the 50 KB HTML + CSS budget, and no page carries personal details
 // (an email address other than the site's own contact address, or a phone number).
 // The machine-readable files are checked too: every page's JSON-LD parses, and llms.txt,
-// llms-full.txt, feed.xml and sitemap.xml link only to pages and files that exist.
+// feed.xml and sitemap.xml link only to pages and files that exist.
 // Run after `npm run build`; `npm run check` also runs html-validate.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -67,7 +67,7 @@ for (const f of html) {
 }
 
 // the machine-readable files: present, no personal details, and their links to this site resolve
-for (const name of ['llms.txt', 'llms-full.txt', 'feed.xml', 'sitemap.xml', 'robots.txt']) {
+for (const name of ['llms.txt', 'feed.xml', 'sitemap.xml', 'robots.txt']) {
   const f = path.join(OUT, name);
   if (!fs.existsSync(f)) { errors.push(`${name} is missing`); continue; }
   const text = fs.readFileSync(f, 'utf8');
@@ -97,4 +97,4 @@ if (errors.length) {
   console.error(`\n${errors.length} problem(s).`);
   process.exit(1);
 }
-console.log(`OK: ${html.length} pages, ${links} internal links and assets, all resolve; all pages under 50 KB with CSS (${css} bytes of CSS); JSON-LD parses; ${siteLinks.length} links from JSON-LD, llms.txt, llms-full.txt, the feed and the sitemap resolve.`);
+console.log(`OK: ${html.length} pages, ${links} internal links and assets, all resolve; all pages under 50 KB with CSS (${css} bytes of CSS); JSON-LD parses; ${siteLinks.length} links from JSON-LD, llms.txt, the feed and the sitemap resolve.`);
