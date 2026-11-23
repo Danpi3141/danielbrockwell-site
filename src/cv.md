@@ -17,6 +17,7 @@ Portfolio manager at Nickel Digital Asset Management, with nearly five years in 
 <p class="small">November 2022 to present</p>
 
 - Originate investment and trading ideas for an eight-figure long-only liquid digital asset fund, present recommendations for approval and manage their execution.
+- Certified under the FCA Certification Regime for client dealing since September 2025 (FCA register reference [DXB01169](https://register.fca.org.uk/s/individual?id=003Sk00000kJM0oIAG)).
 - Manage positions and yield strategies, including staking and liquidity provision, weighing liquidity, concentration risk and expected return.
 - Set up and maintain a full Ethereum node, giving the fund its own source of on-chain data.
 - Built custom on-chain alerting for stablecoin depegs, large withdrawals from protocols and high lending rates. In April 2024 an alert on falling liquidity in Synthetix's sETH wrapper flagged sUSD depeg risk early, and the fund exited its sUSD exposure.
