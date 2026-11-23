@@ -8,7 +8,7 @@ import crypto from 'node:crypto';
 import { jsonLd, lastModified } from './lib/machine.js';
 
 const SRC = 'src';
-const STATUSES = ['released', 'ongoing', 'working-build', 'in-development', 'planned', 'exploring'];
+const STATUSES = ['released', 'in-use', 'ongoing', 'working-build', 'in-development', 'planned', 'exploring'];
 const CATEGORIES = ['game', 'utility'];
 const SECTIONS = ['android', 'personal'];
 const MODEL_IDS = ['cm', 'xp', 'la', 'lz', 'lz64'];
@@ -110,7 +110,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter('sha256', (rel) => fileFacts(rel.replace(/^\//, '')).sha256);
   eleventyConfig.addFilter('pngSize', (rel) => pngSize(rel.replace(/^\//, '')));
   eleventyConfig.addFilter('statusLabel', (s) => ({
-    released: 'Released', ongoing: 'Ongoing research', 'working-build': 'Working build', 'in-development': 'In development', planned: 'Planned', exploring: 'Exploring',
+    released: 'Released', 'in-use': 'In use', ongoing: 'Ongoing research', 'working-build': 'Working build', 'in-development': 'In development', planned: 'Planned', exploring: 'Exploring',
   })[s] || s);
   eleventyConfig.addFilter('byCategory', (items, c) => (items || []).filter((i) => i.data.category === c));
   eleventyConfig.addFilter('bySection', (items, s) => (items || []).filter((i) => i.data.section === s));
