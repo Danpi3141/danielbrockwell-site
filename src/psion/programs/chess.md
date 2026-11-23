@@ -2,10 +2,10 @@
 title: Chess
 category: game
 status: released
-summary: "A chess engine in 6303 machine code for the four-line Organisers, eight levels from about 450 to 1950 Elo."
+summary: "A chess engine in 6303 machine code for the four-line Organisers, eight levels estimated at about 450 to 1950 Elo against Stockfish."
 updated: 2026-11-22
 pack: 64K
-needs: "The pack image is a 256K Flashpak image with about 60K used. In an emulator, load it into slot B of an LZ or LZ64. On a real Organiser, load the psion/ folder from the source + build zip with RPBOOT onto a Rampak or Flashpak of 64K or more in B: or C:."
+needs: "The program uses about 60K, so it fits a 64K pack or larger. The game was designed within a 256K budget, so the pack image declares a 256K Flashpak with about 60K used: in an emulator, load it into slot B of an LZ or LZ64 and the rest of the pack stays empty. On a real Organiser, load the psion/ folder from the source + build zip with RPBOOT onto a Rampak or Flashpak of 64K or more in B: or C:."
 licence: MIT
 animations:
   - { src: /assets/img/psion/chess/play-lz64.gif, alt: "Chess on the four-line screen: after 1.e4 e5 the player types G1F3 and F1C4, the Psion pauses to think and replies Nc6, then Nf6, while the view switches between the two halves of the board", screen: "Four-line (LZ and LZ64)" }
@@ -35,7 +35,7 @@ changelog:
 
 ## About
 
-A full chess game for the LZ and LZ64. The engine is written in 6303 assembler and matched node for node against a JavaScript reference engine, so every change could be measured before it went onto the Organiser. Eight levels, measured against Stockfish's limited-strength scale, run from about 450 to about 1950; level 7, at 30 seconds a move, plays at about 1700.
+A full chess game for the LZ and LZ64. The engine is written in 6303 assembler and matched node for node against a JavaScript reference engine, so every change could be measured before it went onto the Organiser. Eight levels run from about 450 to about 1950 Elo; level 7, at 30 seconds a move, plays at about 1700. These are estimates from matches against Stockfish at limited strength, not ratings from games against people (see the technical notes).
 
 It has a position book of 4,887 positions that recognises transpositions, and plays king and pawn against king perfectly from a compressed distance table on the pack. The game has clocks, take back, hints, a move list, game review with analysis, set-up, a real-board mode, two-player mode, and PGN export and import.
 
@@ -72,5 +72,6 @@ While it thinks, any key makes it move now. The menu has new game, level, take b
 
 - The engine searches about 70 to 120 positions a second on the Organiser.
 - The game uses a RAM array of 19,030 bytes with its full 512-entry transposition table; with room for the save file it needs 21,122 bytes free for that table, 18,431 for the smallest.
-- The program takes about 60K of its 256K pack budget.
+- The program takes about 60K, so a 64K pack holds it. It was designed within a 256K budget, which leaves room to grow: small extra endgame tables are a possibility, though tests so far suggest they add little strength.
+- **How the levels were measured.** On a PC, the reference engine, which searches the same way as the Organiser's, played 484-game matches against Stockfish set to a limited strength (its UCI_Elo setting, 1320 to 2000). It used the same book and endgame table, and each level's position budget: about 69 positions for each second of thinking time. Levels 1 to 3 are weaker than Stockfish's lowest setting, so they were measured against level 4 instead. The results are approximate benchmarks on Stockfish's own scale, with margins of about 20 to 35 points at levels 4 to 8. They are not ratings earned in rated play, and Stockfish's scale does not line up exactly with FIDE or online ratings.
 - Bishop and knight mates succeed in about 80% of random starts.

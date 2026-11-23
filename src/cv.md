@@ -50,7 +50,7 @@ L2 Applications Support (year in industry): August 2019 to August 2020</p>
 
 - [Twin primes](/personal/primes/): found the third-largest known twin primes, 144,654 digits each (January 2026).
 - [y-cruncher](/personal/y-cruncher/): the current world record for log(10), 2.5 trillion digits (January 2026).
-- [Chess](/psion/chess/): a chess engine in 6303 machine code for an 8-bit pocket computer, about 1950 Elo at its top level.
+- [Chess](/psion/chess/): a chess engine in 6303 machine code for an 8-bit pocket computer, about 1950 Elo at its top level (estimated against Stockfish).
 - [Flagstone](/android/flagstone/) and [Hatchwork](/android/hatchwork/): released Android puzzle games in Kotlin, with solvers that prove every puzzle can be solved without guessing.
 
 ## Education
