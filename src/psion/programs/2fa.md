@@ -47,7 +47,7 @@ It runs on every Organiser II model from one 16K pack, in 6303 machine code, wit
 
 In the Jape emulator, use the pack image instead: **Select OPK file**, choose it, **Create**, then **Slot B**, and run `B:TFA`.
 
-If there is too little memory, TFA says how many more bytes it needs. On a two-line model, `B:CLOCK` opens straight on its clock screen, with the year 2000 fix built in.
+If there is too little memory, TFA says how many more bytes it needs. On a two-line model, `B:CLOCK` opens straight on its clock screen, with a year 2000 fix built in (see Credits).
 
 ## Manual
 
@@ -77,7 +77,11 @@ An Organiser has no network or radio, so nothing can reach into it. Its weakness
 
 ## Where it has got to
 
-Version 0.9 is a working build: the whole first version, tested in the emulator on all five models and all 29 Organiser ROMs it has, including with the Y2000FIX clock patch. Every code it showed matched a PC calculation of the same standard. Still to do on real hardware: how far the clock drifts against a phone, the keyboard feel, pack read times, switching off and on, and signing in to a real site with a code typed from the Organiser.
+Version 0.9 is a working build: the whole first version, tested in the emulator on all five models and all 29 Organiser ROMs it has, including alongside Jaap Scherphuis's Y2000FIX clock patch. Every code it showed matched a PC calculation of the same standard. Still to do on real hardware: how far the clock drifts against a phone, the keyboard feel, pack read times, switching off and on, and signing in to a real site with a code typed from the Organiser.
+
+## Credits
+
+The year 2000 handling comes from **Y2000FIX by [Jaap Scherphuis](https://www.jaapsch.net/psion/)**. A two-line Organiser cannot hold a year after 1999, so Y2000FIX keeps the clock 84 years behind and adds them back when the time is shown: 84 years is three blocks of 28, so the days of the week and the leap years stay right. Psion 2FA uses the same idea for its clock screen and CLOCK, reads a clock set through Y2000FIX correctly, and was tested against the real Y2000FIX in the emulator. Thank you, Jaap.
 
 ## Technical notes
 
