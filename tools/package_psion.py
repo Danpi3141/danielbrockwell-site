@@ -9,17 +9,26 @@ For each program in RELEASES it writes two files into src/downloads/psion/<slug>
                                 LICENSE and RELEASE.txt at the top
 
 Release files are never overwritten: if a file is already there with different bytes the script
-stops (a new version gets a new file name). The zip is reproducible: entries are sorted and carry
-the release date, so running the script again gives the same bytes and the same SHA-256.
+stops (a new version gets a new file name). The one exception is --rescrub (below).
+
+The zip is reproducible: entries are sorted and carry the release date, so running the script
+again gives the same bytes and the same SHA-256.
+
+Windows home-folder paths (C:/Users/<name>, with either slash, in logs, reports and build.json)
+are shortened to ~ in every source zip, so no zip carries a Windows user name; RELEASE.txt says so
+when it happened.
 
     python -I tools/package_psion.py            # all programs in RELEASES
     python -I tools/package_psion.py chess      # one
     python -I tools/package_psion.py --list     # show what each zip would hold, write nothing
+    python -I tools/package_psion.py --rescrub src/downloads/psion/chess/chess-1.0-source.zip
+                                  # shorten home-folder paths in a zip already released, in place
 """
 import argparse
 import hashlib
 import io
 import os
+import re
 import subprocess
 import sys
 import tarfile
@@ -138,6 +147,17 @@ SOFTWARE.
 """
 
 
+# C:\Users\<name>, C:/Users/<name>, JSON's C:\\Users\\<name>, Git Bash's /c/Users/<name>
+HOME_RE = re.compile(rb'(?i)\b[a-z]:(\\{1,4}|/)users\1[^\\/\s"\']+|/[a-z]/users/[^\\/\s"\']+')
+SCRUB_NOTE = ('Home-folder paths in logs, reports and build records are shortened to ~; '
+              'the files are otherwise as committed.')
+
+
+def scrub(data):
+    """data with home-folder paths shortened to ~, and how many there were."""
+    return HOME_RE.subn(b'~', data)
+
+
 def sha256(data):
     return hashlib.sha256(data).hexdigest()
 
@@ -180,7 +200,11 @@ def source_files(rel):
     for p in rel['build_files']:
         with open(os.path.join(root, p), 'rb') as fh:
             files['Programs/%s/%s' % (rel['folder'], p)] = fh.read()
-    return sorted(files.items()), {'program': c1, 'tools': c2}
+    count = 0
+    for k in files:
+        files[k], n = scrub(files[k])
+        count += n
+    return sorted(files.items()), {'program': c1, 'tools': c2, 'scrubbed': count}
 
 
 def release_txt(rel, opk_name, opk_bytes, files, commits):
@@ -211,6 +235,7 @@ def release_txt(rel, opk_name, opk_bytes, files, commits):
         '  Third-party downloads used while making the data (ext/) and caches are left out,',
         "  as the program repo's .gitignore says.",
         '',
+    ] + ([SCRUB_NOTE, ''] if commits.get('scrubbed') else []) + [
         '%d files.' % (len(files) + 2),
         '',
     ]
@@ -319,12 +344,49 @@ def make(slug, rel, list_only=False):
         print('wrote    %s  %s bytes  sha256 %s' % (name, format(len(data), ','), sha256(data)))
 
 
+def rescrub(path):
+    """Shorten home-folder paths in a source zip already released, in place: same entries in the
+    same order, same dates and compression; RELEASE.txt gets SCRUB_NOTE before its last line."""
+    with open(path, 'rb') as fh:
+        old = fh.read()
+    out = io.BytesIO()
+    count = 0
+    with zipfile.ZipFile(io.BytesIO(old)) as zin, zipfile.ZipFile(out, 'w') as zout:
+        infos = zin.infolist()
+        for info in infos:
+            data, n = scrub(zin.read(info))
+            count += n
+            info.compress_type = zipfile.ZIP_DEFLATED
+        for info in infos:
+            data, _ = scrub(zin.read(info))
+            if info.filename.endswith('/RELEASE.txt') and count and SCRUB_NOTE.encode() not in data:
+                head, last = data.rstrip(b'\n').rsplit(b'\n', 1)
+                data = head + b'\n' + SCRUB_NOTE.encode() + b'\n\n' + last + b'\n'
+            new = zipfile.ZipInfo(info.filename, date_time=info.date_time)
+            new.compress_type = zipfile.ZIP_DEFLATED
+            new.external_attr = info.external_attr
+            zout.writestr(new, data, compresslevel=9)
+    if not count:
+        print('clean    %s' % os.path.basename(path))
+        return
+    data = out.getvalue()
+    with open(path, 'wb') as fh:
+        fh.write(data)
+    print('rescrub  %s  %d paths  %s bytes  sha256 %s' % (os.path.basename(path), count,
+                                                       format(len(data), ','), sha256(data)))
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[0])
     ap.add_argument('slugs', nargs='*', help='programs to package (default: all)')
     ap.add_argument('--list', action='store_true', help='list each zip\'s contents and write nothing')
     ap.add_argument('--allow-dirty', action='store_true', help='package HEAD even if the repo has uncommitted changes')
+    ap.add_argument('--rescrub', nargs='+', metavar='ZIP', help='shorten home-folder paths in released source zips, in place')
     a = ap.parse_args()
+    if a.rescrub:
+        for p in a.rescrub:
+            rescrub(p)
+        return
     global ALLOW_DIRTY
     ALLOW_DIRTY = a.allow_dirty
     for slug in a.slugs or sorted(RELEASES):
