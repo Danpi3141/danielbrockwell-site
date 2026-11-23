@@ -115,7 +115,7 @@ RELEASES = {
         'run': 'SANTA',
         'title': 'Psion Spins',
         'folder': 'Spins',
-        'version': '0.9.2',
+        'version': '0.9.3',
         'date': (2026, 11, 23),
         'opk': 'build/game/SPINS.opk',
         'build_files': [],
