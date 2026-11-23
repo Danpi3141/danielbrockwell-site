@@ -2,7 +2,7 @@
 title: Chess
 category: game
 status: released
-summary: "A chess engine in 6303 machine code for the four-line Organisers, eight levels estimated at about 450 to 1950 Elo against Stockfish."
+summary: "A chess engine in 6303 machine code for the four-line Organisers: eight levels, about 450 to 1950 Elo against Stockfish."
 updated: 2026-11-22
 pack: 64K
 needs: "The program uses about 60K, so it fits a 64K pack or larger. The game was designed within a 256K budget, so the pack image declares a 256K Flashpak with about 60K used: in an emulator, load it into slot B of an LZ or LZ64 and the rest of the pack stays empty. On a real Organiser, load the psion/ folder from the source + build zip with RPBOOT onto a Rampak or Flashpak of 64K or more in B: or C:."
