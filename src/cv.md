@@ -9,7 +9,7 @@ description: "Daniel Brockwell's CV: portfolio manager in digital assets at Nick
 
 ## Profile
 
-Portfolio manager at Nickel Digital Asset Management, with nearly five years in digital asset investment. Originates investment and trading ideas for an eight-figure long-only liquid fund, presents recommendations for approval and manages their execution. Computer science graduate (2:1, Sheffield) who builds the tools behind the work: a full Ethereum node, on-chain alerting, backtests and market-making bots. Based in the {{ site.region }}.
+Portfolio manager at Nickel Digital Asset Management, with nearly five years in digital asset investment. Takes investment and trading ideas from origination to execution for an eight-figure liquid fund. Computer science graduate (2:1, Sheffield) who builds the tools behind the work: a full Ethereum node, on-chain alerting, backtests and market-making bots. Based in the {{ site.region }}.
 
 ## Experience
 
@@ -18,11 +18,11 @@ Portfolio manager at Nickel Digital Asset Management, with nearly five years in 
 
 - Originate investment and trading ideas for an eight-figure long-only liquid digital asset fund, present recommendations for approval and manage their execution.
 - Manage positions and yield strategies, including staking and liquidity provision, weighing liquidity, concentration risk and expected return.
-- Built and maintain a full Ethereum node, giving the fund its own source of on-chain data.
+- Set up and maintain a full Ethereum node, giving the fund its own source of on-chain data.
 - Built custom on-chain alerting for stablecoin depegs, large withdrawals from protocols and high lending rates. In April 2024 an alert on falling liquidity in Synthetix's sETH wrapper flagged sUSD depeg risk early, and the fund exited its sUSD exposure.
 - Use Tenderly to simulate transactions before execution, identifying unexpected asset transfers and suspicious smart contract interactions.
 - Backtest other managers' trading strategies to evaluate historical performance, risk and execution assumptions.
-- Built and run market-making bots on venues including Hyperliquid, quoting both sides and managing inventory risk, primarily to earn exchange incentives.
+- Build and run market-making bots on venues including Hyperliquid, quoting both sides and managing inventory risk, primarily to earn exchange incentives.
 - Research DeFi protocols in depth (fee flows, token holder incentives, governance, competitive position) and assess their smart contract, liquidity and governance risk.
 
 ### DeFi Analyst, Nickel Digital Asset Management
