@@ -43,5 +43,9 @@
     <p class="small">Last updated <time datetime="{{ buildDate | dateIso }}">{{ buildDate | dateLong }}</time></p>
   </div>
 </footer>
+{%- if site.webAnalyticsToken and liveBuild %}
+<!-- Cloudflare Web Analytics: page views and visits, no cookies -->
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "{{ site.webAnalyticsToken }}"}'></script>
+{%- endif %}
 </body>
 </html>

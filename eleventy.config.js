@@ -146,6 +146,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter('fileExists', (rel) => fs.existsSync(path.join(SRC, rel.replace(/^\//, ''))));
 
   eleventyConfig.addGlobalData('buildDate', () => new Date());
+  eleventyConfig.addGlobalData('liveBuild', () => isLive());   // the analytics beacon only on the live build, not --serve
 
   return {
     dir: { input: SRC, output: '_site', includes: '_includes', data: '_data' },
