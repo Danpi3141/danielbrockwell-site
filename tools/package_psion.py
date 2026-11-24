@@ -125,11 +125,11 @@ RELEASES = {
         'run': 'TFA',
         'title': 'Psion 2FA',
         'folder': 'TFA',
-        'version': '0.9',
-        'date': (2026, 11, 23),
+        'version': '0.9.1',
+        'date': (2026, 11, 24),        # 0.9 (23 Nov) stays downloadable
         'opk': 'build/game/TFA.opk',          # committed in the repo, with the launchers
         'build_files': [],
-        'models': 'CM, XP, LA, LZ and LZ64',
+        'models': 'CM, XP, LA (XP 32K), LZ and LZ64',
     },
 }
 
