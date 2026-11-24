@@ -46,12 +46,11 @@ RELEASES = {
         'run': 'CHESS',
         'title': 'Chess',
         'folder': 'Chess',
-        'version': '1.1',
-        'date': (2026, 11, 22),        # 1.0 (21 Nov) stays downloadable: release files are never replaced
+        'version': '1.2.1',
+        'date': (2026, 11, 24),        # 1.0 (21 Nov), 1.1 (22 Nov) and 1.2 (24 Nov) stay downloadable: release files are never replaced
         'opk': 'build/game/CHESS.opk',
         # build outputs that do go in (the rest of build/ is listings and test output)
-        'build_files': ['build/game/CHESS.opk', 'build/game/CHESS.opl', 'build/game/CHG1.opl',
-                        'build/game/CHG2.opl', 'build/game/CHG3.opl', 'build/game/budget.txt'],
+        'build_files': ['build/game/CHESS.opk', 'build/game/CHESS.opl', 'build/game/budget.txt'],
         'models': 'LZ and LZ64',
     },
     'connect4': {

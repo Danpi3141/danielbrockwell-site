@@ -3,9 +3,9 @@ title: Chess
 category: game
 status: released
 summary: "A chess engine in 6303 machine code for the four-line Organisers: eight levels, about 450 to 1950 Elo against Stockfish."
-updated: 2026-11-22
+updated: 2026-11-24
 pack: 64K
-needs: "The program uses about 60K, so it fits a 64K pack or larger. The game was designed within a 256K budget, so the pack image declares a 256K Flashpak with about 60K used: in an emulator, load it into slot B of an LZ or LZ64 and the rest of the pack stays empty. On a real Organiser, load the psion/ folder from the source + build zip with RPBOOT onto a Rampak or Flashpak of 64K or more in B: or C:."
+needs: "The program uses about 55K, so it fits a 64K pack or larger. The game was designed within a 256K budget, so the pack image declares a 256K Flashpak with about 55K used: in an emulator, load it into slot B of an LZ or LZ64 and the rest of the pack stays empty. On a real Organiser, load the psion/ folder from the source + build zip with RPBOOT onto a Rampak or Flashpak of 64K or more in B: or C:."
 licence: MIT
 animations:
   - { src: /assets/img/psion/chess/play-lz64.gif, alt: "Chess on the four-line screen: after 1.e4 e5 the player types G1F3 and F1C4, the Psion pauses to think and replies Nc6, then Nf6, while the view switches between the two halves of the board", screen: "Four-line: LZ and LZ64" }
@@ -13,11 +13,17 @@ models:
   cm:   { state: no }
   xp:   { state: no }
   la:   { state: no }
-  lz:   { state: works, free: 18431 }
-  lz64: { state: works, free: 18431 }
-memory_note: "Free memory as the Organiser's FREE reports it on a fresh machine, measured in the emulator: enough to play and save. Chess picks the biggest table that still leaves room for its save file: 128 entries from 18,431, 256 from 19,330, the full 512 from 21,122. With 17,056 to 18,430 it plays without saving."
-tested_on: "the Jape emulator (LZ64), with speed checks on a real Organiser that matched the emulator."
+  lz:   { state: works, free: 16869 }
+  lz64: { state: works, free: 16869 }
+memory_note: "Free memory as the Organiser's FREE reports it on a fresh machine, measured in the emulator: enough to play and save. Chess picks the biggest table that still leaves room for its save file: 128 entries from 16,869, 256 from 17,771, the full 512 from 19,563 (18,117 once the save file exists). With 15,427 to 16,868 it plays without saving."
+tested_on: "the Jape emulator (LZ and LZ64). Speed checks of an earlier build on a real Organiser matched the emulator; 1.2.1 has not been run on one yet."
 files:
+  - { file: chess-1.2.1-psion.zip, kind: psion, version: "1.2.1", date: 2026-11-24 }
+  - { file: chess-1.2.1.opk, kind: build, version: "1.2.1", date: 2026-11-24 }
+  - { file: chess-1.2.1-source.zip, kind: source, version: "1.2.1", date: 2026-11-24 }
+  - { file: chess-1.2-psion.zip, kind: psion, version: "1.2", date: 2026-11-24 }
+  - { file: chess-1.2.opk, kind: build, version: "1.2", date: 2026-11-24 }
+  - { file: chess-1.2-source.zip, kind: source, version: "1.2", date: 2026-11-24 }
   - { file: chess-1.1-psion.zip, kind: psion, version: "1.1", date: 2026-11-22 }
   - { file: chess-1.1.opk, kind: build, version: "1.1", date: 2026-11-22 }
   - { file: chess-1.1-source.zip, kind: source, version: "1.1", date: 2026-11-22 }
@@ -29,6 +35,8 @@ screenshots:
   - { src: /assets/img/psion/chess/lz64-other-half.png, alt: "Four-line screen: Black's half of the board, ranks 8 to 5, after pressing MODE", screen: "Board, Black's half (MODE)" }
   - { src: /assets/img/psion/chess/lz64-hint.png, alt: "Four-line screen: the bottom line reads HINT E1G1, suggesting castling", screen: Hint }
 changelog:
+  - { date: 2026-11-24, version: "1.2.1", change: "Fixes the TRAP crash with Chess on two packs: a version now only uses its own game files, whatever is on the other pack." }
+  - { date: 2026-11-24, version: "1.2", change: "Needs 1,556 bytes less free memory with room for the save file, takes 6.7K less of the pack, thinks about 5% faster and starts in about 2 seconds instead of 3. The moves are the same for the same number of positions searched. An alarm ringing during a game no longer leaves the board blank until a key is pressed." }
   - { date: 2026-11-22, version: "1.1", change: "The launcher keeps room for the save file, so a game that starts with a bigger table can always be saved. 1.0 could pick its full table and then show CANNOT SAVE: NO ROOM with 19,712 to 21,086 bytes free." }
   - { date: 2026-11-21, version: "1.0", change: "First release." }
 ---
@@ -68,10 +76,14 @@ While it thinks, any key makes it move now. The menu has new game, level, take b
 
 **Game review** (<kbd>G</kbd> in the menu): <kbd>RIGHT</kbd> or <kbd>EXE</kbd> for the next move, <kbd>LEFT</kbd> or <kbd>DEL</kbd> for the one before, <kbd>DOWN</kbd> and <kbd>UP</kbd> for ten plies, <kbd>SPACE</kbd> to analyse, <kbd>P</kbd> to play on from that position.
 
+## Known bugs
+
+- **1.2 with an older version on another pack:** don't have Chess 1.2 on one pack and 1.0 or 1.1 on another pack in the Organiser at the same time. Starting Chess can then stop the Organiser with `TRAP 0007 7E80`, because the launcher may load the other version's game files. Take the other pack out, or use 1.2.1, which fixes it: 1.2.1 can share the Organiser with any other version.
+
 ## Technical notes
 
 - The engine searches about 70 to 120 positions a second on the Organiser.
-- The game uses a RAM array of 19,030 bytes with its full 512-entry transposition table; with room for the save file it needs 21,122 bytes free for that table, 18,431 for the smallest.
-- The program takes about 60K, so a 64K pack holds it. It was designed within a 256K budget, which leaves room to grow: small extra endgame tables are a possibility, though tests so far suggest they add little strength.
+- The game takes 17,732 bytes of RAM with its full 512-entry transposition table; with room for the save file it needs 19,563 bytes free for that table, 16,869 for the smallest. Part of it lives in memory the Organiser is not using while the game runs: zero page, the menu-text buffer, and the launcher's own code once it has run. What the Organiser needs back is restored on leaving.
+- The program takes about 55K, so a 64K pack holds it. It was designed within a 256K budget, which leaves room to grow: small extra endgame tables are a possibility, though tests so far suggest they add little strength.
 - **How the levels were measured.** On a PC, the reference engine, which searches the same way as the Organiser's, played 484-game matches against Stockfish set to a limited strength (its UCI_Elo setting, 1320 to 2000). It used the same book and endgame table, and each level's position budget: about 69 positions for each second of thinking time. Levels 1 to 3 are weaker than Stockfish's lowest setting, so they were measured against level 4 instead. The results are approximate benchmarks on Stockfish's own scale, with margins of about 20 to 35 points at levels 4 to 8. They are not ratings earned in rated play, and Stockfish's scale does not line up exactly with FIDE or online ratings.
 - Bishop and knight mates succeed in about 80% of random starts.
