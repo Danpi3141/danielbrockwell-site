@@ -58,8 +58,8 @@ RELEASES = {
         'psion_skip': {'psion/C4g2.odb'},     # a game exported while testing
         'title': 'Connect 4',
         'folder': 'Connect4',
-        'version': '1.0',
-        'date': (2026, 11, 21),
+        'version': '1.0.1',
+        'date': (2026, 11, 24),        # 1.0 (21 Nov) stays downloadable
         'opk': 'build/game/C4.opk',
         'build_files': ['build/game/C4.opk', 'build/game/C4.opl', 'build/game/C4G.opl',
                         'build/game/budget.txt'],
@@ -69,8 +69,8 @@ RELEASES = {
         'run': 'REV',
         'title': 'Reversi',
         'folder': 'Reversi',
-        'version': '1.0',
-        'date': (2026, 11, 22),        # 0.9 (21 Nov) stays downloadable
+        'version': '1.0.1',
+        'date': (2026, 11, 24),        # 0.9 (21 Nov) and 1.0 (22 Nov) stay downloadable
         'opk': 'build/game/REV.opk',
         'build_files': ['build/game/REV.opk', 'build/game/REV.opl', 'build/game/REVG.opl',
                         'build/game/budget.txt'],
@@ -114,8 +114,8 @@ RELEASES = {
         'run': 'SANTA',
         'title': 'Psion Spins',
         'folder': 'Spins',
-        'version': '0.9.3',
-        'date': (2026, 11, 23),
+        'version': '0.9.4',
+        'date': (2026, 11, 24),
         'opk': 'build/game/SPINS.opk',
         'build_files': [],
         'models': 'CM, XP, LA, LZ and LZ64',
@@ -124,8 +124,8 @@ RELEASES = {
         'run': 'TFA',
         'title': 'Psion 2FA',
         'folder': 'TFA',
-        'version': '0.9.1',
-        'date': (2026, 11, 24),        # 0.9 (23 Nov) stays downloadable
+        'version': '0.9.2',
+        'date': (2026, 11, 24),        # 0.9 (23 Nov) and 0.9.1 (24 Nov) stay downloadable
         'opk': 'build/game/TFA.opk',          # committed in the repo, with the launchers
         'build_files': [],
         'models': 'CM, XP, LA (XP 32K), LZ and LZ64',

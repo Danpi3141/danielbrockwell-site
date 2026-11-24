@@ -3,7 +3,7 @@ title: Connect 4
 category: game
 status: released
 summary: "Connect 4 against the Organiser or a friend, with a coach, on two-line and four-line screens."
-updated: 2026-11-21
+updated: 2026-11-24
 pack: 32K
 needs: "One 32K Datapak serves every model. In an emulator, load the pack image into slot B. On a real Organiser, write the image to a 32K Datapak, or load the psion/ folder from the source + build zip with RPBOOT."
 licence: MIT
@@ -11,14 +11,17 @@ animations:
   - { src: /assets/img/psion/connect4/play-lz64.gif, alt: "Connect 4 on the four-line screen: the end of a 35-move game on a nearly full board; the Psion thinks, drops its last disc, and its winning four blink under Psion wins in 35 moves", screen: "Four-line: LZ and LZ64" }
   - { src: /assets/img/psion/connect4/play-cm.gif, alt: "The same Connect 4 game on the two-line screen: the Psion's last move and its winning four blinking under Psion wins in 35 moves", screen: "Two-line: CM, XP and LA (XP 32K)", lines: 2 }
 models:
-  cm:   { state: works, free: 4877 }
-  xp:   { state: works, free: 4877 }
-  la:   { state: works, free: 4877 }
-  lz:   { state: works, free: 4875 }
-  lz64: { state: works, free: 4875 }
+  cm:   { state: works, free: 4885 }
+  xp:   { state: works, free: 4885 }
+  la:   { state: works, free: 4885 }
+  lz:   { state: works, free: 4883 }
+  lz64: { state: works, free: 4883 }
 memory_note: "Free memory as the Organiser's FREE reports it on a fresh machine, measured in the emulator: enough to play a game and save it."
 tested_on: "the Jape emulator: CM (ROMs 2.4, 2.6, 3.3), XP (2.4, 2.6, 3.1), LA (XP 32K), LZ and LZ64, and random-key runs on all 29 Organiser ROMs it has. Real hardware checks are still to do."
 files:
+  - { file: connect4-1.0.1-psion.zip, kind: psion, version: "1.0.1", date: 2026-11-24 }
+  - { file: connect4-1.0.1.opk, kind: build, version: "1.0.1", date: 2026-11-24 }
+  - { file: connect4-1.0.1-source.zip, kind: source, version: "1.0.1", date: 2026-11-24 }
   - { file: connect4-1.0-psion.zip, kind: psion, version: "1.0", date: 2026-11-21 }
   - { file: connect4-1.0.opk, kind: build, version: "1.0", date: 2026-11-21 }
   - { file: connect4-1.0-source.zip, kind: source, version: "1.0", date: 2026-11-21 }
@@ -28,6 +31,7 @@ screenshots:
   - { src: /assets/img/psion/connect4/cm-four.png, alt: "Two-line screen: the whole board drawn in custom characters, with the result beside it", screen: "Two-line: CM, XP and LA (XP 32K)", lines: 2 }
   - { src: /assets/img/psion/connect4/lz64-review.png, alt: "Four-line screen in review: Hollow's move in column 4, move 10 of 10", screen: Review }
 changelog:
+  - { date: 2026-11-24, version: "1.0.1", change: "Two versions can share the Organiser, one on each pack: the game only uses its own files. Before, it could load the other version's files. It needs 8 more bytes of memory." }
   - { date: 2026-11-21, version: "1.0", change: "First release." }
 ---
 
@@ -69,6 +73,6 @@ In menus, <kbd>UP</kbd> and <kbd>DOWN</kbd> move, a letter jumps to the next ite
 
 ## Technical notes
 
-- The game needs 4,877 bytes free on a two-line model and 4,875 on a four-line one; a blank CM has room to spare and keeps 33 exported games.
+- The game needs 4,885 bytes free on a two-line model and 4,883 on a four-line one; a blank CM has room to spare and keeps 33 exported games.
 - The program takes about 28K of the 32K Datapak.
 - The engine searches about 280 positions a second, and level 8 solves most endings with 16 to 18 empty cells.
