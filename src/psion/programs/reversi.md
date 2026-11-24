@@ -8,8 +8,8 @@ pack: 16K
 needs: "16,346 bytes: one 16K Datapak serves every model. In an emulator, load the pack image into slot B. On a real Organiser, write it to a 16K or 32K Datapak, or load the psion/ folder from the source + build zip with RPBOOT."
 licence: MIT
 animations:
-  - { src: /assets/img/psion/reversi/play-lz64.gif, alt: "Reversi on the four-line screen: the opening moves of a game, the panel showing the discs each move turns, and the Psion thinking with its progress bar before each reply", screen: "Four-line (LZ and LZ64)" }
-  - { src: /assets/img/psion/reversi/play-cm.gif, alt: "The same three Reversi moves on the two-line screen, with the scores and the Psion's search display", screen: "Two-line (CM, XP and LA)", lines: 2 }
+  - { src: /assets/img/psion/reversi/play-lz64.gif, alt: "Reversi on the four-line screen: the opening moves of a game, the panel showing the discs each move turns, and the Psion thinking with its progress bar before each reply", screen: "Four-line: LZ and LZ64" }
+  - { src: /assets/img/psion/reversi/play-cm.gif, alt: "The same three Reversi moves on the two-line screen, with the scores and the Psion's search display", screen: "Two-line: CM, XP and LA (XP 32K)", lines: 2 }
 models:
   cm:   { state: works, free: 5783 }
   xp:   { state: works, free: 5783 }
@@ -17,7 +17,7 @@ models:
   lz:   { state: works, free: 5781 }
   lz64: { state: works, free: 5781 }
 memory_note: "Free memory as the Organiser's FREE reports it on a fresh machine, measured in the emulator: enough to play a game and save it."
-tested_on: "the Jape emulator: CM, XP, LA, LZ and LZ64, and random keys on all 29 Organiser ROMs it has. Real hardware checks are still to do."
+tested_on: "the Jape emulator: CM, XP, LA (XP 32K), LZ and LZ64, and random keys on all 29 Organiser ROMs it has. Real hardware checks are still to do."
 files:
   - { file: reversi-1.0-psion.zip, kind: psion, version: "1.0", date: 2026-11-22 }
   - { file: reversi-1.0.opk, kind: build, version: "1.0", date: 2026-11-22 }
@@ -27,8 +27,8 @@ files:
   - { file: reversi-0.9-source.zip, kind: source, version: "0.9", date: 2026-11-21 }
 source: false
 screenshots:
-  - { src: /assets/img/psion/reversi/lz64-game.png, alt: "Four-line screen: the 8 by 6 board on the left with columns A to H, the score You 7, Psion 7, the Psion's last move c6 and your next move a4 +2", screen: "Four-line (LZ and LZ64)" }
-  - { src: /assets/img/psion/reversi/cm-thinking.png, alt: "Two-line screen: the whole board drawn in custom characters, and the Psion thinking at depth 3 with a progress bar", screen: "Two-line (CM, XP and LA)", lines: 2 }
+  - { src: /assets/img/psion/reversi/lz64-game.png, alt: "Four-line screen: the 8 by 6 board on the left with columns A to H, the score You 7, Psion 7, the Psion's last move c6 and your next move a4 +2", screen: "Four-line: LZ and LZ64" }
+  - { src: /assets/img/psion/reversi/cm-thinking.png, alt: "Two-line screen: the whole board drawn in custom characters, and the Psion thinking at depth 3 with a progress bar", screen: "Two-line: CM, XP and LA (XP 32K)", lines: 2 }
   - { src: /assets/img/psion/reversi/lz64-menu.png, alt: "Four-line screen: the board with the menu beside it: New game, Take back, Tip, Swap sides", screen: Menu }
 changelog:
   - { date: 2026-11-22, version: "1.0", change: "First release. Levels 1 to 3 are much easier, so the ladder starts gently for beginners." }

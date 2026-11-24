@@ -8,8 +8,8 @@ pack: 32K
 needs: "27,678 bytes: one 32K Datapak serves every model. In an emulator, load the pack image into slot B. On a real Organiser, load the Organiser files zip with RPBOOT."
 licence: MIT
 animations:
-  - { src: /assets/img/psion/spins/play-lz64.gif, alt: "Psion Spins on the four-line screen: one spin of the five reels, Santa walks across saying HO HO HO!, then the winning lines add up to 84 credits", screen: "Four-line (LZ and LZ64)" }
-  - { src: /assets/img/psion/spins/play-cm.gif, alt: "Psion Spins on the two-line screen: two spins of the reels, with Santa walking across during the second", screen: "Two-line (CM, XP and LA)", lines: 2 }
+  - { src: /assets/img/psion/spins/play-lz64.gif, alt: "Psion Spins on the four-line screen: one spin of the five reels, Santa walks across saying HO HO HO!, then the winning lines add up to 84 credits", screen: "Four-line: LZ and LZ64" }
+  - { src: /assets/img/psion/spins/play-cm.gif, alt: "Psion Spins on the two-line screen: two spins of the reels, with Santa walking across during the second", screen: "Two-line: CM, XP and LA (XP 32K)", lines: 2 }
 models:
   cm:   { state: works, free: 5361 }
   xp:   { state: works, free: 5361 }
@@ -17,7 +17,7 @@ models:
   lz:   { state: works, free: 5359 }
   lz64: { state: works, free: 5359 }
 memory_note: "Free memory as the Organiser's FREE reports it on a fresh machine, measured in the emulator: enough to play a game and save it."
-tested_on: "the Jape emulator: CM, XP, LA, LZ and LZ64, and a spin with Santa on all 29 Organiser ROMs it has. Sound and the real LCD are still to check on hardware."
+tested_on: "the Jape emulator: CM, XP, LA (XP 32K), LZ and LZ64, and a spin with Santa on all 29 Organiser ROMs it has. Sound and the real LCD are still to check on hardware."
 files:
   - { file: spins-0.9.3-psion.zip, kind: psion, version: "0.9.3", date: 2026-11-23 }
   - { file: spins-0.9.3.opk, kind: build, version: "0.9.3", date: 2026-11-23 }
@@ -33,9 +33,9 @@ files:
   - { file: spins-0.9-source.zip, kind: source, version: "0.9", date: 2026-11-21 }
 source: false
 screenshots:
-  - { src: /assets/img/psion/spins/lz64-reels.png, alt: "Four-line screen: five reels of card symbols, bells and presents, 1000 credits, bet 20, EXE=SPIN", screen: "Four-line (LZ and LZ64)" }
+  - { src: /assets/img/psion/spins/lz64-reels.png, alt: "Four-line screen: five reels of card symbols, bells and presents, 1000 credits, bet 20, EXE=SPIN", screen: "Four-line: LZ and LZ64" }
   - { src: /assets/img/psion/spins/lz64-santa.png, alt: "Four-line screen: Santa walking across the reels, credits 980, bet 20", screen: "Santa's walk" }
-  - { src: /assets/img/psion/spins/cm-reels.png, alt: "Two-line screen: five reels by two rows, 1000 credits, bet 20", screen: "Two-line (CM, XP and LA)", lines: 2 }
+  - { src: /assets/img/psion/spins/cm-reels.png, alt: "Two-line screen: five reels by two rows, 1000 credits, bet 20", screen: "Two-line: CM, XP and LA (XP 32K)", lines: 2 }
 changelog:
   - { date: 2026-11-23, version: "0.9.3", change: "December works with the game left running. Before, the date was only looked at when the game started, so a game left in the Organiser overnight opened no advent door and gave no Christmas Day gift until it was started again. Now the first key on a new day plays that day's event: the advent door and its three free spins, the Christmas Day gift, or New Year." }
   - { date: 2026-11-23, version: "0.9.2", change: "The Xmas Spins start with their stars flashing to a chime, then Santa climbs onto the chimney and drops in, to the whole first line of Deck the Halls (before, 2.2 s cut the tune off). Autoplay plays at the Animation setting's pace, so a feature in autoplay gets its build-up too." }

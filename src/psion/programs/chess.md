@@ -8,7 +8,7 @@ pack: 64K
 needs: "The program uses about 60K, so it fits a 64K pack or larger. The game was designed within a 256K budget, so the pack image declares a 256K Flashpak with about 60K used: in an emulator, load it into slot B of an LZ or LZ64 and the rest of the pack stays empty. On a real Organiser, load the psion/ folder from the source + build zip with RPBOOT onto a Rampak or Flashpak of 64K or more in B: or C:."
 licence: MIT
 animations:
-  - { src: /assets/img/psion/chess/play-lz64.gif, alt: "Chess on the four-line screen: after 1.e4 e5 the player types G1F3 and F1C4, the Psion pauses to think and replies Nc6, then Nf6, while the view switches between the two halves of the board", screen: "Four-line (LZ and LZ64)" }
+  - { src: /assets/img/psion/chess/play-lz64.gif, alt: "Chess on the four-line screen: after 1.e4 e5 the player types G1F3 and F1C4, the Psion pauses to think and replies Nc6, then Nf6, while the view switches between the two halves of the board", screen: "Four-line: LZ and LZ64" }
 models:
   cm:   { state: no }
   xp:   { state: no }

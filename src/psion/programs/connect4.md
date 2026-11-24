@@ -8,8 +8,8 @@ pack: 32K
 needs: "One 32K Datapak serves every model. In an emulator, load the pack image into slot B. On a real Organiser, write the image to a 32K Datapak, or load the psion/ folder from the source + build zip with RPBOOT."
 licence: MIT
 animations:
-  - { src: /assets/img/psion/connect4/play-lz64.gif, alt: "Connect 4 on the four-line screen: the end of a 35-move game on a nearly full board; the Psion thinks, drops its last disc, and its winning four blink under Psion wins in 35 moves", screen: "Four-line (LZ and LZ64)" }
-  - { src: /assets/img/psion/connect4/play-cm.gif, alt: "The same Connect 4 game on the two-line screen: the Psion's last move and its winning four blinking under Psion wins in 35 moves", screen: "Two-line (CM, XP and LA)", lines: 2 }
+  - { src: /assets/img/psion/connect4/play-lz64.gif, alt: "Connect 4 on the four-line screen: the end of a 35-move game on a nearly full board; the Psion thinks, drops its last disc, and its winning four blink under Psion wins in 35 moves", screen: "Four-line: LZ and LZ64" }
+  - { src: /assets/img/psion/connect4/play-cm.gif, alt: "The same Connect 4 game on the two-line screen: the Psion's last move and its winning four blinking under Psion wins in 35 moves", screen: "Two-line: CM, XP and LA (XP 32K)", lines: 2 }
 models:
   cm:   { state: works, free: 4877 }
   xp:   { state: works, free: 4877 }
@@ -17,15 +17,15 @@ models:
   lz:   { state: works, free: 4875 }
   lz64: { state: works, free: 4875 }
 memory_note: "Free memory as the Organiser's FREE reports it on a fresh machine, measured in the emulator: enough to play a game and save it."
-tested_on: "the Jape emulator: CM (ROMs 2.4, 2.6, 3.3), XP (2.4, 2.6, 3.1), LA, LZ and LZ64, and random-key runs on all 29 Organiser ROMs it has. Real hardware checks are still to do."
+tested_on: "the Jape emulator: CM (ROMs 2.4, 2.6, 3.3), XP (2.4, 2.6, 3.1), LA (XP 32K), LZ and LZ64, and random-key runs on all 29 Organiser ROMs it has. Real hardware checks are still to do."
 files:
   - { file: connect4-1.0-psion.zip, kind: psion, version: "1.0", date: 2026-11-21 }
   - { file: connect4-1.0.opk, kind: build, version: "1.0", date: 2026-11-21 }
   - { file: connect4-1.0-source.zip, kind: source, version: "1.0", date: 2026-11-21 }
 source: false
 screenshots:
-  - { src: /assets/img/psion/connect4/lz64-four.png, alt: "Four-line screen: the board on the left with Hollow's winning four, and 'Hollow wins in 16 moves' on the right", screen: "Four-line (LZ and LZ64)" }
-  - { src: /assets/img/psion/connect4/cm-four.png, alt: "Two-line screen: the whole board drawn in custom characters, with the result beside it", screen: "Two-line (CM, XP and LA)", lines: 2 }
+  - { src: /assets/img/psion/connect4/lz64-four.png, alt: "Four-line screen: the board on the left with Hollow's winning four, and 'Hollow wins in 16 moves' on the right", screen: "Four-line: LZ and LZ64" }
+  - { src: /assets/img/psion/connect4/cm-four.png, alt: "Two-line screen: the whole board drawn in custom characters, with the result beside it", screen: "Two-line: CM, XP and LA (XP 32K)", lines: 2 }
   - { src: /assets/img/psion/connect4/lz64-review.png, alt: "Four-line screen in review: Hollow's move in column 4, move 10 of 10", screen: Review }
 changelog:
   - { date: 2026-11-21, version: "1.0", change: "First release." }

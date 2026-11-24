@@ -9,8 +9,8 @@ pack: 16K
 needs: "11,623 bytes: one 16K Datapak serves every model. In an emulator, load the pack image into slot B. On a real Organiser, load the Organiser files zip with RPBOOT."
 licence: MIT
 animations:
-  - { src: /assets/img/psion/2fa/play-lz64.gif, alt: "Psion 2FA on the four-line screen: adding an account with the published test key, the Same as phone? check, then the code screen's bar running down until the code changes", screen: "Four-line (LZ and LZ64)" }
-  - { src: /assets/img/psion/2fa/play-cm.gif, alt: "Psion 2FA on the two-line screen: the code screen counting down to the changeover, with the next code shown", screen: "Two-line (CM, XP and LA)", lines: 2 }
+  - { src: /assets/img/psion/2fa/play-lz64.gif, alt: "Psion 2FA on the four-line screen: adding an account with the published test key, the Same as phone? check, then the code screen's bar running down until the code changes", screen: "Four-line: LZ and LZ64" }
+  - { src: /assets/img/psion/2fa/play-cm.gif, alt: "Psion 2FA on the two-line screen: the code screen counting down to the changeover, with the next code shown", screen: "Two-line: CM, XP and LA (XP 32K)", lines: 2 }
 models:
   cm:   { state: works, free: 4603 }
   xp:   { state: works, free: 4603 }
@@ -18,10 +18,10 @@ models:
   lz:   { state: works, free: 4601 }
   lz64: { state: works, free: 4601 }
 memory_note: "Free memory as the Organiser's FREE reports it on a fresh machine, measured in the emulator: enough to add an account, show its codes and save. It keeps 400 bytes spare so it can always start again."
-tested_on: "the Jape emulator: CM, XP, LA, LZ and LZ64, and all 29 Organiser ROMs it has; every code checked against an independent RFC 6238 calculation on a PC."
+tested_on: "the Jape emulator: CM, XP, LA (XP 32K), LZ and LZ64, and all 29 Organiser ROMs it has; every code checked against an independent RFC 6238 calculation on a PC."
 screenshots:
-  - { src: /assets/img/psion/2fa/lz64-codes.png, alt: "Four-line screen: three accounts, GITHUB, GOOGLE and AMAZON, each with its six-digit code, and the countdown bar about half full", screen: "Four-line (LZ and LZ64)" }
-  - { src: /assets/img/psion/2fa/cm-codes.png, alt: "Two-line screen: GITHUB 598 204, and the next code 004 877 in 20 seconds", screen: "Two-line (CM, XP and LA)", lines: 2 }
+  - { src: /assets/img/psion/2fa/lz64-codes.png, alt: "Four-line screen: three accounts, GITHUB, GOOGLE and AMAZON, each with its six-digit code, and the countdown bar about half full", screen: "Four-line: LZ and LZ64" }
+  - { src: /assets/img/psion/2fa/cm-codes.png, alt: "Two-line screen: GITHUB 598 204, and the next code 004 877 in 20 seconds", screen: "Two-line: CM, XP and LA (XP 32K)", lines: 2 }
   - { src: /assets/img/psion/2fa/lz64-key.png, alt: "Four-line screen: adding an account named GITHUB, its 16-character key typed in groups of four", screen: "Adding an account" }
   - { src: /assets/img/psion/2fa/lz64-check.png, alt: "Four-line screen: the current and next codes for GITHUB, and the question Same as phone? Y/N", screen: "Checking against a phone" }
 files:

@@ -114,7 +114,7 @@ export function render({ collections, buildDate }) {
   out.push(intro('/psion/'), '',
     'The Organiser II models, as the program pages name them:', '',
     '| Model | ROM | RAM | Screen |', '| --- | --- | --- | --- |',
-    ...models.map((m) => `| ${m.label} | ${m.rom} | ${m.ram} | ${m.screen} |`), '');
+    ...models.map((m) => `| ${m.name} | ${m.rom} | ${m.ram} | ${m.screen} |`), '');
   pageText('/psion/getting-started/', 'Getting started with the Psion programs');
   programs.forEach((i) => fullEntry(i, `Psion Organiser II ${i.data.category === 'game' ? 'game' : 'utility'}`));
 

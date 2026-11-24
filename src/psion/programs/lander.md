@@ -8,7 +8,7 @@ pack: 16K
 needs: "11,807 bytes: a 16K Datapak or larger. In an emulator, load the pack image into slot B of an LZ or LZ64. On a real Organiser, load the psion/ folder from the source + build zip with RPBOOT (about 11.7K, or about 5K without the source text)."
 licence: MIT
 animations:
-  - { src: /assets/img/psion/lander/play-lz64.gif, alt: "Lunar Lander: the lander crosses the terrain, brakes over the pad with the throttle and side bursts, lands, plants its flag, and the LEVEL 2 card shows score 320", screen: "Four-line (LZ and LZ64)" }
+  - { src: /assets/img/psion/lander/play-lz64.gif, alt: "Lunar Lander: the lander crosses the terrain, brakes over the pad with the throttle and side bursts, lands, plants its flag, and the LEVEL 2 card shows score 320", screen: "Four-line: LZ and LZ64" }
 models:
   cm:   { state: no }
   xp:   { state: no }

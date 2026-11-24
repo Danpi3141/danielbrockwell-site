@@ -23,7 +23,7 @@ Two other downloads sit beside it: the **pack image** (`.opk`), a copy of a whol
 4. **PROG**, **RUN** `RPBOOT`. Choose the pack to copy the program to and watch the progress bar until it says, for example, `NOW RUN B:C4`.
 5. **PROG**, **RUN**, and type that name, such as `B:C4`.
 
-RPBOOT fetches the right loader for your model by itself: RPLOAD on an LZ or LZ64, RPLOADCM on a CM, XP or LA. It keeps the loader in A:; delete `A:RPLOAD` afterwards if you want the memory back. The zip's `README.txt` repeats these steps and lists its files.
+RPBOOT fetches the right loader for your model by itself: RPLOAD on an LZ or LZ64, RPLOADCM on a CM, XP or LA (XP 32K). It keeps the loader in A:; delete `A:RPLOAD` afterwards if you want the memory back. The zip's `README.txt` repeats these steps and lists its files.
 
 ## Running a program in an emulator
 
@@ -39,10 +39,10 @@ The model name is on the case. To be sure, ask the Organiser: its model byte is 
 | `PEEKB(-24)` | Model | ROM | RAM | Display |
 |---|---|---|---|---|
 {%- for m in models_list %}
-| {{ m.peek }} | {{ m.label }} | {{ m.rom }} | {{ m.ram }} | {{ m.display }} |
+| {{ m.peek }} | {{ m.name }} | {{ m.rom }} | {{ m.ram }} | {{ m.display }} |
 {%- endfor %}
 
-The display is lines × characters: the CM, XP and LA show 2 lines of 16, the LZ and LZ64 4 lines of 20.
+The display is lines × characters: the CM, XP and LA (XP 32K) show 2 lines of 16, the LZ and LZ64 4 lines of 20.
 
 ## How much free memory do I have?
 

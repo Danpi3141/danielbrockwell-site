@@ -8,7 +8,7 @@ pack: 32K
 needs: "30,085 bytes: a 32K Datapak. In an emulator, load the pack image into slot B of an LZ or LZ64. On a real Organiser, load the psion/ folder from the source + build zip with RPBOOT: A: needs about 14K free for the files, plus 8,142 bytes free to run it."
 licence: MIT
 animations:
-  - { src: /assets/img/psion/phaselock/play-lz64.gif, alt: "Phaselock: the title, the WAVE 1: DRONES card, then wave 1 at 20 frames a second, the ship firing at drones as it moves between lanes", screen: "Four-line (LZ and LZ64)" }
+  - { src: /assets/img/psion/phaselock/play-lz64.gif, alt: "Phaselock: the title, the WAVE 1: DRONES card, then wave 1 at 20 frames a second, the ship firing at drones as it moves between lanes", screen: "Four-line: LZ and LZ64" }
 models:
   cm:   { state: no }
   xp:   { state: no }

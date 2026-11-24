@@ -6,7 +6,7 @@ summary: "Proth, Riesel and Mersenne tests and sieved searches for large primes,
 updated: 2026-11-22
 pack: 64K
 animations:
-  - { src: /assets/img/psion/prime-finder/play-lz64.gif, alt: "Prime finder: a Proth test of 3 x 2^189 + 1 is typed in, the squarings count up to 188, and it reports 3*2^189+1 IS PRIME! in 6 seconds", screen: "Four-line (LZ and LZ64)" }
+  - { src: /assets/img/psion/prime-finder/play-lz64.gif, alt: "Prime finder: a Proth test of 3 x 2^189 + 1 is typed in, the squarings count up to 188, and it reports 3*2^189+1 IS PRIME! in 6 seconds", screen: "Four-line: LZ and LZ64" }
 models:
   cm:   { state: no }
   xp:   { state: no }
