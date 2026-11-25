@@ -19,7 +19,7 @@ models:
   lz64: { state: works, free: 17500 }
 limited_note: "The CM runs a reduced BigNum: numbers to 617 digits, no sieve, no saving or resuming, and a shorter entry line."
 memory_note: "Free memory as the Organiser's FREE reports it, measured in the emulator: enough for everything that model can usually do. With less, BigNum still starts, with smaller limits, down to 5,990 bytes on any model."
-tested_on: "the Jape emulator: CM, XP, LA (XP 32K), LZ and LZ64, and all 29 Organiser ROMs it has, with the answers checked against a PC. An earlier version's sieve has been seen running on a real LZ64; the rest is still to be tried on one."
+tested_on: "the Jape emulator: CM, XP, LA (XP 32K), LZ and LZ64, and all 29 Organiser ROMs it has, with the answers checked against a PC. It has had some testing on a real LZ64."
 screenshots:
   - { src: /assets/img/psion/bignum/lz64-factors.png, alt: "Four-line screen: 2**64+1 = P6 274177, P14 67280421310721, 2 factors in 40 seconds", screen: "Factors: P marks a proven prime, with its digits" }
   - { src: /assets/img/psion/bignum/lz64-sieve.png, alt: "Four-line screen: the quadratic sieve on a 31-digit number with 132 primes, 60 of 142 relations found, 47%, 57 seconds left, the whole job about 3 minutes", screen: "The sieve running" }
@@ -33,7 +33,7 @@ files:
   - { file: bignum-0.9.5-source.zip, kind: source, version: "0.9.5", date: 2026-11-25 }
 source: false
 changelog:
-  - { date: 2026-11-25, version: "0.9.5", change: "Working build, the first released: tested in the emulator on every model and all 29 Organiser ROMs. Real hardware still to come." }
+  - { date: 2026-11-25, version: "0.9.5", change: "Working build, the first released: tested in the emulator on every model and all 29 Organiser ROMs." }
 ---
 
 ## About
