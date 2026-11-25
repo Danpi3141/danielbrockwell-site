@@ -23,7 +23,7 @@ eleventyExcludeFromCollections: true
   <p class="card-meta">{% for s in ["released", "ongoing", "working-build", "in-development", "planned", "exploring"] %}{{ ui.badge(s) }} {% endfor %}</p>
 
   <h2>Model strip</h2>
-  {{ ui.modelStrip({ cm: { state: "no" }, xp: { state: "untested" }, la: { state: "works" }, lz: { state: "works" }, lz64: { state: "works" } }, models_list) }}
+  {{ ui.modelStrip({ cm: { state: "limited" }, xp: { state: "untested" }, la: { state: "works" }, lz: { state: "no" }, lz64: { state: "works" } }, models_list) }}
 
   <h2>LCD panel</h2>
   {{ ui.lcdText(["Line one", "Line two", "Line three", "LINE FOUR 1234567890"], "An LCD panel with four lines of sample text") }}

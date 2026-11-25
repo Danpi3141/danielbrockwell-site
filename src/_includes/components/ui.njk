@@ -9,7 +9,7 @@
 <span class="sr">Models:</span><ul class="models">
   {%- for m in list %}
   {%- set st = models[m.id].state if models and models[m.id] else "untested" %}
-  <li class="key key-{{ st }}">{{ m.name }}<span class="sr">: {{ "works" if st == "works" else ("not supported" if st == "no" else "untested") }}</span></li>
+  <li class="key key-{{ st }}"{% if st == "limited" %} title="Runs, with much less than on the other models"{% endif %}>{{ m.name }}<span class="sr">: {{ "works" if st == "works" else ("runs with reduced features" if st == "limited" else ("not supported" if st == "no" else "untested")) }}</span></li>
   {%- endfor %}
 </ul>
 {%- endmacro %}
@@ -29,7 +29,8 @@
 {% macro programCard(p, models) -%}
 {#- Three screen panels; the Psion overview's screen filter shows one (CSS only, no script):
     all: the first screenshot; two-line: a two-line screenshot, or the apology when no two-line
-    model runs it; four-line: likewise. Hidden panels' images are lazy, so they load only when shown. -#}
+    model runs it; four-line: likewise. Hidden panels' images are lazy, so they load only when shown.
+    When the four-line panel would repeat the first, one panel does for both. -#}
 {%- set two = p.data.models | screenSupport(2) %}
 {%- set four = p.data.models | screenSupport(4) %}
 {%- set first = p.data.screenshots[0] if (p.data.screenshots and p.data.screenshots.length) else none %}
@@ -37,19 +38,22 @@
 {%- set s4 = p.data.screenshots | shotFor(4) %}
 {%- set t = (p.data.lcd_name or p.data.title) | upper | truncate(20, true, "") %}
 <article class="card" data-two="{{ two }}" data-four="{{ four }}">
-  <div class="shot shot-all">{% if first %}{{ lcdShot(first, true) }}{% else %}{{ lcdText(["", t | center(20), "", ""], "") }}{% endif %}</div>
+  {%- set same = first and four != "no" and (not s4 or s4.src == first.src) %}
+  <div class="shot shot-all{% if same %} shot-4{% endif %}">{% if first %}{{ lcdShot(first, true) }}{% else %}{{ lcdText(["", t | center(20), "", ""], "") }}{% endif %}</div>
   <div class="shot shot-2">
     {%- if two == "no" %}{{ lcdShot({ src: "/assets/img/psion/sorry-lz-only.png", alt: "Organiser screen: Sorry! This game needs the 4-line screen of an LZ or LZ64 only" }, true) }}
     {%- elif s2 %}{{ lcdShot(s2, true) }}
     {%- elif first %}{{ lcdShot(first, true) }}
     {%- else %}{{ lcdText(["", t | center(20), "", ""], "") }}{% endif -%}
   </div>
+  {%- if not same %}
   <div class="shot shot-4">
     {%- if four == "no" %}{{ lcdText(["       SORRY!", " THIS GAME IS FOR", " THE TWO-LINE CM,", " XP AND LA ONLY"], "Sorry! This game is for the two-line CM, XP and LA only") }}
     {%- elif s4 %}{{ lcdShot(s4, true) }}
     {%- elif first %}{{ lcdShot(first, true) }}
     {%- else %}{{ lcdText(["", t | center(20), "", ""], "") }}{% endif -%}
   </div>
+  {%- endif %}
   <h3 class="card-title"><a href="{{ p.url }}">{{ p.data.title }}</a></h3>
   <p class="card-summary">{{ p.data.summary }}</p>
   <div class="card-meta">{{ badge(p.data.status) }}{% if p.data.pack %}<span class="mono small">{{ p.data.pack }} pack</span>{% endif %}</div>

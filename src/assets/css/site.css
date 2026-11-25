@@ -5,6 +5,7 @@
   --accent: #1F6F5C; --on-accent: #FFFFFF; --warn: #8A5A00; --code-bg: #ECEFE8;
   --lcd-bg: #B4C0A6; --lcd-ink: #1E2A33; --bezel: #3A423D;
   --ok: #1E7A38; --bad: #B3261E;
+  --limited: #F5C518; --limited-edge: #A67C00; --on-limited: #1A1F1C;
   --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, "Cascadia Mono", "SF Mono", Consolas, monospace;
   --pixel: "Matrix Sans", var(--mono);
@@ -103,6 +104,7 @@ hr, .rule { border: 0; border-top: 1px dotted var(--muted); margin: 32px 0; }
 .models { list-style: none; display: flex; flex-wrap: wrap; gap: 4px; padding: 0; margin: 8px 0; }
 .key { font-family: var(--mono); font-size: 13px; line-height: 1; padding: 5px 6px 4px; border-radius: 4px; border: 1px solid var(--muted); border-bottom-width: 2px; color: var(--muted); }
 .key-works { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.key-limited { background: var(--limited); border-color: var(--limited-edge); color: var(--on-limited); }
 .key-no { text-decoration: line-through; }
 
 /* cards */
@@ -119,7 +121,7 @@ hr, .rule { border: 0; border-top: 1px dotted var(--muted); margin: 32px 0; }
 .card-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
 .card-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: auto 0 0; padding-top: 8px; }
 .shot { line-height: 0; }
-.shot-2, .shot-4 { display: none; }
+.shot-2, .shot-4:not(.shot-all) { display: none; }
 /* Screen filter on the Psion overview: radio buttons and :has(), so it works with no script */
 .screen-filter { border: 0; padding: 0; margin: 8px 0 24px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .screen-filter legend { float: left; margin-right: 8px; font-weight: 600; }
@@ -218,6 +220,8 @@ thead th { border-bottom: 1px dotted var(--muted); color: var(--muted); font-wei
 .table-scroll { overflow-x: auto; }
 .mark { font-size: 20px; font-weight: 700; line-height: 1; }
 .mark-yes { color: var(--ok); } .mark-no { color: var(--bad); } .mark-maybe { color: var(--warn); }
+.mark-limited { display: inline-block; padding: 1px 5px; border-radius: 4px; background: var(--limited); color: var(--on-limited); font-size: 16px; }
+.mark-word { font-size: 14px; }
 .compat td, .compat th { vertical-align: middle; }
 .callout { border-left: 4px solid var(--warn); background: var(--surface); padding: 12px 16px; border-radius: 0 var(--radius) var(--radius) 0; margin: 0 0 24px; }
 .callout p:last-child { margin: 0; }

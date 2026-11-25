@@ -62,12 +62,13 @@ layout: layouts/base.njk
             {%- set e = models[m.id] %}
             <tr class="state-{{ e.state }}">
               <th scope="row">{{ m.name }}</th>
-              <td>{% if e.state == "works" %}<span class="mark mark-yes" aria-hidden="true">✓</span><span class="sr">Works</span>{% elif e.state == "no" %}<span class="mark mark-no" aria-hidden="true">✗</span><span class="sr">Not supported</span>{% else %}<span class="mark mark-maybe" aria-hidden="true">?</span><span class="sr">Untested</span>{% endif %}</td>
+              <td>{% if e.state == "works" %}<span class="mark mark-yes" aria-hidden="true">✓</span><span class="sr">Works</span>{% elif e.state == "limited" %}<span class="mark mark-limited" aria-hidden="true">✓</span> <span class="mark-word">Reduced</span>{% elif e.state == "no" %}<span class="mark mark-no" aria-hidden="true">✗</span><span class="sr">Not supported</span>{% else %}<span class="mark mark-maybe" aria-hidden="true">?</span><span class="sr">Untested</span>{% endif %}</td>
               {%- if hasFree %}<td class="mono">{% if e.state != "no" and e.free %}{{ e.free | bytes }} bytes{% else %}<span aria-hidden="true">–</span><span class="sr">Not applicable</span>{% endif %}</td>{% endif %}
             </tr>
             {%- endfor %}
           </tbody>
         </table>
+        {% if limited_note %}<p class="small">{{ limited_note }}</p>{% endif %}
         {% if memory_note %}<p class="small">{{ memory_note }}</p>{% endif %}
         {% if tested_on %}<p class="small">Tested on {{ tested_on }}</p>{% endif %}
       </section>

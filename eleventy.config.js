@@ -12,7 +12,7 @@ const STATUSES = ['released', 'in-use', 'ongoing', 'working-build', 'in-developm
 const CATEGORIES = ['game', 'utility'];
 const SECTIONS = ['android', 'personal'];
 const MODEL_IDS = ['cm', 'xp', 'la', 'lz', 'lz64'];
-const MODEL_STATES = ['works', 'no', 'untested'];
+const MODEL_STATES = ['works', 'limited', 'no', 'untested'];   // limited: runs, with much less than on the others
 const FILE_KINDS = ['psion', 'build', 'source'];
 
 const isLive = () => process.env.ELEVENTY_RUN_MODE === 'build';
@@ -54,8 +54,9 @@ function check(item, kind) {
     for (const m of MODEL_IDS) {
       const e = d.models?.[m];
       if (!e) errs.push(`models.${m} missing`);
-      else if (!MODEL_STATES.includes(e.state)) errs.push(`models.${m}.state "${e.state}" is not works, no or untested`);
+      else if (!MODEL_STATES.includes(e.state)) errs.push(`models.${m}.state "${e.state}" is not works, limited, no or untested`);
     }
+    if (MODEL_IDS.some((m) => d.models?.[m]?.state === 'limited') && !d.limited_note) errs.push('a limited model needs a limited_note');
   } else if (d.section && !SECTIONS.includes(d.section)) errs.push(`section "${d.section}" is not android or personal`);
   for (const f of d.files || []) {
     if (!f.file || !f.version || !f.date) errs.push('a files entry needs file, version and date');
@@ -124,11 +125,11 @@ export default function (eleventyConfig) {
     const v = (files || []).map((f) => String(f.version));
     return v.sort((a, b) => b.localeCompare(a, 'en', { numeric: true }))[0];
   });
-  // 'works' if any model with that screen runs it, 'no' if none can, otherwise 'untested'
+  // 'works' if any model with that screen runs it (a limited one counts), 'no' if none can, otherwise 'untested'
   eleventyConfig.addFilter('screenSupport', (models, lines) => {
     const ids = lines === 2 ? ['cm', 'xp', 'la'] : ['lz', 'lz64'];
     const st = ids.map((id) => models?.[id]?.state);
-    return st.includes('works') ? 'works' : st.every((s) => s === 'no') ? 'no' : 'untested';
+    return st.includes('works') || st.includes('limited') ? 'works' : st.every((s) => s === 'no') ? 'no' : 'untested';
   });
   // the first screenshot of a two-line or four-line screen (unmarked screenshots are four-line)
   eleventyConfig.addFilter('shotFor', (shots, lines) => (shots || []).find((s) => (s.lines || 4) === lines));
@@ -137,7 +138,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter('dateShort', (d) => { const x = toDate(d); return `${x.getUTCDate()} ${MONTHS[x.getUTCMonth()].slice(0, 3)} ${x.getUTCFullYear()}`; });
   // the models that run it: "All five models", or "LZ, LZ64"
   eleventyConfig.addFilter('modelsText', (models, list) => {
-    const ok = list.filter((m) => models?.[m.id]?.state === 'works').map((m) => m.name);
+    const ok = list.filter((m) => ['works', 'limited'].includes(models?.[m.id]?.state)).map((m) => m.name);
     return ok.length === list.length ? 'All five models' : ok.join(', ');
   });
   eleventyConfig.addFilter('onlyVersion', (files, v) => (files || []).filter((f) => String(f.version) === String(v)));
