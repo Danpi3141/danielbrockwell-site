@@ -226,7 +226,7 @@ thead th { border-bottom: 1px dotted var(--muted); color: var(--muted); font-wei
 .table-scroll { overflow-x: auto; }
 /* a figure with its exact value shown on hover, focus or tap */
 .tip { position: relative; display: inline-block; white-space: nowrap; border-bottom: 1px dotted var(--muted); cursor: help; }
-.tip-text { position: absolute; left: 50%; top: 100%; transform: translateX(-50%); z-index: 5; width: min(17rem, 70vw); padding: 8px 12px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); white-space: normal; visibility: hidden; }
+.tip-text { position: absolute; left: 50%; top: 100%; transform: translateX(-50%); z-index: 5; width: min(17rem, 64vw); padding: 8px 12px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); white-space: normal; visibility: hidden; }
 .tip:hover .tip-text, .tip:focus .tip-text { visibility: visible; }
 .tip-num { display: block; font-family: var(--mono); font-size: 14px; }
 .mark { font-size: 20px; font-weight: 700; line-height: 1; }
