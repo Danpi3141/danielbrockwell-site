@@ -17,7 +17,7 @@ links:
 
 <p class="big-number">152748736824915 · 2<sup>480480</sup> ± 1</p>
 
-A pair of primes two apart, each 144,654 digits long. They rank third on the PrimePages list of the largest known twin primes, found in January 2026 and proven prime. The PrimePages credit Vink and Brockwell, with TwinGen, NewPGen, the Twin Prime Search and PRST.
+A pair of primes two apart, each 144,654 digits long. They rank third on the PrimePages list of the largest known twin primes, found in January 2026 and proven prime. [Credits here](https://t5k.org/primes/page.php?id=141440).
 
 ## What it is
 
