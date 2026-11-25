@@ -5,7 +5,10 @@
   --accent: #1F6F5C; --on-accent: #FFFFFF; --warn: #8A5A00; --code-bg: #ECEFE8;
   --lcd-bg: #B4C0A6; --lcd-ink: #1E2A33; --bezel: #3A423D;
   --ok: #1E7A38; --bad: #B3261E;
-  --limited: #F5C518; --limited-edge: #A67C00; --on-limited: #1A1F1C;
+  /* model keys: runs it (green), reduced (ochre), does not (black) */
+  --k-yes: #2F6B4A; --k-yes-edge: #234F37; --on-k-yes: #FFFFFF;
+  --k-part: #D8B54E; --k-part-edge: #A98A35; --on-k-part: #1A1F1C;
+  --k-no: #2A2F2C; --k-no-edge: #171B19; --on-k-no: #C3CAC4;
   --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, "Cascadia Mono", "SF Mono", Consolas, monospace;
   --pixel: "Matrix Sans", var(--mono);
@@ -16,6 +19,9 @@
   :root {
     --bg: #121614; --surface: #1A201D; --ink: #E7ECE6; --muted: #A3ADA5; --border: #2E3732;
     --accent: #6FCFB4; --on-accent: #121614; --warn: #E0B050; --ok: #6FD08C; --bad: #F28B82; --code-bg: #1F2622; --bezel: #0B0E0C;
+    --k-yes: #5E9C7B; --k-yes-edge: #467A5E; --on-k-yes: #0D1210;
+    --k-part: #CCAB4C; --k-part-edge: #9A7F38; --on-k-part: #0D1210;
+    --k-no: #0A0D0B; --k-no-edge: #414B45; --on-k-no: #98A39B;
   }
 }
 @media (min-width: 600px) { :root { --gutter: 24px; } }
@@ -103,9 +109,9 @@ hr, .rule { border: 0; border-top: 1px dotted var(--muted); margin: 32px 0; }
 .badge-exploring { color: var(--muted); padding-left: 0; padding-right: 0; }
 .models { list-style: none; display: flex; flex-wrap: wrap; gap: 4px; padding: 0; margin: 8px 0; }
 .key { font-family: var(--mono); font-size: 13px; line-height: 1; padding: 5px 6px 4px; border-radius: 4px; border: 1px solid var(--muted); border-bottom-width: 2px; color: var(--muted); }
-.key-works { background: var(--ink); border-color: var(--ink); color: var(--bg); }
-.key-limited { background: var(--limited); border-color: var(--limited-edge); color: var(--on-limited); }
-.key-no { text-decoration: line-through; }
+.key-works { background: var(--k-yes); border-color: var(--k-yes-edge); color: var(--on-k-yes); }
+.key-limited { background: var(--k-part); border-color: var(--k-part-edge); color: var(--on-k-part); }
+.key-no { background: var(--k-no); border-color: var(--k-no-edge); color: var(--on-k-no); text-decoration: line-through; }
 
 /* cards */
 .grid { display: grid; gap: 24px; grid-template-columns: 1fr; margin: 0 0 32px; }
@@ -220,7 +226,7 @@ thead th { border-bottom: 1px dotted var(--muted); color: var(--muted); font-wei
 .table-scroll { overflow-x: auto; }
 .mark { font-size: 20px; font-weight: 700; line-height: 1; }
 .mark-yes { color: var(--ok); } .mark-no { color: var(--bad); } .mark-maybe { color: var(--warn); }
-.mark-limited { display: inline-block; padding: 1px 5px; border-radius: 4px; background: var(--limited); color: var(--on-limited); font-size: 16px; }
+.mark-limited { display: inline-block; padding: 1px 5px; border-radius: 4px; background: var(--k-part); color: var(--on-k-part); font-size: 16px; }
 .mark-word { font-size: 14px; }
 .compat td, .compat th { vertical-align: middle; }
 .callout { border-left: 4px solid var(--warn); background: var(--surface); padding: 12px 16px; border-radius: 0 var(--radius) var(--radius) 0; margin: 0 0 24px; }
