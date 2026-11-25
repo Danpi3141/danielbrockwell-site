@@ -23,7 +23,7 @@ layout: layouts/base.njk
     {%- set sz = a.src | pngSize %}
     <figure>
       <div class="lcd lcd-shot"><img src="{{ a.src }}" alt="{{ a.alt }}" width="{{ sz.width }}" height="{{ sz.height }}"></div>
-      <figcaption>In play: {{ a.screen }}</figcaption>
+      <figcaption>{{ a.caption or ("In play: " + a.screen) }}</figcaption>
     </figure>
     {%- endfor %}
   </section>

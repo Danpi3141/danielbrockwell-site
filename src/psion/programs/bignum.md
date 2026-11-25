@@ -8,9 +8,9 @@ pack: 64K
 needs: "55,861 bytes: one 64K Datapak serves every model, and stays in the Organiser while BigNum runs. In an emulator, load the pack image into slot B. On a real Organiser, load the Organiser files zip with RPBOOT."
 licence: MIT
 animations:
-  - { src: /assets/img/psion/bignum/play-lz64.gif, alt: "BigNum on the four-line screen: FACTOR(2**64+1) is typed in, trial division and a prime check run, Pollard's rho counts its steps, the quadratic sieve finishes the job, and it shows the two prime factors 274177 and 67280421310721", screen: "Four-line: LZ and LZ64, shown three times as fast" }
-  - { src: /assets/img/psion/bignum/sieve-lz64.gif, alt: "The quadratic sieve factoring 2**101-1: the relations count up to 142, they are combined, and the factors of 13 and 18 digits appear", screen: "the sieve on 2**101-1, shown ten times as fast" }
-  - { src: /assets/img/psion/bignum/play-cm.gif, alt: "BigNum on the two-line screen: FACTOR(FACT(25)+1) is typed in, and it shows 401 and a 23-digit probable prime, one factor to a page", screen: "Two-line: CM, XP and LA (XP 32K)", lines: 2 }
+  - { src: /assets/img/psion/bignum/play-lz64.gif, alt: "BigNum on the four-line screen: FACTOR(2**64+1) is typed in, trial division and a prime check run, Pollard's rho counts its steps, the quadratic sieve finishes the job, and it shows the two prime factors 274177 and 67280421310721", caption: "Four-line: LZ and LZ64 (3× speed)" }
+  - { src: /assets/img/psion/bignum/sieve-lz64.gif, alt: "The quadratic sieve factoring 2**101-1: the relations count up to 142, they are combined, and the factors of 13 and 18 digits appear", caption: "The sieve factoring 2**101-1 (10× speed)" }
+  - { src: /assets/img/psion/bignum/play-cm.gif, alt: "BigNum on the two-line screen: FACTOR(FACT(25)+1) is typed in, and it shows 401 and a 23-digit probable prime, one factor to a page", caption: "Two-line: CM, XP and LA (XP 32K)", lines: 2 }
 models:
   cm:   { state: limited, free: 5990 }
   xp:   { state: works, free: 13300 }
@@ -52,18 +52,18 @@ In the Jape emulator, use the pack image instead: **Select OPK file**, choose it
 
 Leave the pack in while it runs. If there is too little memory, BigNum says how many more bytes it needs.
 
-## What each model can do
+## Limits by free memory
 
 The free memory when BigNum starts decides its limits, not the model. An empty CM has about 6,500 bytes free, an XP 14,700, and an LA (XP 32K), LZ or LZ64 over 22,000.
 
 | Free memory | Largest number | Sieve | Save and resume |
 |---|---|---|---|
 | 17,500 or more | <span class="tip" tabindex="0" aria-describedby="size-17500">~2,466 digits<span class="sr">. </span><span class="tip-text" role="tooltip" id="size-17500">Every 2,466-digit number, and 2,467-digit ones up to 2<sup>8192</sup> − 1, about 1.09 × 10<sup>2466</sup></span></span> | <span class="tip" tabindex="0" aria-describedby="sieve-55">~55 digits<span class="sr">. </span><span class="tip-text" role="tooltip" id="sieve-55">Every 55-digit number, and 56-digit ones up to 2<sup>184</sup> − 1, which is <span class="tip-num">24,<wbr>519,<wbr>928,<wbr>653,<wbr>854,<wbr>221,<wbr>733,<wbr>733,<wbr>552,<wbr>434,<wbr>404,<wbr>946,<wbr>937,<wbr>899,<wbr>825,<wbr>954,<wbr>937,<wbr>634,<wbr>815</span></span></span> | Yes |
-| 13,300 | <span class="tip" tabindex="0" aria-describedby="size-13300">~2,466 digits<span class="sr">. </span><span class="tip-text" role="tooltip" id="size-13300">Every 2,466-digit number, and 2,467-digit ones up to 2<sup>8192</sup> − 1, about 1.09 × 10<sup>2466</sup></span></span> | <span class="tip" tabindex="0" aria-describedby="sieve-50">~50 digits<span class="sr">. </span><span class="tip-text" role="tooltip" id="sieve-50">Every 50-digit number, and 51-digit ones up to 2<sup>168</sup> − 1, which is <span class="tip-num">374,<wbr>144,<wbr>419,<wbr>156,<wbr>711,<wbr>147,<wbr>060,<wbr>143,<wbr>317,<wbr>175,<wbr>368,<wbr>453,<wbr>031,<wbr>918,<wbr>731,<wbr>001,<wbr>855</span></span></span> | Yes |
-| 11,720 | <span class="tip" tabindex="0" aria-describedby="size-11720">~616 digits<span class="sr">. </span><span class="tip-text" role="tooltip" id="size-11720">Every 616-digit number, and 617-digit ones up to 2<sup>2048</sup> − 1, about 3.23 × 10<sup>616</sup></span></span> | <span class="tip" tabindex="0" aria-describedby="sieve-44">~44 digits<span class="sr">. </span><span class="tip-text" role="tooltip" id="sieve-44">Every 44-digit number, and 45-digit ones up to 2<sup>148</sup> − 1, which is <span class="tip-num">356,<wbr>811,<wbr>923,<wbr>176,<wbr>489,<wbr>970,<wbr>264,<wbr>571,<wbr>492,<wbr>362,<wbr>373,<wbr>784,<wbr>095,<wbr>686,<wbr>655</span></span></span> | Yes |
-| 5,990 | <span class="tip" tabindex="0" aria-describedby="size-5990">~616 digits<span class="sr">. </span><span class="tip-text" role="tooltip" id="size-5990">Every 616-digit number, and 617-digit ones up to 2<sup>2048</sup> − 1, about 3.23 × 10<sup>616</sup></span></span> | None | No |
+| 13,300 to 17,499 | <span class="tip" tabindex="0" aria-describedby="size-13300">~2,466 digits<span class="sr">. </span><span class="tip-text" role="tooltip" id="size-13300">Every 2,466-digit number, and 2,467-digit ones up to 2<sup>8192</sup> − 1, about 1.09 × 10<sup>2466</sup></span></span> | <span class="tip" tabindex="0" aria-describedby="sieve-50">~50 digits<span class="sr">. </span><span class="tip-text" role="tooltip" id="sieve-50">Every 50-digit number, and 51-digit ones up to 2<sup>168</sup> − 1, which is <span class="tip-num">374,<wbr>144,<wbr>419,<wbr>156,<wbr>711,<wbr>147,<wbr>060,<wbr>143,<wbr>317,<wbr>175,<wbr>368,<wbr>453,<wbr>031,<wbr>918,<wbr>731,<wbr>001,<wbr>855</span></span></span> | Yes |
+| 11,720 to 13,299 | <span class="tip" tabindex="0" aria-describedby="size-11720">~616 digits<span class="sr">. </span><span class="tip-text" role="tooltip" id="size-11720">Every 616-digit number, and 617-digit ones up to 2<sup>2048</sup> − 1, about 3.23 × 10<sup>616</sup></span></span> | <span class="tip" tabindex="0" aria-describedby="sieve-44">~44 digits<span class="sr">. </span><span class="tip-text" role="tooltip" id="sieve-44">Every 44-digit number, and 45-digit ones up to 2<sup>148</sup> − 1, which is <span class="tip-num">356,<wbr>811,<wbr>923,<wbr>176,<wbr>489,<wbr>970,<wbr>264,<wbr>571,<wbr>492,<wbr>362,<wbr>373,<wbr>784,<wbr>095,<wbr>686,<wbr>655</span></span></span> | Yes |
+| 5,990 to 11,719 | <span class="tip" tabindex="0" aria-describedby="size-5990">~616 digits<span class="sr">. </span><span class="tip-text" role="tooltip" id="size-5990">Every 616-digit number, and 617-digit ones up to 2<sup>2048</sup> − 1, about 3.23 × 10<sup>616</sup></span></span> | None | No |
 
-**The CM's version is much reduced.** It has about 2K for numbers, so there is no sieve, and SAVE, LOAD, RESUME, LOG and checkpoints are left out, with one earlier line kept for recall. The arithmetic, the functions, the primality tests and proofs, and the other factoring methods (trial division, rho, P−1, P+1 and elliptic curves) are there. Any other model with that little memory free has the same limits.
+**The CM's version is much reduced.** It has about 2K for numbers, so there is no sieve, and SAVE, LOAD, RESUME, LOG and checkpoints are left out, with one earlier line kept for recall. Everything else works: arithmetic, functions, primality tests and proofs, and factoring by trial division, rho, P−1, P+1 and elliptic curves. Any other model with that little memory free has the same limits.
 
 ## Functions
 
@@ -99,15 +99,15 @@ A long job shows what it is doing, how far it has got and the time left. **Keep 
 
 `SET` alone lists the settings: <kbd>EXE</kbd> puts the one shown on the entry line to be changed.
 
-| Setting | At first | |
+| Setting | Default | |
 |---|---|---|
 | TDIV | 10000 | Trial division's limit, up to 65535 |
-| RHOIT | Auto | The most steps of rho |
+| RHOIT | Auto | Maximum rho steps |
 | PM1B1, PP1B1 | Auto | The bounds of P−1 and P+1 |
 | ECMB1, CURVES | Auto | The bound and number of elliptic curves |
 | PROOF | OFF | ON: FACTOR proves each prime it reports |
 | KEEP | OFF | Where jobs are kept: A:, B: or C: |
-| EVERY | 30 | Minutes between keeps |
+| EVERY | 30 | Minutes between saves |
 | LOG | OFF | Where finished results are written |
 | BEEP | ON | Beep when a job of over a minute ends |
 
@@ -139,21 +139,20 @@ The sieve works with a set of small primes, and the memory free when BigNum star
 
 | Primes that fit | 36 digits | 40 digits | 44 digits | 48 digits |
 |---|---|---|---|---|
-| 230 (empty LZ64) | 1 | 1 | 1.05 | 1.05 |
-| 200 | 1 | 1.05 | 1.4 | 1.4 |
-| 160 | 1.1 | 1.4 | 2 | 2 |
+| 230 (empty LZ64) | 1 | 1 | 1 | 1 |
+| 200 | 1 | 1.05 | 1.3 | 1.4 |
+| 160 | 1.1 | 1.4 | 2 | 1.9 |
 | 120 | 1.5 | 2 | 4 | 6\* |
-| 106 | 1.6 | 2.6 | 5.5 | 10\* |
+| 106 | 1.6 | 2.6 | 5 | 10\* |
 | 80 | 2.3 | 5 | 20\* | – |
 
 </div>
 
-Times as long as with all the primes that size of number can use. \* Estimate.
+Times as long as on an empty LZ64. \* Estimate.
 
 A longer number needs more memory for each prime: about 39 bytes at 36 digits and 50 at 48. So an empty XP fits 130 primes for 36 digits, 117 for 40, 106 for 44 and 96 for 48. Numbers kept in variables leave less room for primes; CLR clears them before a long job.
 
 ## Technical notes
 
-- It needs a 64K pack, in the Organiser while it runs.
 - Numbers below 2<sup>64</sup> that pass the prime test are certain to be prime. Above that, ISPRIME finds a probable prime (marked PRP) and PROVE proves it when enough of N−1 or N+1 can be factored.
 - The sieve uses up to 240 primes, a multiplier, and one large prime in each relation.
