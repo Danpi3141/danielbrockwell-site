@@ -75,11 +75,11 @@ Measured in the emulator, at an Organiser's speed:
 | Is 2<sup>521</sup> − 1 prime? (157 digits) | 2 min 50 s | 3 min 29 s |
 | Is 2<sup>2047</sup> + 1919 prime? (617 digits) | 6 h 13 min | 7 h 23 min |
 | Factor 2<sup>101</sup> − 1 (31 digits) | 4 to 5 min | 5 h 36 min |
-| Factor 2<sup>128</sup> + 1 (39 digits) | 43 min | about 2 days |
-| Factor 40 digits into 20 and 20 | 38 min in the sieve | about 5 days |
-| Factor 48 digits into 24 and 24 | 20 to 22 h in the sieve | months |
+| Factor 2<sup>128</sup> + 1 (39 digits) | 43 min | about 2 days\* |
+| Factor 40 digits into 20 and 20 | 38 min in the sieve | about 5 days\* |
+| Factor 48 digits into 24 and 24 | 20 to 22 h in the sieve | months\* |
 
-The CM has no sieve, so it looks for factors with elliptic curves, where luck matters more. Its 5 h 36 min was measured; the longer factoring times are estimates, from the time one curve takes and how many are usually needed.
+\* Estimate.
 
 Beyond 48 digits the sieve's times are estimates from a model of it on a PC: about two days for 50 digits, and three to four weeks for 55, its limit.
 
