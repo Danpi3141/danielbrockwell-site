@@ -5,10 +5,10 @@ status: working-build
 summary: "A big-number calculator modelled on YAFU: exact arithmetic, primality proofs, and factoring up to a quadratic sieve."
 updated: 2026-11-25
 pack: 64K
-needs: "56,061 bytes: one 64K Datapak serves every model, and stays in the Organiser while BigNum runs. In an emulator, load the pack image into slot B. On a real Organiser, load the Organiser files zip with RPBOOT."
+needs: "56,475 bytes: one 64K Datapak serves every model, and stays in the Organiser while BigNum runs. In an emulator, load the pack image into slot B. On a real Organiser, load the Organiser files zip with RPBOOT."
 licence: MIT
 animations:
-  - { src: /assets/img/psion/bignum/play-lz64.gif, alt: "BigNum on the four-line screen: FACTOR(2**64+1) is typed in, trial division and a prime check run, Pollard's rho counts its steps, the quadratic sieve finishes the job, and it shows the two prime factors 274177 and 67280421310721", caption: "Four-line: LZ and LZ64 (3× speed)" }
+  - { src: /assets/img/psion/bignum/play-lz64.gif, alt: "BigNum on the four-line screen: FACTOR(2**64+1) is typed in, trial division and a prime check run, the quadratic sieve counts its relations and combines them, and it shows the two prime factors 274177 and 67280421310721", caption: "Four-line: LZ and LZ64 (3× speed)" }
   - { src: /assets/img/psion/bignum/sieve-lz64.gif, alt: "The quadratic sieve factoring 2**101-1: the relations count up to 142, they are combined, and the factors of 13 and 18 digits appear", caption: "The sieve factoring 2**101-1 (10× speed)" }
   - { src: /assets/img/psion/bignum/play-cm.gif, alt: "BigNum on the two-line screen: FACTOR(FACT(25)+1) is typed in, and it shows 401 and a 23-digit probable prime, one factor to a page", caption: "Two-line: CM, XP and LA (XP 32K)", lines: 2 }
 models:
@@ -21,13 +21,17 @@ limited_note: "The CM runs a reduced BigNum: numbers to 616 digits, no sieve, no
 memory_note: "Free memory as the Organiser's FREE reports it, measured in the emulator: enough for everything that model can usually do. With less, BigNum still starts, with smaller limits, down to 5,620 bytes on any model."
 tested_on: "the Jape emulator: CM, XP, LA (XP 32K), LZ and LZ64, and all 29 Organiser ROMs it has, with the answers checked against a PC. It has had some testing on a real LZ64."
 screenshots:
-  - { src: /assets/img/psion/bignum/lz64-factors.png, alt: "Four-line screen: 2**64+1 = P6 274177, P14 67280421310721, 2 factors in 40 seconds", screen: "Factors: P marks a proven prime, with its digits" }
-  - { src: /assets/img/psion/bignum/lz64-sieve.png, alt: "Four-line screen: the quadratic sieve on a 31-digit number with 132 primes, 60 of 142 relations found, 47%, 57 seconds left, the whole job about 3 minutes", screen: "The sieve running" }
+  - { src: /assets/img/psion/bignum/lz64-factors.png, alt: "Four-line screen: 2**64+1 = P6 274177, P14 67280421310721, 2 factors in 35 seconds", screen: "Factors: P marks a proven prime, with its digits" }
+  - { src: /assets/img/psion/bignum/lz64-sieve.png, alt: "Four-line screen: the quadratic sieve on a 31-digit number with 132 primes, 60 of 142 relations found, 47%, 1 minute 5 seconds left, the whole job about 3 minutes", screen: "The sieve running" }
+  - { src: /assets/img/psion/bignum/lz64-save.png, alt: "Four-line screen: 2**168-1 = P1 3^2, P1 5, and the question Save on A, B, C?", screen: "Saving the factors of 2**168-1" }
   - { src: /assets/img/psion/bignum/lz64-proved.png, alt: "Four-line screen: 2**107-1, P33 PROVED by N+1, 100% of N+1 factored, C=certificate", screen: "A primality proof" }
   - { src: /assets/img/psion/bignum/lz64-digits.png, alt: "Four-line screen: the first 60 of the 664 digits of 2**2203-1", screen: "The digits of 2**2203-1" }
   - { src: /assets/img/psion/bignum/cm-factor.png, alt: "Two-line screen: PRP23, factor 2 of 2, 3868132180381 and dots", screen: "Two-line: CM, XP and LA (XP 32K)", lines: 2 }
   - { src: /assets/img/psion/bignum/cm-na.png, alt: "Two-line screen on a CM: NOT AVAILABLE, with QS(2**64+1) on the entry line", screen: "No sieve on the CM", lines: 2 }
 files:
+  - { file: bignum-0.9.8-psion.zip, kind: psion, version: "0.9.8", date: 2026-11-25 }
+  - { file: bignum-0.9.8.opk, kind: build, version: "0.9.8", date: 2026-11-25 }
+  - { file: bignum-0.9.8-source.zip, kind: source, version: "0.9.8", date: 2026-11-25 }
   - { file: bignum-0.9.7-psion.zip, kind: psion, version: "0.9.7", date: 2026-11-25 }
   - { file: bignum-0.9.7.opk, kind: build, version: "0.9.7", date: 2026-11-25 }
   - { file: bignum-0.9.7-source.zip, kind: source, version: "0.9.7", date: 2026-11-25 }
@@ -36,6 +40,7 @@ files:
   - { file: bignum-0.9.5-source.zip, kind: source, version: "0.9.5", date: 2026-11-25 }
 source: false
 changelog:
+  - { date: 2026-11-25, version: "0.9.8", change: "The sieve no longer stalls: in 0.9.5 and 0.9.7 some numbers of 14 to 17 digits, or a part that size left over in a longer one, took minutes or never finished (answers were never wrong). S on the factors' screen saves them, except on the CM. A power follows its prime, as in 3^2. Rho's time left is right for small numbers, and it is only tried where it pays." }
   - { date: 2026-11-25, version: "0.9.7", change: "Less memory needed: it starts from 5,620 bytes free (5,990 before), the larger limits also start lower, and every model has 93 bytes more for numbers. LLT of a composite number gives 0 at once, however large." }
   - { date: 2026-11-25, version: "0.9.5", change: "Working build, the first released: tested in the emulator on every model and all 29 Organiser ROMs." }
 ---
@@ -96,6 +101,7 @@ Type a line and press <kbd>EXE</kbd>. `P=NEXTPRIME(10**30)` stores the answer in
 | | <kbd>P</kbd>, <kbd>C</kbd> | Prove the first probable prime; show a proved prime's certificate |
 | | <kbd>V</kbd> and a letter | Keep the number shown in that variable |
 | | <kbd>M</kbd> | How the factor shown was found |
+| | <kbd>S</kbd> | Save the factors: then <kbd>A</kbd>, <kbd>B</kbd> or <kbd>C</kbd> adds them to the file BIGLOG there, and LOG shows it (not on the CM) |
 | Running | <kbd>ON/CLEAR</kbd> | Pause: <kbd>C</kbd> continue, <kbd>S</kbd> skip to the next method, <kbd>K</kbd> keep and stop, <kbd>A</kbd> abandon |
 | | <kbd>S</kbd> | Skip to the next method |
 

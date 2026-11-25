@@ -134,7 +134,7 @@ RELEASES = {
         'run': 'BIGNUM',
         'title': 'BigNum',
         'folder': 'BigNum',
-        'version': '0.9.7',
+        'version': '0.9.8',
         'date': (2026, 11, 25),
         'opk': 'build/game/BIGNUM.opk',       # committed in the repo, with the listings
         'build_files': [],
