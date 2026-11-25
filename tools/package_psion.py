@@ -130,6 +130,16 @@ RELEASES = {
         'build_files': [],
         'models': 'CM, XP, LA (XP 32K), LZ and LZ64',
     },
+    'bignum': {
+        'run': 'BIGNUM',
+        'title': 'BigNum',
+        'folder': 'BigNum',
+        'version': '0.9.5',
+        'date': (2026, 11, 25),
+        'opk': 'build/game/BIGNUM.opk',       # committed in the repo, with the listings
+        'build_files': [],
+        'models': 'CM (reduced), XP, LA (XP 32K), LZ and LZ64',
+    },
 }
 
 MIT = """MIT License
