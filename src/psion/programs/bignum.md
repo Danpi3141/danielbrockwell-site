@@ -56,16 +56,12 @@ Leave the pack in while it runs. If there is too little memory, BigNum says how 
 
 The free memory when BigNum starts decides its limits, not the model. An empty CM has about 6,500 bytes free, an XP 14,700, and an LA (XP 32K), LZ or LZ64 over 22,000.
 
-<div class="table-scroll">
-
 | Free memory | Largest number | Sieve | Save and resume |
 |---|---|---|---|
-| 17,500 or more | 2,467 digits | To 55 digits | Yes |
-| 13,300 | 2,467 digits | To 50 digits | Yes |
-| 11,720 | 617 digits | To 44 digits | Yes |
+| 17,500 or more | 2,467 digits | <span class="tip" tabindex="0" aria-describedby="sieve-55">~55 digits<span class="sr">. </span><span class="tip-text" role="tooltip" id="sieve-55">Every 55-digit number, and 56-digit ones up to 2<sup>184</sup> − 1, which is <span class="tip-num">24,<wbr>519,<wbr>928,<wbr>653,<wbr>854,<wbr>221,<wbr>733,<wbr>733,<wbr>552,<wbr>434,<wbr>404,<wbr>946,<wbr>937,<wbr>899,<wbr>825,<wbr>954,<wbr>937,<wbr>634,<wbr>815</span></span></span> | Yes |
+| 13,300 | 2,467 digits | <span class="tip" tabindex="0" aria-describedby="sieve-50">~50 digits<span class="sr">. </span><span class="tip-text" role="tooltip" id="sieve-50">Every 50-digit number, and 51-digit ones up to 2<sup>168</sup> − 1, which is <span class="tip-num">374,<wbr>144,<wbr>419,<wbr>156,<wbr>711,<wbr>147,<wbr>060,<wbr>143,<wbr>317,<wbr>175,<wbr>368,<wbr>453,<wbr>031,<wbr>918,<wbr>731,<wbr>001,<wbr>855</span></span></span> | Yes |
+| 11,720 | 617 digits | <span class="tip" tabindex="0" aria-describedby="sieve-44">~44 digits<span class="sr">. </span><span class="tip-text" role="tooltip" id="sieve-44">Every 44-digit number, and 45-digit ones up to 2<sup>148</sup> − 1, which is <span class="tip-num">356,<wbr>811,<wbr>923,<wbr>176,<wbr>489,<wbr>970,<wbr>264,<wbr>571,<wbr>492,<wbr>362,<wbr>373,<wbr>784,<wbr>095,<wbr>686,<wbr>655</span></span></span> | Yes |
 | 5,990 | 617 digits | None | No |
-
-</div>
 
 **The CM's version is much reduced.** It has about 2K for numbers, so there is no sieve, and SAVE, LOAD, RESUME, LOG and checkpoints are left out, with one earlier line kept for recall. The arithmetic, the functions, the primality tests and proofs, and the other factoring methods (trial division, rho, P−1, P+1 and elliptic curves) are there. Any other model with that little memory free has the same limits.
 
