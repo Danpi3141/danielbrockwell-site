@@ -9,7 +9,7 @@
 <span class="sr">Models:</span><ul class="models">
   {%- for m in list %}
   {%- set st = models[m.id].state if models and models[m.id] else "untested" %}
-  <li class="key key-{{ st }}"{% if st == "limited" %} title="Runs, with much less than on the other models"{% endif %}>{{ m.name }}<span class="sr">: {{ "works" if st == "works" else ("runs with reduced features" if st == "limited" else ("not supported" if st == "no" else "untested")) }}</span></li>
+  <li class="key key-{{ st }}"{% if st == "limited" %} title="Runs, with reduced features"{% endif %}>{{ m.name }}<span class="sr">: {{ "works" if st == "works" else ("runs with reduced features" if st == "limited" else ("not supported" if st == "no" else "untested")) }}</span></li>
   {%- endfor %}
 </ul>
 {%- endmacro %}
