@@ -150,7 +150,7 @@ The sieve works with a set of small primes, and the memory free when BigNum star
 
 Times as long as with all the primes that size of number can use. \* Estimate.
 
-A prime takes about 45 bytes. An empty XP fits 130 of them for 36 digits, 117 for 40, 106 for 44 and 96 for 48. Numbers kept in variables use the same memory, and CLR frees them.
+A longer number needs more memory for each prime: about 39 bytes at 36 digits and 50 at 48. So an empty XP fits 130 primes for 36 digits, 117 for 40, 106 for 44 and 96 for 48. Numbers kept in variables leave less room for primes; CLR clears them before a long job.
 
 ## Technical notes
 
