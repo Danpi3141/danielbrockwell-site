@@ -54,19 +54,20 @@ Leave the pack in while it runs. If there is too little memory, BigNum says how 
 
 ## What each model can do
 
-The free memory when BigNum starts decides its limits, not the model. These are the usual ones:
+The free memory when BigNum starts decides its limits, not the model. An empty CM has about 6,500 bytes free, an XP 14,700, and an LA (XP 32K), LZ or LZ64 over 22,000.
 
 <div class="table-scroll">
 
-| Model | Largest number | Sieve | Line length | Save and resume |
-|---|---|---|---|---|
-| CM | 2,048 bits, 617 digits | None | 128 | No |
-| XP | 8,192 bits, 2,467 digits | To 50 digits | 254 | Yes |
-| LA (XP 32K), LZ, LZ64 | 8,192 bits, 2,467 digits | To 55 digits | 254 | Yes |
+| Free memory | Largest number | Sieve | Save and resume |
+|---|---|---|---|
+| 17,500 or more | 2,467 digits | To 55 digits | Yes |
+| 13,300 | 2,467 digits | To 50 digits | Yes |
+| 11,720 | 617 digits | To 44 digits | Yes |
+| 5,990 | 617 digits | None | No |
 
 </div>
 
-**The CM's version is much reduced.** It has about 2K for numbers, so there is no sieve, and SAVE, LOAD, RESUME, LOG and checkpoints are left out, with one earlier line kept for recall. The arithmetic, the functions, the primality tests and proofs, and the other factoring methods (trial division, rho, P−1, P+1 and elliptic curves) are there. An XP or LZ with little memory free is cut down in the same way, by degrees.
+**The CM's version is much reduced.** It has about 2K for numbers, so there is no sieve, and SAVE, LOAD, RESUME, LOG and checkpoints are left out, with one earlier line kept for recall. The arithmetic, the functions, the primality tests and proofs, and the other factoring methods (trial division, rho, P−1, P+1 and elliptic curves) are there. Any other model with that little memory free has the same limits.
 
 ## Functions
 
