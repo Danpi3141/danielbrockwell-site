@@ -3,9 +3,9 @@ title: Phaselock
 category: game
 status: working-build
 summary: "A side-scrolling machine-code shooter: stars, enemies and ship move one pixel at a time at 20 frames a second."
-updated: 2026-11-20
+updated: 2026-11-25
 pack: 32K
-needs: "30,085 bytes: a 32K Datapak. In an emulator, load the pack image into slot B of an LZ or LZ64. On a real Organiser, load the psion/ folder from the source + build zip with RPBOOT: A: needs about 14K free for the files, plus 8,142 bytes free to run it."
+needs: "30,321 bytes: a 32K Datapak. In an emulator, load the pack image into slot B of an LZ or LZ64. On a real Organiser, load the psion/ folder from the source + build zip with RPBOOT: A: needs about 14K free for the files, plus 8,192 bytes free to run it."
 licence: MIT
 animations:
   - { src: /assets/img/psion/phaselock/play-lz64.gif, alt: "Phaselock: the title, the WAVE 1: DRONES card, then wave 1 at 20 frames a second, the ship firing at drones as it moves between lanes", screen: "Four-line: LZ and LZ64" }
@@ -13,11 +13,14 @@ models:
   cm:   { state: no }
   xp:   { state: no }
   la:   { state: no }
-  lz:   { state: works, free: 8142 }
-  lz64: { state: works, free: 8142 }
+  lz:   { state: works, free: 8192 }
+  lz64: { state: works, free: 8192 }
 memory_note: "Free memory as the Organiser's FREE reports it on a fresh machine, measured in the emulator: enough to play a game and save it."
 tested_on: "the Jape emulator (LZ and LZ64). The pass on real hardware (LCD smear, sound, battery) is still to do."
 files:
+  - { file: phaselock-0.9.1-psion.zip, kind: psion, version: "0.9.1", date: 2026-11-25 }
+  - { file: phaselock-0.9.1.opk, kind: build, version: "0.9.1", date: 2026-11-25 }
+  - { file: phaselock-0.9.1-source.zip, kind: source, version: "0.9.1", date: 2026-11-25 }
   - { file: phaselock-0.9-psion.zip, kind: psion, version: "0.9", date: 2026-11-20 }
   - { file: phaselock-0.9.opk, kind: build, version: "0.9", date: 2026-11-20 }
   - { file: phaselock-0.9-source.zip, kind: source, version: "0.9", date: 2026-11-20 }
@@ -27,6 +30,7 @@ screenshots:
   - { src: /assets/img/psion/phaselock/lz64-wave.png, alt: "Four-line screen in wave 1: the ship on the left firing, drone enemies across the lanes and scattered stars", screen: "Wave 1" }
   - { src: /assets/img/psion/phaselock/lz64-card.png, alt: "Four-line screen: the status card for WAVE 1: DRONES, with score 0, three lives and EXE=GO", screen: Status card }
 changelog:
+  - { date: 2026-11-25, version: "0.9.1", change: "An alarm that rings in a wave pauses the game, and EXE goes on with the screen whole. Before, the wave went on as soon as it stopped, with the ship missing until it moved. It needs 50 more bytes of memory." }
   - { date: 2026-11-20, version: "0.9", change: "Working build: milestones 1 to 6, tested in the emulator; made harder after the first play-through." }
 ---
 

@@ -3,7 +3,7 @@ title: Prime finder
 category: utility
 status: in-development
 summary: "Proth, Riesel and Mersenne tests and sieved searches for large primes, in machine code on the LZ and LZ64."
-updated: 2026-11-22
+updated: 2026-11-25
 pack: 64K
 animations:
   - { src: /assets/img/psion/prime-finder/play-lz64.gif, alt: "Prime finder: a Proth test of 3 x 2^189 + 1 is typed in, the squarings count up to 188, and it reports 3*2^189+1 IS PRIME! in 6 seconds", screen: "Four-line: LZ and LZ64" }
@@ -11,8 +11,8 @@ models:
   cm:   { state: no }
   xp:   { state: no }
   la:   { state: no }
-  lz:   { state: works, free: 12279 }
-  lz64: { state: works, free: 12279 }
+  lz:   { state: works, free: 12297 }
+  lz64: { state: works, free: 12297 }
 memory_note: "Free memory as the Organiser's FREE reports it on a fresh machine, measured in the emulator: enough to run a test and save the result to A:. The menu alone needs 3,188; a small search with its results needs 14,641."
 tested_on: "the Jape emulator (LZ and LZ64): single tests, a sieved search and the results checked against the same arithmetic on a PC, and M1279 proved prime in 9 minutes 31 seconds on the LZ64."
 screenshots:
@@ -32,6 +32,8 @@ It sits beside my [record prime searches](/personal/primes/), and found the same
 ## Where it has got to
 
 Version 0.9 (22 November) fixed seven things found while testing in the emulator: the search screen's test number, a time-left estimate that now counts down, the room check for a search's files, the sieve's ETA, Mersenne numbers shown as 2^1279-1, the results viewer's last entry, and an arrow the LCD drew in place of ~. Version 0.9.1 then made the sieve stop where removing a candidate by sieving costs as much as testing it, instead of at the first quiet minute: long searches sieve for hours longer and finish sooner overall, and the ETA now says where that point is.
+
+Version 0.9.2 (25 November) is about alarms ringing while it works. One that nobody answered could spoil a squaring, in about 2% of them; the check on every squaring caught each case and did it again, so no result was wrong, and now it cannot happen. The progress line also comes back whole after an alarm, and the packs are switched off during tests and sieves.
 
 Milestones 0 to 6 of the plan are done and tested in the emulator: the PC reference, the squaring routine, Mersenne, Proth and Riesel tests, jobs with checkpoints and resume, the four sieves, and the Karatsuba speed-ups. Still to do: running it on a real Organiser, getting closer to the planned speed at 256 to 1,024 bits, and a few kilobytes more of memory savings.
 

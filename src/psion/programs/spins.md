@@ -3,22 +3,25 @@ title: Psion Spins
 category: game
 status: working-build
 summary: "A five-reel Christmas slot machine for play-money credits, with Santa, carols in two parts, and an advent calendar."
-updated: 2026-11-24
+updated: 2026-11-25
 pack: 32K
-needs: "27,694 bytes: one 32K Datapak serves every model. In an emulator, load the pack image into slot B. On a real Organiser, load the Organiser files zip with RPBOOT."
+needs: "27,702 bytes: one 32K Datapak serves every model. In an emulator, load the pack image into slot B. On a real Organiser, load the Organiser files zip with RPBOOT."
 licence: MIT
 animations:
   - { src: /assets/img/psion/spins/play-lz64.gif, alt: "Psion Spins on the four-line screen: one spin of the five reels, Santa walks across saying HO HO HO!, then the winning lines add up to 84 credits", screen: "Four-line: LZ and LZ64" }
   - { src: /assets/img/psion/spins/play-cm.gif, alt: "Psion Spins on the two-line screen: two spins of the reels, with Santa walking across during the second", screen: "Two-line: CM, XP and LA (XP 32K)", lines: 2 }
 models:
-  cm:   { state: works, free: 5360 }
-  xp:   { state: works, free: 5360 }
-  la:   { state: works, free: 5360 }
-  lz:   { state: works, free: 5358 }
-  lz64: { state: works, free: 5358 }
+  cm:   { state: works, free: 5367 }
+  xp:   { state: works, free: 5367 }
+  la:   { state: works, free: 5367 }
+  lz:   { state: works, free: 5365 }
+  lz64: { state: works, free: 5365 }
 memory_note: "Free memory as the Organiser's FREE reports it on a fresh machine, measured in the emulator: enough to play a game and save it."
 tested_on: "the Jape emulator: CM, XP, LA (XP 32K), LZ and LZ64, and a spin with Santa on all 29 Organiser ROMs it has. Sound and the real LCD are still to check on hardware."
 files:
+  - { file: spins-0.9.5-psion.zip, kind: psion, version: "0.9.5", date: 2026-11-25 }
+  - { file: spins-0.9.5.opk, kind: build, version: "0.9.5", date: 2026-11-25 }
+  - { file: spins-0.9.5-source.zip, kind: source, version: "0.9.5", date: 2026-11-25 }
   - { file: spins-0.9.4-psion.zip, kind: psion, version: "0.9.4", date: 2026-11-24 }
   - { file: spins-0.9.4.opk, kind: build, version: "0.9.4", date: 2026-11-24 }
   - { file: spins-0.9.4-source.zip, kind: source, version: "0.9.4", date: 2026-11-24 }
@@ -40,6 +43,7 @@ screenshots:
   - { src: /assets/img/psion/spins/lz64-santa.png, alt: "Four-line screen: Santa walking across the reels, credits 980, bet 20", screen: "Santa's walk" }
   - { src: /assets/img/psion/spins/cm-reels.png, alt: "Two-line screen: five reels by two rows, 1000 credits, bet 20", screen: "Two-line: CM, XP and LA (XP 32K)", lines: 2 }
 changelog:
+  - { date: 2026-11-25, version: "0.9.5", change: "After an alarm rings, the game puts its own screen back within a second or so. Before, the screen stayed blank or garbled. It needs 7 more bytes of memory." }
   - { date: 2026-11-24, version: "0.9.4", change: "Two versions can share the Organiser, one on each pack: the game only uses its own files. Before, it could load the other version's files." }
   - { date: 2026-11-23, version: "0.9.3", change: "December works with the game left running. Before, the date was only looked at when the game started, so a game left in the Organiser overnight opened no advent door and gave no Christmas Day gift until it was started again. Now the first key on a new day plays that day's event: the advent door and its three free spins, the Christmas Day gift, or New Year." }
   - { date: 2026-11-23, version: "0.9.2", change: "The Xmas Spins start with their stars flashing to a chime, then Santa climbs onto the chimney and drops in, to the whole first line of Deck the Halls (before, 2.2 s cut the tune off). Autoplay plays at the Animation setting's pace, so a feature in autoplay gets its build-up too." }
@@ -82,5 +86,5 @@ If there is too little memory, SANTA says how many more bytes it needs.
 ## Technical notes
 
 - The game matches a JavaScript reference engine spin for spin: 100,000 spins on each grid with no difference.
-- A 4,890-byte RAM array holds the kernel, the screen driver and one shared region for overlays, scene data and the playing tune. Some variables live in the launchers' own code once it has run.
+- A 4,897-byte RAM array holds the kernel, the screen driver and one shared region for overlays, scene data and the playing tune. Some variables live in the launchers' own code once it has run.
 - The sound engine plays 45 notes from E4 to C8 within 0.7% of pitch, with pulse width, slides, arpeggios and vibrato, and keeps tunes in time while the reels animate.
