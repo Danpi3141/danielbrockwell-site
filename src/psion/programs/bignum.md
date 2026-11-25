@@ -11,10 +11,10 @@ animations:
   - { src: /assets/img/psion/bignum/play-cm.gif, alt: "BigNum on the two-line screen: FACTOR(FACT(25)+1) is typed in, and it shows 401 and a 23-digit probable prime, one factor to a page", screen: "Two-line: CM, XP and LA (XP 32K)", lines: 2 }
 models:
   cm:   { state: limited, free: 5990 }
-  xp:   { state: works, free: 13290 }
-  la:   { state: works, free: 17490 }
-  lz:   { state: works, free: 17490 }
-  lz64: { state: works, free: 17490 }
+  xp:   { state: works, free: 13300 }
+  la:   { state: works, free: 17500 }
+  lz:   { state: works, free: 17500 }
+  lz64: { state: works, free: 17500 }
 limited_note: "The CM runs a reduced BigNum: numbers to 617 digits, no sieve, no saving or resuming, and a shorter entry line."
 memory_note: "Free memory as the Organiser's FREE reports it, measured in the emulator: enough for everything that model can usually do. With less, BigNum still starts, with smaller limits, down to 5,990 bytes on any model."
 tested_on: "the Jape emulator: CM, XP, LA (XP 32K), LZ and LZ64, and all 29 Organiser ROMs it has, with the answers checked against a PC. Its sieve has been seen running on a real LZ64."
@@ -75,13 +75,13 @@ Measured in the emulator, at an Organiser's speed:
 | Is 2<sup>521</sup> − 1 prime? (157 digits) | 2 min 50 s | 3 min 29 s |
 | Is 2<sup>2047</sup> + 1919 prime? (617 digits) | 6 h 13 min | 7 h 23 min |
 | Factor 2<sup>101</sup> − 1 (31 digits) | 4 to 5 min | 5 h 36 min |
-| Factor 2<sup>128</sup> + 1 (39 digits) | 43 min | about 2 days\* |
-| Factor 40 digits into 20 and 20 | 38 min in the sieve | about 5 days\* |
-| Factor 48 digits into 24 and 24 | 20 to 22 h in the sieve | months\* |
+| Factor 2<sup>128</sup> + 1 (39 digits) | 43 min | ~2 days\* |
+| Factor 40 digits into 20 and 20 | ~50 min | ~5 days\* |
+| Factor 48 digits into 24 and 24 | 1 to 3 days | months\* |
 
 \* Estimate.
 
-Beyond 48 digits the sieve's times are estimates from a model of it on a PC: about two days for 50 digits, and three to four weeks for 55, its limit.
+The time depends on the number as well as its length. On the LZ64, twelve 40-digit numbers took from 29 to 93 minutes. Of eight 48-digit numbers, seven take from one to three days and one about eight. Longer ones, up to the limit of 55 digits, have not been tried.
 
 ## Technical notes
 
