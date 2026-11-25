@@ -83,12 +83,6 @@ The CM has no sieve, so it looks for factors with elliptic curves, where luck ma
 
 Beyond 48 digits the sieve's times are estimates from a model of it on a PC: about two days for 50 digits, and three to four weeks for 55, its limit.
 
-## Where it has got to
-
-Version 0.9.3 (25 November) does everything planned for the first version, and its tests pass in the emulator. They include random lines compared with a PC, every proof checked from scratch, and jobs stopped and resumed at random moments.
-
-Still to do: a full check on real hardware, above all its timing, its keys and checkpoints written to real packs. It may still change, so there is no download yet.
-
 ## Technical notes
 
 - It needs a 64K pack, in the Organiser while it runs.
