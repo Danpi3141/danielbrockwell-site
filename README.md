@@ -9,7 +9,7 @@ Daniel Brockwell's website: Psion Organiser II programs with downloads, Android 
 | `npm install` | Installs Eleventy and html-validate (once) |
 | `npm run dev` | Local preview that reloads as you edit |
 | `npm run build` | Builds the site into `_site/` |
-| `npm run check` | After a build: checks every internal link, the 50 KB page budget, no stray email addresses or phone numbers, that every page's JSON-LD parses and that the links in llms.txt, the feed and the sitemap resolve, then validates the HTML |
+| `npm run check` | After a build: checks every internal link, the 64 KB page budget, no stray email addresses or phone numbers, that every page's JSON-LD parses and that the links in llms.txt, the feed and the sitemap resolve, then validates the HTML |
 | `npm run cv-pdf` | After a build: prints the CV page to `src/downloads/cv/daniel-brockwell-cv.pdf` with headless Chrome or Edge. After any CV change run `npm run build && npm run cv-pdf && npm run deploy` |
 | `npm run package` | Makes the Psion release files (below) |
 | `npm run deploy` | Builds, runs the checks, and deploys to Cloudflare if they pass (needs `npx wrangler login` once) |

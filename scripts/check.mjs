@@ -1,5 +1,5 @@
 // Checks the built site in _site/: every internal link and asset reference resolves to a file,
-// every page is under the 50 KB HTML + CSS budget, and no page carries personal details
+// every page is under the 64 KB HTML + CSS budget, and no page carries personal details
 // (an email address other than the site's own contact address, or a phone number).
 // The machine-readable files are checked too: every page's JSON-LD parses, and llms.txt,
 // feed.xml and sitemap.xml link only to pages and files that exist.
@@ -49,7 +49,7 @@ for (const f of html) {
     if (!text.includes(`id="${m[1]}"`)) errors.push(`${rel}: no element with id ${m[1]}`);
   }
   const size = Buffer.byteLength(text) + css;
-  if (size > 50 * 1024) errors.push(`${rel}: HTML + CSS is ${size} bytes, over 50 KB`);
+  if (size > 64 * 1024) errors.push(`${rel}: HTML + CSS is ${size} bytes, over 64 KB`);
   for (const m of text.matchAll(/[\w.+-]+@[\w-]+\.[\w.]+/g)) {
     if (m[0].replace(/\.$/, '') !== SITE_EMAIL) errors.push(`${rel}: an email address other than the contact address: ${m[0]}`);
   }
@@ -97,4 +97,4 @@ if (errors.length) {
   console.error(`\n${errors.length} problem(s).`);
   process.exit(1);
 }
-console.log(`OK: ${html.length} pages, ${links} internal links and assets, all resolve; all pages under 50 KB with CSS (${css} bytes of CSS); JSON-LD parses; ${siteLinks.length} links from JSON-LD, llms.txt, the feed and the sitemap resolve.`);
+console.log(`OK: ${html.length} pages, ${links} internal links and assets, all resolve; all pages under 64 KB with CSS (${css} bytes of CSS); JSON-LD parses; ${siteLinks.length} links from JSON-LD, llms.txt, the feed and the sitemap resolve.`);

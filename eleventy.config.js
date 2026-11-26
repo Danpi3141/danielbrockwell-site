@@ -84,7 +84,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ 'src/downloads': 'downloads' });
   eleventyConfig.addPassthroughCopy({ 'src/_headers': '_headers', 'src/_redirects': '_redirects' });
   eleventyConfig.ignores.add('src/downloads/**');
-  // HTML pages without the templates' indentation (it counts against each page's 50 KB);
+  // HTML pages without the templates' indentation (it counts against each page's 64 KB);
   // <pre>, <textarea>, <script> and <style> are left as they are
   eleventyConfig.addTransform('unindent', (content, out) => {
     if (!out || !out.endsWith('.html')) return content;
