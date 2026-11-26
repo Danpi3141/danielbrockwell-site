@@ -134,8 +134,8 @@ RELEASES = {
         'run': 'BIGNUM',
         'title': 'BigNum',
         'folder': 'BigNum',
-        'version': '0.9.8',
-        'date': (2026, 11, 25),
+        'version': '0.9.9',
+        'date': (2026, 11, 26),
         'opk': 'build/game/BIGNUM.opk',       # committed in the repo, with the listings
         'build_files': [],
         'models': 'CM (reduced), XP, LA (XP 32K), LZ and LZ64',
