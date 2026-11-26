@@ -47,7 +47,7 @@ description: "Games and utilities for the Psion Organiser II: pack images to dow
       </div>
       <div class="dl-links">
         {%- for f in p.data.files %}{% if f.version == newest %}
-        <a class="chip" href="{{ p.data.downloadDir }}{{ f.file }}" title="{{ f.file }}" download>{{ "Source" if f.kind == "source" else (".opk" if f.kind == "build" else "Organiser files") }}<span class="chip-size">{{ (p.data.downloadDir + f.file) | fileSize | humanSize }}</span><span class="sr">: {{ p.data.title }}, {{ f.file }}</span></a>
+        <a class="chip" href="{{ p.data.downloadDir }}{{ f.file }}" download>{{ "Source" if f.kind == "source" else (".opk" if f.kind == "build" else "Organiser files") }}<span class="chip-size">{{ (p.data.downloadDir + f.file) | fileSize | humanSize }}</span><span class="sr">: {{ p.data.title }}</span></a>
         {%- endif %}{% endfor %}
       </div>
     </li>

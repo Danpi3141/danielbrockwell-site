@@ -140,6 +140,17 @@ RELEASES = {
         'build_files': [],
         'models': 'CM (reduced), XP, LA (XP 32K), LZ and LZ64',
     },
+    'minelz': {
+        'run': 'MINELZ',
+        'title': 'MineLZ',
+        'folder': 'MineLZ',
+        'version': '0.9.2',
+        'date': (2026, 11, 26),
+        'opk': 'MINELZ-small.opk',            # the 16K pack, translated only; MINELZ.opk (32K, with source) is in the zip
+        'build_cmd': 'python build.py',
+        'build_files': [],
+        'models': 'LZ and LZ64',
+    },
 }
 
 MIT = """MIT License
