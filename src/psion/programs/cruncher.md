@@ -3,7 +3,7 @@ title: Psion Cruncher
 category: utility
 status: in-development
 summary: "Pi, e, square roots and logs to thousands of digits on every Organiser II, in machine code, with checked digits."
-updated: 2026-11-26
+updated: 2026-11-27
 pack: 32K
 animations:
   - { src: /assets/img/psion/cruncher/play-lz64.gif, alt: "Pi to 1,000 digits on the four-line screen: the size is typed in, the estimate says about 1 minute 11, the status screen counts up to 100%, Check OK to 1,000, then the viewer finds 999999 at digit 762", caption: "Four-line: LZ and LZ64 (3× speed)" }
@@ -14,7 +14,7 @@ models:
   la:   { state: works }
   lz:   { state: works }
   lz64: { state: works }
-limited_note: "The CM has no swap mode, and room for 2,748 digits of pi and 5,292 of e."
+limited_note: "The CM has no swap mode, and room for 2,760 digits of pi and 5,304 of e."
 memory_note: "The limits come from the memory free when it starts: the tables below are for a machine with nothing else in memory."
 tested_on: "the Jape emulator: CM, XP, LA (XP 32K), LZ and LZ64, and all 29 Organiser ROMs it has, with every digit checked against a separate model of the arithmetic."
 screenshots:
@@ -39,7 +39,7 @@ It shares its tools with [BigNum](/psion/bignum/), the big-number calculator.
 
 ## Where it has got to
 
-Version 0.9 (26 November) has everything in the design's first version: the eight constants, each with its own formula and a second one for Verify; any size from 12 digits to the machine's limit; an estimate of the time before a run and the time left during it; the check table; a viewer with Go to, Find and Counts; saving results and viewing them later; swap mode on one Rampak or two; checkpoints; a benchmark and a stress test. It has passed on all 29 Organiser ROMs in the emulator.
+Version 0.9 (27 November) has everything in the design's first version: the eight constants, each with its own formula and a second one for Verify; any size from 12 digits to the machine's limit; an estimate of the time before a run and the time left during it; the check table; a viewer with Go to, Find and Counts; saving results and viewing them later; swap mode on one Rampak or two; checkpoints; a benchmark and a stress test. It has passed on all 29 Organiser ROMs in the emulator.
 
 Harder constants, such as Euler's gamma, Catalan's constant and zeta(3), are not in this version, and nor are hex digits or sending digits to a PC.
 
@@ -50,8 +50,8 @@ The most digits there is room for, which the program offers as `Max` when it ask
 | | CM | XP | LA (XP 32K) | LZ | LZ64 |
 |---|---|---|---|---|---|
 | Free at the menu | 6,533 | 14,717 | 22,908 | 22,252 | 22,275 |
-| Pi, ln 2, ln 10 | 2,748 | 12,600 | 22,464 | 21,672 | 21,708 |
-| e, the roots, the golden ratio | 5,292 | 24,384 | 43,500 | 41,964 | 42,024 |
+| Pi, ln 2, ln 10 | 2,760 | 12,612 | 22,476 | 21,684 | 21,708 |
+| e, the roots, the golden ratio | 5,304 | 24,396 | 43,512 | 41,976 | 42,036 |
 
 With Verify on, e can be checked by its second formula up to about half these sizes; above that it is checked by the same series taken two terms at a time. Checkpoints on A: halve the limit, because the copy needs the room; on a Rampak they do not.
 
@@ -59,13 +59,14 @@ Swap mode with one 32K Rampak in C:, with the time the program estimates for tha
 
 | | XP | LA (XP 32K) | LZ | LZ64 |
 |---|---|---|---|---|
-| Pi | 19,176 · 10h06 | 38,904 · 41h18 | 37,320 · 38h11 | 37,380 · 38h16 |
-| ln 2 | 19,176 · 8h35 | 38,904 · 34h53 | 37,320 · 32h14 | 37,380 · 32h19 |
-| ln 10 | 19,176 · 10h22 | 38,904 · 42h07 | 37,320 · 38h57 | 37,380 · 39h03 |
+| Pi | 19,188 · 10h06 | 38,916 · 41h20 | 37,332 · 38h12 | 37,392 · 38h17 |
+| ln 2 | 19,188 · 8h35 | 38,916 · 34h54 | 37,332 · 32h15 | 37,392 · 32h20 |
+| ln 10 | 19,188 · 10h23 | 38,916 · 42h09 | 37,332 · 38h58 | 37,392 · 39h04 |
 | e | 75,216 · 48h09 | 75,216 · 48h09 | 75,216 · 48h09 | 75,216 · 48h09 |
 | Root 2 | 75,216 · 81h51 | 75,216 · 81h51 | 75,216 · 81h51 | 75,216 · 81h51 |
 | Root 3 | 75,216 · 82h08 | 75,216 · 82h08 | 75,216 · 82h08 | 75,216 · 82h08 |
-| Root 5, golden ratio | 75,216 · 76h07 | 75,216 · 76h07 | 75,216 · 76h07 | 75,216 · 76h07 |
+| Root 5 | 75,216 · 76h07 | 75,216 · 76h07 | 75,216 · 76h07 | 75,216 · 76h07 |
+| Golden ratio | 75,216 · 76h08 | 75,216 · 76h08 | 75,216 · 76h08 | 75,216 · 76h08 |
 
 With more pack room, e, the roots and the golden ratio go further:
 
@@ -82,9 +83,9 @@ The program's own estimates, in memory. Every model has the same processor at th
 
 | | 1,000 digits | 5,000 | 10,000 | At the LZ64's limit | 10,000 with Verify |
 |---|---|---|---|---|---|
-| Pi | 71 s | 28 min | 1.9 h | 8.8 h | 4.0 h |
+| Pi | 71 s | 28 min | 1.9 h | 8.9 h | 4.0 h |
 | e | 23 s | 7 min | 25 min | 6.4 h | 55 min |
-| Root 2 | 27 s | 10 min | 38 min | 11.2 h | 1.6 h |
+| Root 2 | 27 s | 10 min | 38 min | 11.3 h | 1.6 h |
 | Root 3 | 27 s | 10 min | 38 min | 11.3 h | 1.5 h |
 | Root 5, golden ratio | 25 s | 9 min | 35 min | 10.3 h | 1.6 h |
 | ln 2 | 63 s | 25 min | 1.7 h | 8.0 h | 3.7 h |
@@ -99,5 +100,5 @@ The time grows with the square of the digits: twice the digits take four times a
 - The check table holds a 16-bit check of every 1,000 digits, 1,842 bytes in all, made from two independent sources of digits that agree.
 - The estimate goes through every pass the run will make, so it is right to about 1%.
 - Dividing a long number takes 82 processor cycles a byte by a divisor under 256, and 145 by a larger one. Dividing by multiplying with a reciprocal was tried and measured slower.
-- The pack holds one file of 31,109 bytes, the kernel, the check table, Help and 28 overlays, read from the pack as they are wanted; 3,978 bytes stay in memory. With the launcher it takes 31,361 bytes of a 32K Datapak, which stays in the Organiser while it runs.
+- The pack holds one file of 31,102 bytes, the kernel, the check table, Help and 28 overlays, read from the pack as they are wanted; 3,973 bytes stay in memory. With the launcher it takes 31,354 bytes of a 32K Datapak, which stays in the Organiser while it runs.
 - In swap mode a number is kept on the Rampak in blocks of 250 bytes. A block takes 20 ms to read and 79 ms to write, so four steps are done on each block while it is in memory, and the pack is read and written once for all four. Swap mode needs ROM 3.0 or later: the 2.4 and 2.6 ROMs know no Rampaks.
