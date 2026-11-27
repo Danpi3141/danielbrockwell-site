@@ -3,9 +3,9 @@ title: BigNum
 category: utility
 status: working-build
 summary: "A big-number calculator modelled on YAFU: exact arithmetic, primality proofs, and factoring up to a quadratic sieve."
-updated: 2026-11-25
+updated: 2026-11-27
 pack: 64K
-needs: "60,004 bytes: one 64K Datapak serves every model, and stays in the Organiser while BigNum runs. In an emulator, load the pack image into slot B. On a real Organiser, load the Organiser files zip with RPBOOT."
+needs: "60,027 bytes: one 64K Datapak serves every model, and stays in the Organiser while BigNum runs. In an emulator, load the pack image into slot B. On a real Organiser, load the Organiser files zip with RPBOOT."
 licence: MIT
 animations:
   - { src: /assets/img/psion/bignum/play-lz64.gif, alt: "BigNum on the four-line screen: FACTOR(2**64+1) is typed in, trial division and a prime check run, the quadratic sieve counts its relations and combines them, and it shows the two prime factors 274177 and 67280421310721", caption: "Four-line: LZ and LZ64 (3× speed)" }
@@ -29,6 +29,9 @@ screenshots:
   - { src: /assets/img/psion/bignum/cm-factor.png, alt: "Two-line screen: PRP23, factor 2 of 2, 3868132180381 and dots", screen: "Two-line: CM, XP and LA (XP 32K)", lines: 2 }
   - { src: /assets/img/psion/bignum/cm-na.png, alt: "Two-line screen on a CM: NOT AVAILABLE, with QS(2**64+1) on the entry line", screen: "No sieve on the CM", lines: 2 }
 files:
+  - { file: bignum-0.9.10-psion.zip, kind: psion, version: "0.9.10", date: 2026-11-27 }
+  - { file: bignum-0.9.10.opk, kind: build, version: "0.9.10", date: 2026-11-27 }
+  - { file: bignum-0.9.10-source.zip, kind: source, version: "0.9.10", date: 2026-11-27 }
   - { file: bignum-0.9.9-psion.zip, kind: psion, version: "0.9.9", date: 2026-11-26 }
   - { file: bignum-0.9.9.opk, kind: build, version: "0.9.9", date: 2026-11-26 }
   - { file: bignum-0.9.9-source.zip, kind: source, version: "0.9.9", date: 2026-11-26 }
@@ -43,6 +46,7 @@ files:
   - { file: bignum-0.9.5-source.zip, kind: source, version: "0.9.5", date: 2026-11-25 }
 source: false
 changelog:
+  - { date: 2026-11-27, version: "0.9.10", change: "UP and DOWN on the factors' screen are about ten times quicker: 0.04 seconds a step on an LZ64 (0.4 before), 0.02 on a CM. No more memory needed." }
   - { date: 2026-11-26, version: "0.9.9", change: "Quicker: fewer and faster reads from the pack, trial division's primes from a table, and Karatsuba squares for long numbers (not on the CM). FACTOR(2**168-1) takes 36 seconds on an LZ64 (48 before), PROVE(2**127-1) 18 (32), LLT(2203) 38 minutes (49). New command TIER: the memory tier BigNum is running in. It needs 25 bytes more memory." }
   - { date: 2026-11-25, version: "0.9.8", change: "The sieve no longer stalls: in 0.9.5 and 0.9.7 some numbers of 14 to 17 digits, or a part that size left over in a longer one, took minutes or never finished (answers were never wrong). S on the factors' screen saves them, except on the CM. A power follows its prime, as in 3^2. Rho's time left is right for small numbers, and it is only tried where it pays." }
   - { date: 2026-11-25, version: "0.9.7", change: "Less memory needed: it starts from 5,620 bytes free (5,990 before), the larger limits also start lower, and every model has 93 bytes more for numbers. LLT of a composite number gives 0 at once, however large." }
