@@ -42,7 +42,7 @@ layout: layouts/base.njk
 
   <div class="entry-grid">
     <div class="entry-side">
-      {{ ui.downloadBox({ files: files, downloadDir: downloadDir, needs: needs, licence: licence }) }}
+      {{ ui.downloadBox({ files: files, downloadDir: downloadDir, needs: needs, licence: licence, warning: download_warning }) }}
 
       {%- if pack %}
       <section aria-labelledby="pack-h" class="pack-section">
@@ -62,7 +62,7 @@ layout: layouts/base.njk
             {%- set e = models[m.id] %}
             <tr class="state-{{ e.state }}">
               <th scope="row">{{ m.name }}</th>
-              <td>{% if e.state == "works" %}<span class="mark mark-yes" aria-hidden="true">✓</span><span class="sr">Works</span>{% elif e.state == "limited" %}<span class="mark mark-limited" aria-hidden="true">✓</span> <span class="mark-word">Reduced</span>{% elif e.state == "no" %}<span class="mark mark-no" aria-hidden="true">✗</span><span class="sr">Not supported</span>{% else %}<span class="mark mark-maybe" aria-hidden="true">?</span><span class="sr">Untested</span>{% endif %}</td>
+              <td>{% if e.state == "works" %}<span class="mark mark-yes" aria-hidden="true">✓</span><span class="sr">Works</span>{% if e.hw %} <span class="mark-word">also on a real one</span>{% endif %}{% elif e.state == "limited" %}<span class="mark mark-limited" aria-hidden="true">✓</span> <span class="mark-word">Reduced</span>{% elif e.state == "no" %}<span class="mark mark-no" aria-hidden="true">✗</span><span class="sr">Not supported</span>{% else %}<span class="mark mark-maybe" aria-hidden="true">?</span><span class="sr">Untested</span>{% endif %}</td>
               {%- if hasFree %}<td class="mono">{% if e.state != "no" and e.free %}{{ e.free | bytes }} bytes{% else %}<span aria-hidden="true">–</span><span class="sr">Not applicable</span>{% endif %}</td>{% endif %}
             </tr>
             {%- endfor %}

@@ -124,6 +124,14 @@
 {% macro downloadBox(d) -%}
 <section class="download-box" aria-labelledby="dl-h">
   <h2 id="dl-h">Download</h2>
+  {%- if d.warning %}
+  <div class="callout dl-warning" role="note">
+    <h3>{{ d.warning.title }}</h3>
+    {%- for p in d.warning.paras %}
+    <p>{{ p | safe }}</p>
+    {%- endfor %}
+  </div>
+  {%- endif %}
   {%- if d.files and d.files.length %}
   {%- set newest = d.files | newestVersion %}
   {%- set cur = d.files | onlyVersion(newest) %}

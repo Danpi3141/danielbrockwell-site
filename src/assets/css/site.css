@@ -2,7 +2,7 @@
    pass WCAG AA. Dark mode follows the device. */
 :root {
   --bg: #F6F7F3; --surface: #FFFFFF; --ink: #1A1F1C; --muted: #56605A; --border: #D5DAD2;
-  --accent: #1F6F5C; --on-accent: #FFFFFF; --warn: #8A5A00; --code-bg: #ECEFE8;
+  --accent: #1F6F5C; --on-accent: #FFFFFF; --warn: #8A5A00; --warn-fill: #F2A33A; --on-warn-fill: #1A1F1C; --code-bg: #ECEFE8;
   --lcd-bg: #B4C0A6; --lcd-ink: #1E2A33; --bezel: #3A423D;
   --ok: #1E7A38; --bad: #B3261E;
   /* model keys: runs it (green), reduced (ochre), does not (black) */
@@ -18,7 +18,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #121614; --surface: #1A201D; --ink: #E7ECE6; --muted: #A3ADA5; --border: #2E3732;
-    --accent: #6FCFB4; --on-accent: #121614; --warn: #E0B050; --ok: #6FD08C; --bad: #F28B82; --code-bg: #1F2622; --bezel: #0B0E0C;
+    --accent: #6FCFB4; --on-accent: #121614; --warn: #E0B050; --warn-fill: #E9A23B; --on-warn-fill: #121614; --ok: #6FD08C; --bad: #F28B82; --code-bg: #1F2622; --bezel: #0B0E0C;
     --k-yes: #5E9C7B; --k-yes-edge: #467A5E; --on-k-yes: #0D1210;
     --k-part: #CCAB4C; --k-part-edge: #9A7F38; --on-k-part: #0D1210;
     --k-no: #0A0D0B; --k-no-edge: #414B45; --on-k-no: #98A39B;
@@ -104,6 +104,7 @@ hr, .rule { border: 0; border-top: 1px dotted var(--muted); margin: 32px 0; }
 .badge { display: inline-block; font-size: 14px; font-weight: 600; padding: 2px 8px; border-radius: 999px; border: 1px solid transparent; line-height: 1.5; }
 .badge-released { background: var(--accent); color: var(--on-accent); }
 .badge-working-build, .badge-ongoing, .badge-in-use { border-color: var(--accent); color: var(--accent); }
+.badge-experimental { background: var(--warn-fill); color: var(--on-warn-fill); }
 .badge-in-development { border-color: var(--ink); color: var(--ink); }
 .badge-planned { border: 1px dashed var(--muted); color: var(--muted); }
 .badge-exploring { color: var(--muted); padding-left: 0; padding-right: 0; }
@@ -210,6 +211,9 @@ hr, .rule { border: 0; border-top: 1px dotted var(--muted); margin: 32px 0; }
 .dl-facts dd { margin: 0; }
 .hash { font-size: 13px; word-break: break-all; user-select: all; }
 .dl-needs { font-size: 15px; }
+.dl-warning { margin: 0 0 16px; font-size: 15px; }
+.dl-warning h3 { font-size: 17px; margin: 0 0 0.4em; }
+.dl-warning p { margin: 0 0 0.6em; }
 .older { font-size: 15px; padding-left: 20px; }
 .dl-also { font-size: 16px; margin: 16px 0 0; color: var(--muted); }
 .dl-alts { list-style: none; padding: 0; margin: 0 0 12px; }

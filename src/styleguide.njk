@@ -20,7 +20,7 @@ eleventyExcludeFromCollections: true
   <p class="buttons"><a class="button" href="/styleguide/">Primary</a> <a class="button button-secondary" href="/styleguide/">Secondary</a></p>
 
   <h2>Status badges</h2>
-  <p class="card-meta">{% for s in ["released", "ongoing", "working-build", "in-development", "planned", "exploring"] %}{{ ui.badge(s) }} {% endfor %}</p>
+  <p class="card-meta">{% for s in ["released", "ongoing", "working-build", "experimental", "in-development", "planned", "exploring"] %}{{ ui.badge(s) }} {% endfor %}</p>
 
   <h2>Model strip</h2>
   {{ ui.modelStrip({ cm: { state: "limited" }, xp: { state: "untested" }, la: { state: "works" }, lz: { state: "no" }, lz64: { state: "works" } }, models_list) }}
